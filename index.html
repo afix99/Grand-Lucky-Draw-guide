@@ -12,6 +12,7 @@
     --white: #fff;
     --gray: #f4f4f4;
     --darkgray: #333;
+    --header-h: 110px;
     --success: #28a745;
     --warning: #ffc107;
   }
@@ -53,7 +54,7 @@
     background: var(--white);
     border-bottom: 1px solid #ddd;
     position: sticky;
-    top: 110px;
+    top: var(--header-h);
     z-index: 99;
   }
   nav button {
@@ -160,6 +161,7 @@
     cursor: pointer;
     margin-top: -0.2rem;
   }
+  .copy-btn.copied { background: var(--success); transition: background 0.2s; }
 
   .flow-step {
     display: flex;
@@ -229,16 +231,34 @@
   }
   .toggle-btn.open::after { content: "−"; }
   .toggle-content {
-    display: none;
-    padding: 0 1rem 1rem;
+    overflow: hidden;
+    max-height: 0;
+    transition: max-height 0.3s ease;
+    padding: 0 1rem;
   }
-  .toggle-content.show { display: block; }
+  .toggle-content.show { max-height: 600px; padding-bottom: 1rem; }
 
   footer {
     text-align: center;
     padding: 2rem 1rem;
     font-size: 0.8rem;
     color: #888;
+  }
+  .tier-objective { font-size: 0.85rem; color: #666; }
+  .card-mt { margin-top: 1rem; }
+  .mld-intro { margin-bottom: 0.75rem; }
+  .flow-note { margin-top: 0.5rem; color: #666; font-size: 0.9rem; }
+  @media print {
+    header { position: static; box-shadow: none; background: none; color: #000; padding: 0.5rem 0; }
+    header h1 { font-size: 1.2rem; }
+    nav { display: none; }
+    section { display: block !important; animation: none; page-break-inside: avoid; }
+    .copy-btn, .toggle-btn::after { display: none; }
+    .toggle-content { max-height: none !important; overflow: visible !important; }
+    .tier-card:hover { transform: none; }
+    .card, .tier-card { box-shadow: none; border: 1px solid #ccc; }
+    .highlight-box { background: none; color: #000; border: 1px solid #000; }
+    footer { font-size: 0.75rem; }
   }
 </style>
 </head>
@@ -250,19 +270,19 @@
   <span class="badge">Staff Quick Guide</span>
 </header>
 
-<nav>
-  <button class="active" onclick="showSection('overview')">Overview</button>
-  <button onclick="showSection('tiers')">3 Tiers</button>
-  <button onclick="showSection('mld')">Mini Lucky Draw</button>
-  <button onclick="showSection('scripts')">Staff Scripts</button>
-  <button onclick="showSection('flow')">Step-by-Step</button>
-  <button onclick="showSection('rules')">Rules & FAQs</button>
+<nav role="tablist">
+  <button role="tab" aria-selected="true" aria-controls="overview" class="active" onclick="showSection('overview', this)">Overview</button>
+  <button role="tab" aria-selected="false" aria-controls="tiers" onclick="showSection('tiers', this)">3 Tiers</button>
+  <button role="tab" aria-selected="false" aria-controls="mld" onclick="showSection('mld', this)">Mini Lucky Draw</button>
+  <button role="tab" aria-selected="false" aria-controls="scripts" onclick="showSection('scripts', this)">Staff Scripts</button>
+  <button role="tab" aria-selected="false" aria-controls="flow" onclick="showSection('flow', this)">Step-by-Step</button>
+  <button role="tab" aria-selected="false" aria-controls="rules" onclick="showSection('rules', this)">Rules & FAQs</button>
 </nav>
 
 <main>
 
 <!-- OVERVIEW -->
-<section id="overview" class="active">
+<section id="overview" class="active" role="tabpanel">
   <div class="card">
     <h2>📋 Campaign at a Glance</h2>
     <ul>
@@ -298,7 +318,7 @@
 </section>
 
 <!-- TIERS -->
-<section id="tiers">
+<section id="tiers" role="tabpanel">
   <div class="tier-grid">
     <div class="tier-card">
       <div class="tier-header t1">Tier 1 — Traffic Driver</div>
@@ -310,7 +330,7 @@
           <li>✅ 1 Grand Lucky Draw Entry</li>
           <li>✅ 1 Mini Lucky Draw</li>
         </ul>
-        <p style="font-size:0.85rem; color:#666;"><strong>Objective:</strong> Lower entry barrier. Convert window shoppers. Push RM90 customers to add 1 more item.</p>
+        <p class="tier-objective"><strong>Objective:</strong> Lower entry barrier. Convert window shoppers. Push RM90 customers to add 1 more item.</p>
       </div>
     </div>
     <div class="tier-card">
@@ -323,7 +343,7 @@
           <li>✅ 1 Mini Lucky Draw</li>
           <li>✅ PWP Nekozilla Set at RM19</li>
         </ul>
-        <p style="font-size:0.85rem; color:#666;"><strong>Objective:</strong> Double chances to win. Create urgency. Best balance of spend vs reward.</p>
+        <p class="tier-objective"><strong>Objective:</strong> Double chances to win. Create urgency. Best balance of spend vs reward.</p>
       </div>
     </div>
     <div class="tier-card">
@@ -336,12 +356,12 @@
           <li>✅ 2 Grand Lucky Draw Entries</li>
           <li>✅ 1 Mini Lucky Draw</li>
         </ul>
-        <p style="font-size:0.85rem; color:#666;"><strong>Objective:</strong> Maximize ATV. Give away limited-edition merch to lock in highest basket size.</p>
+        <p class="tier-objective"><strong>Objective:</strong> Maximize ATV. Give away limited-edition merch to lock in highest basket size.</p>
       </div>
     </div>
   </div>
 
-  <div class="card" style="margin-top:1rem;">
+  <div class="card card-mt">
     <h2>🎁 Nekozilla Set Contents (worth RM79)</h2>
     <ul>
       <li>Tote Bag — RM39</li>
@@ -354,10 +374,10 @@
 </section>
 
 <!-- MLD -->
-<section id="mld">
+<section id="mld" role="tabpanel">
   <div class="card">
     <h2>🎲 Mini Lucky Draw Prizes</h2>
-    <p style="margin-bottom:0.75rem;">Customer draws <strong>1 prize per transaction</strong> with <strong>ANY purchase</strong> (no minimum). Must redeem on the spot.</p>
+    <p class="mld-intro">Customer draws <strong>1 prize per transaction</strong> with <strong>ANY purchase</strong> (no minimum). Must redeem on the spot.</p>
     <ol>
       <li>Buy 1 Free 1</li>
       <li>50% Off Next Bill (limit 2pcs)</li>
@@ -383,7 +403,7 @@
 </section>
 
 <!-- SCRIPTS -->
-<section id="scripts">
+<section id="scripts" role="tabpanel">
   <div class="card">
     <h2>🗣️ Active Selling Scripts</h2>
     <p>Tap any box to copy the script.</p>
@@ -433,7 +453,7 @@
 </section>
 
 <!-- FLOW -->
-<section id="flow">
+<section id="flow" role="tabpanel">
   <div class="card">
     <h2>🔄 Step-by-Step Selling Flow</h2>
 
@@ -480,18 +500,18 @@
           <li>Can combine receipts (same day) before registering</li>
           <li>Staff must guide and verify details</li>
         </ul>
-        <p style="margin-top:0.5rem; color:#666; font-size:0.9rem;">Winners announced end of July 2026. Campaign runs until end of June.</p>
+        <p class="flow-note">Winners announced end of July 2026. Campaign runs until end of June.</p>
       </div>
     </div>
   </div>
 </section>
 
 <!-- RULES -->
-<section id="rules">
+<section id="rules" role="tabpanel">
   <div class="card">
     <h2>📜 Receipt Combination Rules</h2>
 
-    <button class="toggle-btn" onclick="toggle(this)">Can we combine receipts for Grand Lucky Draw?</button>
+    <button class="toggle-btn" aria-expanded="false" onclick="toggle(this)">Can we combine receipts for Grand Lucky Draw?</button>
     <div class="toggle-content">
       <p><span class="yes">YES</span> — but only under these conditions:</p>
       <ul>
@@ -503,7 +523,7 @@
       <p><em>Example: RM100 first purchase + RM80 upsell after MLD = RM180 total → 2 entries</em></p>
     </div>
 
-    <button class="toggle-btn" onclick="toggle(this)">Can we combine receipts for FREE Nekozilla Set (RM250)?</button>
+    <button class="toggle-btn" aria-expanded="false" onclick="toggle(this)">Can we combine receipts for FREE Nekozilla Set (RM250)?</button>
     <div class="toggle-content">
       <p><span class="no">NO</span> — not explicitly allowed.</p>
       <ul>
@@ -513,7 +533,7 @@
       </ul>
     </div>
 
-    <button class="toggle-btn" onclick="toggle(this)">Can Markdown (MD) purchases get Mini Lucky Draw?</button>
+    <button class="toggle-btn" aria-expanded="false" onclick="toggle(this)">Can Markdown (MD) purchases get Mini Lucky Draw?</button>
     <div class="toggle-content">
       <p><span class="yes">YES</span> — Mini Lucky Draw is available with <strong>ANY purchase</strong>, no minimum, regardless of MD or normal price.</p>
       <ul>
@@ -523,7 +543,7 @@
       <p>However, MLD <strong>vouchers</strong> won can only be used on normal price items (unless the voucher says FREE).</p>
     </div>
 
-    <button class="toggle-btn" onclick="toggle(this)">Can Markdown purchases get FREE Nekozilla?</button>
+    <button class="toggle-btn" aria-expanded="false" onclick="toggle(this)">Can Markdown purchases get FREE Nekozilla?</button>
     <div class="toggle-content">
       <p><span class="no">NO</span> — explicitly excluded.</p>
       <p>Page 15: "Sogo, Manjung & AC take Note: Anniversary & mini lucky draw are applicable for MD. <strong>But excluded for FREE Nekozilla.</strong>"</p>
@@ -575,28 +595,73 @@
 </footer>
 
 <script>
-  function showSection(id) {
+  function showSection(id, btn) {
     document.querySelectorAll('section').forEach(s => s.classList.remove('active'));
     document.getElementById(id).classList.add('active');
-    document.querySelectorAll('nav button').forEach(b => b.classList.remove('active'));
-    event.target.classList.add('active');
+    document.querySelectorAll('nav button').forEach(b => {
+      b.classList.remove('active');
+      b.setAttribute('aria-selected', 'false');
+    });
+    btn.classList.add('active');
+    btn.setAttribute('aria-selected', 'true');
+    history.replaceState(null, '', '#' + id);
+    window.scrollTo(0, 0);
   }
 
   function copyText(el) {
     const text = el.querySelector('p').innerText;
-    navigator.clipboard.writeText(text).then(() => {
-      const btn = el.querySelector('.copy-btn');
-      const orig = btn.innerText;
+    const btn = el.querySelector('.copy-btn');
+    const orig = btn.innerText;
+    function showSuccess() {
       btn.innerText = 'Copied!';
-      setTimeout(() => btn.innerText = orig, 1500);
-    });
+      btn.classList.add('copied');
+      setTimeout(() => { btn.innerText = orig; btn.classList.remove('copied'); }, 1500);
+    }
+    if (navigator.clipboard && window.isSecureContext) {
+      navigator.clipboard.writeText(text).then(showSuccess).catch(fallback);
+    } else { fallback(); }
+    function fallback() {
+      const ta = document.createElement('textarea');
+      ta.value = text;
+      ta.style.cssText = 'position:fixed;opacity:0;top:0;left:0';
+      document.body.appendChild(ta);
+      ta.focus(); ta.select();
+      try { document.execCommand('copy'); showSuccess(); } catch(e) {}
+      document.body.removeChild(ta);
+    }
   }
 
   function toggle(btn) {
     const content = btn.nextElementSibling;
     content.classList.toggle('show');
     btn.classList.toggle('open');
+    btn.setAttribute('aria-expanded', content.classList.contains('show'));
   }
+
+  document.querySelectorAll('.script-box').forEach(function(box) {
+    box.setAttribute('tabindex', '0');
+    box.setAttribute('role', 'button');
+    box.setAttribute('aria-label', 'Copy script: ' + box.querySelector('p').innerText.substring(0, 40));
+    box.addEventListener('keydown', function(e) {
+      if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); copyText(box); }
+    });
+  });
+
+  function updateNavOffset() {
+    document.documentElement.style.setProperty('--header-h',
+      document.querySelector('header').getBoundingClientRect().height + 'px');
+  }
+  updateNavOffset();
+  window.addEventListener('resize', updateNavOffset);
+
+  (function() {
+    const hash = location.hash.replace('#', '');
+    const valid = ['overview', 'tiers', 'mld', 'scripts', 'flow', 'rules'];
+    if (hash && valid.includes(hash)) {
+      const btn = document.querySelector('[aria-controls="' + hash + '"]');
+      if (btn) showSection(hash, btn);
+    }
+  })();
 </script>
 
 </body>
