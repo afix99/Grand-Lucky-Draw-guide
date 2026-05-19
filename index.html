@@ -1,15 +1,603 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Memey — A Love Letter</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet" />
-  </head>
-  <body>
-    <div id="root"></div>
-    <script type="module" src="/src/main.tsx"></script>
-  </body>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lokalteez 2026 Q2 Retail Activities — Quick Guide</title>
+<style>
+  :root {
+    --red: #e60012;
+    --yellow: #ffd700;
+    --black: #111;
+    --white: #fff;
+    --gray: #f4f4f4;
+    --darkgray: #333;
+    --success: #28a745;
+    --warning: #ffc107;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    background: var(--gray);
+    color: var(--darkgray);
+    line-height: 1.6;
+  }
+  header {
+    background: linear-gradient(135deg, var(--red), #ff4757);
+    color: var(--white);
+    padding: 2rem 1rem;
+    text-align: center;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+  }
+  header h1 { font-size: 1.6rem; margin-bottom: 0.25rem; letter-spacing: -0.5px; }
+  header p { opacity: 0.95; font-size: 0.95rem; }
+  .badge {
+    display: inline-block;
+    background: var(--yellow);
+    color: var(--black);
+    padding: 0.25rem 0.75rem;
+    border-radius: 999px;
+    font-weight: 700;
+    font-size: 0.75rem;
+    margin-top: 0.5rem;
+    text-transform: uppercase;
+  }
+  nav {
+    display: flex;
+    overflow-x: auto;
+    gap: 0.5rem;
+    padding: 1rem;
+    background: var(--white);
+    border-bottom: 1px solid #ddd;
+    position: sticky;
+    top: 110px;
+    z-index: 99;
+  }
+  nav button {
+    flex: 0 0 auto;
+    padding: 0.6rem 1.2rem;
+    border: 2px solid var(--red);
+    background: var(--white);
+    color: var(--red);
+    border-radius: 999px;
+    font-weight: 600;
+    cursor: pointer;
+    white-space: nowrap;
+    transition: all 0.2s;
+  }
+  nav button.active, nav button:hover {
+    background: var(--red);
+    color: var(--white);
+  }
+  main { max-width: 900px; margin: 0 auto; padding: 1rem; }
+  section { display: none; animation: fadeIn 0.3s ease; }
+  section.active { display: block; }
+  @keyframes fadeIn { from { opacity: 0; transform: translateY(10px);} to { opacity: 1; transform: translateY(0);} }
+
+  .card {
+    background: var(--white);
+    border-radius: 16px;
+    padding: 1.5rem;
+    margin-bottom: 1rem;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+    border-left: 6px solid var(--red);
+  }
+  .card.yellow { border-left-color: var(--yellow); }
+  .card.green { border-left-color: var(--success); }
+  .card h2 { font-size: 1.2rem; margin-bottom: 0.75rem; color: var(--black); }
+  .card h3 { font-size: 1rem; margin: 1rem 0 0.5rem; color: var(--red); }
+  .card ul { margin-left: 1.25rem; margin-bottom: 0.75rem; }
+  .card li { margin-bottom: 0.4rem; }
+
+  .tier-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+  @media(min-width: 640px) {
+    .tier-grid { grid-template-columns: repeat(3, 1fr); }
+  }
+  .tier-card {
+    background: var(--white);
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+    transition: transform 0.2s;
+  }
+  .tier-card:hover { transform: translateY(-4px); }
+  .tier-header {
+    padding: 1.25rem;
+    color: var(--white);
+    text-align: center;
+    font-weight: 800;
+  }
+  .tier-header.t1 { background: linear-gradient(135deg, #ff9f43, #ff6b6b); }
+  .tier-header.t2 { background: linear-gradient(135deg, #ff4757, #e60012); }
+  .tier-header.t3 { background: linear-gradient(135deg, #2ed573, #1e90ff); }
+  .tier-body { padding: 1.25rem; }
+  .price-tag {
+    font-size: 2rem;
+    font-weight: 900;
+    display: block;
+    margin-bottom: 0.25rem;
+  }
+  .tier-body ul { list-style: none; margin: 0.75rem 0; }
+  .tier-body li { padding: 0.35rem 0; border-bottom: 1px dashed #eee; font-size: 0.9rem; }
+  .tier-body li:last-child { border-bottom: none; }
+
+  .script-box {
+    background: #fff8e1;
+    border: 1px solid var(--yellow);
+    border-radius: 12px;
+    padding: 1rem;
+    margin: 0.75rem 0;
+    position: relative;
+  }
+  .script-box .label {
+    position: absolute;
+    top: -10px;
+    left: 12px;
+    background: var(--yellow);
+    color: var(--black);
+    font-size: 0.7rem;
+    font-weight: 700;
+    padding: 0.15rem 0.5rem;
+    border-radius: 4px;
+    text-transform: uppercase;
+  }
+  .script-box p { font-style: italic; color: var(--darkgray); margin-top: 0.25rem; }
+  .copy-btn {
+    float: right;
+    background: var(--black);
+    color: var(--white);
+    border: none;
+    padding: 0.3rem 0.7rem;
+    border-radius: 6px;
+    font-size: 0.75rem;
+    cursor: pointer;
+    margin-top: -0.2rem;
+  }
+
+  .flow-step {
+    display: flex;
+    align-items: flex-start;
+    gap: 1rem;
+    margin-bottom: 1.25rem;
+  }
+  .flow-num {
+    min-width: 36px;
+    height: 36px;
+    background: var(--red);
+    color: var(--white);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    font-size: 0.9rem;
+    flex-shrink: 0;
+  }
+  .flow-content { flex: 1; }
+  .flow-content h4 { margin-bottom: 0.25rem; color: var(--black); }
+
+  .exception-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.9rem;
+    margin-top: 0.5rem;
+  }
+  .exception-table th, .exception-table td {
+    border: 1px solid #ddd;
+    padding: 0.6rem;
+    text-align: left;
+  }
+  .exception-table th { background: var(--black); color: var(--white); }
+  .exception-table tr:nth-child(even) { background: #fafafa; }
+  .yes { color: var(--success); font-weight: 700; }
+  .no { color: var(--red); font-weight: 700; }
+
+  .highlight-box {
+    background: var(--black);
+    color: var(--white);
+    padding: 1rem;
+    border-radius: 12px;
+    margin: 1rem 0;
+  }
+  .highlight-box strong { color: var(--yellow); }
+
+  .toggle-btn {
+    width: 100%;
+    text-align: left;
+    background: var(--white);
+    border: 1px solid #ddd;
+    padding: 1rem;
+    border-radius: 12px;
+    font-weight: 700;
+    cursor: pointer;
+    margin-bottom: 0.5rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .toggle-btn::after {
+    content: "+";
+    font-size: 1.2rem;
+    color: var(--red);
+  }
+  .toggle-btn.open::after { content: "−"; }
+  .toggle-content {
+    display: none;
+    padding: 0 1rem 1rem;
+  }
+  .toggle-content.show { display: block; }
+
+  footer {
+    text-align: center;
+    padding: 2rem 1rem;
+    font-size: 0.8rem;
+    color: #888;
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <h1>🎯 Lokalteez 2026 Q2 Retail Activities</h1>
+  <p>7 April – 30 June 2026 &nbsp;|&nbsp; Excluded: Clearance Store</p>
+  <span class="badge">Staff Quick Guide</span>
+</header>
+
+<nav>
+  <button class="active" onclick="showSection('overview')">Overview</button>
+  <button onclick="showSection('tiers')">3 Tiers</button>
+  <button onclick="showSection('mld')">Mini Lucky Draw</button>
+  <button onclick="showSection('scripts')">Staff Scripts</button>
+  <button onclick="showSection('flow')">Step-by-Step</button>
+  <button onclick="showSection('rules')">Rules & FAQs</button>
+</nav>
+
+<main>
+
+<!-- OVERVIEW -->
+<section id="overview" class="active">
+  <div class="card">
+    <h2>📋 Campaign at a Glance</h2>
+    <ul>
+      <li><strong>Period:</strong> 7 April 2026 – 30 June 2026</li>
+      <li><strong>Scope:</strong> All stores (Clearance Store excluded)</li>
+      <li><strong>Goal:</strong> Increase TC, ATV & UPT</li>
+    </ul>
+    <div class="highlight-box">
+      <strong>Remember the 3 magic numbers:</strong><br>
+      RM100 → RM20 Rebate + 1 Grand Entry<br>
+      RM180 → 2 Grand Entries (double chance)<br>
+      RM250 → FREE Nekozilla Set + 2 Entries
+    </div>
+  </div>
+
+  <div class="card yellow">
+    <h2>🎁 What is GWP vs PWP?</h2>
+    <ul>
+      <li><strong>GWP</strong> = Gift With Purchase = <span class="yes">FREE</span> (e.g., Nekozilla at RM250)</li>
+      <li><strong>PWP</strong> = Purchase With Purchase = <span class="no">Discounted</span> add-on (e.g., Nekozilla at RM19 with RM180 spend)</li>
+    </ul>
+  </div>
+
+  <div class="card green">
+    <h2>🎲 Mini Lucky Draw (MLD)</h2>
+    <ul>
+      <li><strong>Any purchase</strong> — no minimum spend</li>
+      <li>1 draw per transaction</li>
+      <li>Prizes redeemed <strong>on the spot</strong></li>
+      <li>Vouchers valid on <strong>normal price items</strong> only (unless stated FREE)</li>
+    </ul>
+  </div>
+</section>
+
+<!-- TIERS -->
+<section id="tiers">
+  <div class="tier-grid">
+    <div class="tier-card">
+      <div class="tier-header t1">Tier 1 — Traffic Driver</div>
+      <div class="tier-body">
+        <span class="price-tag">RM100</span>
+        <small>Minimum spend</small>
+        <ul>
+          <li>✅ RM20 Instant Rebate</li>
+          <li>✅ 1 Grand Lucky Draw Entry</li>
+          <li>✅ 1 Mini Lucky Draw</li>
+        </ul>
+        <p style="font-size:0.85rem; color:#666;"><strong>Objective:</strong> Lower entry barrier. Convert window shoppers. Push RM90 customers to add 1 more item.</p>
+      </div>
+    </div>
+    <div class="tier-card">
+      <div class="tier-header t2">Tier 2 — Best Push</div>
+      <div class="tier-body">
+        <span class="price-tag">RM180</span>
+        <small>Nett price</small>
+        <ul>
+          <li>✅ 2 Grand Lucky Draw Entries</li>
+          <li>✅ 1 Mini Lucky Draw</li>
+          <li>✅ PWP Nekozilla Set at RM19</li>
+        </ul>
+        <p style="font-size:0.85rem; color:#666;"><strong>Objective:</strong> Double chances to win. Create urgency. Best balance of spend vs reward.</p>
+      </div>
+    </div>
+    <div class="tier-card">
+      <div class="tier-header t3">Tier 3 — Upsell Max</div>
+      <div class="tier-body">
+        <span class="price-tag">RM250</span>
+        <small>Nett price</small>
+        <ul>
+          <li>✅ FREE Nekozilla Set (worth RM79)</li>
+          <li>✅ 2 Grand Lucky Draw Entries</li>
+          <li>✅ 1 Mini Lucky Draw</li>
+        </ul>
+        <p style="font-size:0.85rem; color:#666;"><strong>Objective:</strong> Maximize ATV. Give away limited-edition merch to lock in highest basket size.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="card" style="margin-top:1rem;">
+    <h2>🎁 Nekozilla Set Contents (worth RM79)</h2>
+    <ul>
+      <li>Tote Bag — RM39</li>
+      <li>Keychain — RM29</li>
+      <li>Lanyard — RM29</li>
+      <li>Sticker — RM10</li>
+      <li>Dinoz & Nekoz Enamel Pin — RM39</li>
+    </ul>
+  </div>
+</section>
+
+<!-- MLD -->
+<section id="mld">
+  <div class="card">
+    <h2>🎲 Mini Lucky Draw Prizes</h2>
+    <p style="margin-bottom:0.75rem;">Customer draws <strong>1 prize per transaction</strong> with <strong>ANY purchase</strong> (no minimum). Must redeem on the spot.</p>
+    <ol>
+      <li>Buy 1 Free 1</li>
+      <li>50% Off Next Bill (limit 2pcs)</li>
+      <li>Spend above RM39 → Free JP series (worth RM45)</li>
+      <li>Nekozilla set (Jersey + Tote + Lanyard) at RM49 only (RP: RM99)</li>
+      <li>Grab JP & Kawaii at RM25 each (limit 2pcs, RP: RM45)</li>
+      <li>Grab any item at 50% OFF (limit 2pcs)</li>
+      <li>Buy RM45 → Free RM59</li>
+    </ol>
+    <div class="highlight-box">
+      <strong>Staff Tip:</strong> Use the voucher won to upsell immediately! "Wah good deal! You can grab the jersey at half price now, only RM22. Better grab 2 pieces to fully utilise!"
+    </div>
+  </div>
+
+  <div class="card yellow">
+    <h2>⚠️ Voucher Rules</h2>
+    <ul>
+      <li>Vouchers apply to <strong>normal price items only</strong></li>
+      <li>Unless the voucher itself says "FREE" — then it can be used on anything</li>
+      <li>All MLD prizes must be redeemed <strong>immediately</strong></li>
+    </ul>
+  </div>
+</section>
+
+<!-- SCRIPTS -->
+<section id="scripts">
+  <div class="card">
+    <h2>🗣️ Active Selling Scripts</h2>
+    <p>Tap any box to copy the script.</p>
+
+    <div class="script-box" onclick="copyText(this)">
+      <span class="label">Rebate Close</span>
+      <button class="copy-btn">Copy</button>
+      <p>"You're at RM90 now. If you add just 1 more pc (RM45), you can enjoy RM20 rebate. Average RM38 per piece only. 3rd pc at RM25 only!"</p>
+    </div>
+
+    <div class="script-box" onclick="copyText(this)">
+      <span class="label">Mix & Match</span>
+      <button class="copy-btn">Copy</button>
+      <p>"You can mix different designs. Many customers take 2 so they can rotate. If you add 1 more piece like this BR (RM65), you get instant RM20 rebate, so average only RM50+ per pc, very worth it!"</p>
+    </div>
+
+    <div class="script-box" onclick="copyText(this)">
+      <span class="label">Double Entry Push</span>
+      <button class="copy-btn">Copy</button>
+      <p>"You're very close. If you go to RM180, you'll get 2 entries instead of 1 — double chance to win. Since we have 999 prizes, your chances are quite high. Means every 10 people = 1 winner, and you got 2 entries, your possibilities are super high!"</p>
+    </div>
+
+    <div class="script-box" onclick="copyText(this)">
+      <span class="label">Free Gift Close</span>
+      <button class="copy-btn">Copy</button>
+      <p>"Spend RM250 nett (after RM20 rebate) and get FREE Nekozilla Set worth RM79 + 2 Grand Lucky Draw entries. Double your chance to win big!"</p>
+    </div>
+
+    <div class="script-box" onclick="copyText(this)">
+      <span class="label">Upsell After MLD Win</span>
+      <button class="copy-btn">Copy</button>
+      <p>"Wah good deal! You can grab the jersey you like at half price now, only RM22. Since it's 50% off, better grab 2 more pieces to fully utilise your voucher. Super worth!"</p>
+    </div>
+  </div>
+
+  <div class="card green">
+    <h2>💡 Magic Phrases</h2>
+    <ul>
+      <li>"Super worth"</li>
+      <li>"Only for today"</li>
+      <li>"Immediate use"</li>
+      <li>"Instant discount"</li>
+      <li>"Half price only"</li>
+      <li>"It's Free"</li>
+    </ul>
+  </div>
+</section>
+
+<!-- FLOW -->
+<section id="flow">
+  <div class="card">
+    <h2>🔄 Step-by-Step Selling Flow</h2>
+
+    <div class="flow-step">
+      <div class="flow-num">1</div>
+      <div class="flow-content">
+        <h4>First Purchase — Push the Tier</h4>
+        <p>Before checkout, staff must already know the target ATV for this transaction.</p>
+        <ul>
+          <li>Push to <strong>RM100</strong> → rebate + 1 entry + mini draw</li>
+          <li>Best push <strong>RM180</strong> → 2 entries + mini draw + PWP</li>
+          <li>Max push <strong>RM250</strong> → free gift + 2 entries + mini draw</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="flow-step">
+      <div class="flow-num">2</div>
+      <div class="flow-content">
+        <h4>Mini Lucky Draw — Instant Gratification</h4>
+        <p>"🎉 You get a FREE Mini Lucky Draw!" Customer draws prize on the spot.</p>
+      </div>
+    </div>
+
+    <div class="flow-step">
+      <div class="flow-num">3</div>
+      <div class="flow-content">
+        <h4>Upsell (MOST IMPORTANT)</h4>
+        <p>Use the MLD prize to upsell immediately.</p>
+        <ul>
+          <li>If 1st purchase <strong>below RM180</strong>: "Top up a bit to RM180 for double entries 🔥"</li>
+          <li>If 1st purchase <strong>already RM180+</strong>: Use voucher to add more items at discount</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="flow-step">
+      <div class="flow-num">4</div>
+      <div class="flow-content">
+        <h4>Register (LAST STEP)</h4>
+        <p>"Now please scan this QR code to register your Lucky Draw entry. Make sure your contact number is correct so we can reach you for the prize 👍"</p>
+        <ul>
+          <li>Collect: Name, Phone, MyKad, Purchase Date, State, Total Purchase Amount</li>
+          <li>Can combine receipts (same day) before registering</li>
+          <li>Staff must guide and verify details</li>
+        </ul>
+        <p style="margin-top:0.5rem; color:#666; font-size:0.9rem;">Winners announced end of July 2026. Campaign runs until end of June.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- RULES -->
+<section id="rules">
+  <div class="card">
+    <h2>📜 Receipt Combination Rules</h2>
+
+    <button class="toggle-btn" onclick="toggle(this)">Can we combine receipts for Grand Lucky Draw?</button>
+    <div class="toggle-content">
+      <p><span class="yes">YES</span> — but only under these conditions:</p>
+      <ul>
+        <li>Original receipt + Mini Lucky Draw receipt</li>
+        <li>Must be <strong>same day</strong></li>
+        <li>Combine <strong>BEFORE</strong> registering for Grand Lucky Draw</li>
+        <li>Customer fills in the <strong>total combined amount</strong> when registering</li>
+      </ul>
+      <p><em>Example: RM100 first purchase + RM80 upsell after MLD = RM180 total → 2 entries</em></p>
+    </div>
+
+    <button class="toggle-btn" onclick="toggle(this)">Can we combine receipts for FREE Nekozilla Set (RM250)?</button>
+    <div class="toggle-content">
+      <p><span class="no">NO</span> — not explicitly allowed.</p>
+      <ul>
+        <li>FREE Nekozilla requires <strong>RM250 in a single transaction at checkout</strong></li>
+        <li>Receipt combination rule only applies to <strong>Grand Lucky Draw registration</strong></li>
+        <li>If customer hits RM180 first, they remain on PWP path (RM19 for set), even if they add more later</li>
+      </ul>
+    </div>
+
+    <button class="toggle-btn" onclick="toggle(this)">Can Markdown (MD) purchases get Mini Lucky Draw?</button>
+    <div class="toggle-content">
+      <p><span class="yes">YES</span> — Mini Lucky Draw is available with <strong>ANY purchase</strong>, no minimum, regardless of MD or normal price.</p>
+      <ul>
+        <li>Page 7: "Additional prizes with any purchase — No minimum purchase"</li>
+        <li>Page 15 confirms for Sogo/Manjung/AC: MD items are applicable for Mini Lucky Draw</li>
+      </ul>
+      <p>However, MLD <strong>vouchers</strong> won can only be used on normal price items (unless the voucher says FREE).</p>
+    </div>
+
+    <button class="toggle-btn" onclick="toggle(this)">Can Markdown purchases get FREE Nekozilla?</button>
+    <div class="toggle-content">
+      <p><span class="no">NO</span> — explicitly excluded.</p>
+      <p>Page 15: "Sogo, Manjung & AC take Note: Anniversary & mini lucky draw are applicable for MD. <strong>But excluded for FREE Nekozilla.</strong>"</p>
+    </div>
+  </div>
+
+  <div class="card">
+    <h2>🏪 Store Exceptions (Sogo, Manjung & AC)</h2>
+    <table class="exception-table">
+      <tr>
+        <th>Promotion</th>
+        <th>MD Items Allowed?</th>
+      </tr>
+      <tr>
+        <td>Mini Lucky Draw</td>
+        <td class="yes">YES</td>
+      </tr>
+      <tr>
+        <td>Anniversary Grand Lucky Draw (entries)</td>
+        <td class="yes">YES</td>
+      </tr>
+      <tr>
+        <td>FREE Nekozilla Set (RM250 tier)</td>
+        <td class="no">NO</td>
+      </tr>
+      <tr>
+        <td>MLD Vouchers redemption</td>
+        <td class="no">NO (normal price only, unless FREE)</td>
+      </tr>
+    </table>
+  </div>
+
+  <div class="card yellow">
+    <h2>⏰ Important Dates</h2>
+    <ul>
+      <li><strong>Campaign Period:</strong> 7 April – 30 June 2026</li>
+      <li><strong>Grand Draw Activation:</strong> Once 9,999 tickets collected</li>
+      <li><strong>Winner Announcement:</strong> End of July 2026</li>
+      <li><strong>All current promotions end:</strong> 30 June 2026 (tomorrow onwards new rules apply)</li>
+    </ul>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  Prepared by Emelia Hau &nbsp;|&nbsp; Lokalteez 2026 Q2 Retail Activities<br>
+  For internal staff use only
+</footer>
+
+<script>
+  function showSection(id) {
+    document.querySelectorAll('section').forEach(s => s.classList.remove('active'));
+    document.getElementById(id).classList.add('active');
+    document.querySelectorAll('nav button').forEach(b => b.classList.remove('active'));
+    event.target.classList.add('active');
+  }
+
+  function copyText(el) {
+    const text = el.querySelector('p').innerText;
+    navigator.clipboard.writeText(text).then(() => {
+      const btn = el.querySelector('.copy-btn');
+      const orig = btn.innerText;
+      btn.innerText = 'Copied!';
+      setTimeout(() => btn.innerText = orig, 1500);
+    });
+  }
+
+  function toggle(btn) {
+    const content = btn.nextElementSibling;
+    content.classList.toggle('show');
+    btn.classList.toggle('open');
+  }
+</script>
+
+</body>
 </html>
