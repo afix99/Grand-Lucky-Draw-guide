@@ -3,935 +3,1353 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Lokalteez 2026 Q2 Retail Activities — Staff Quick Guide</title>
+<title>Lokalteez Q2 2026 — Staff Guide</title>
 <style>
-  :root {
-    --red: #e60012;
-    --yellow: #ffd700;
-    --black: #111;
-    --white: #fff;
-    --gray: #f4f4f4;
-    --darkgray: #333;
-    --header-h: 110px;
-    --success: #28a745;
-    --warning: #ffc107;
-  }
-  * { box-sizing: border-box; margin: 0; padding: 0; }
-  body {
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-    background: var(--gray);
-    color: var(--darkgray);
-    line-height: 1.6;
-  }
-  header {
-    background: linear-gradient(135deg, var(--red), #ff4757);
-    color: var(--white);
-    padding: 2rem 1rem;
-    text-align: center;
-    position: sticky;
-    top: 0;
-    z-index: 100;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
-  }
-  header h1 { font-size: 1.6rem; margin-bottom: 0.25rem; letter-spacing: -0.5px; }
-  header p { opacity: 0.95; font-size: 0.95rem; }
-  .badge {
-    display: inline-block;
-    background: var(--yellow);
-    color: var(--black);
-    padding: 0.25rem 0.75rem;
-    border-radius: 999px;
-    font-weight: 700;
-    font-size: 0.75rem;
-    margin-top: 0.5rem;
-    text-transform: uppercase;
-  }
-  nav {
-    display: flex;
-    overflow-x: auto;
-    gap: 0.5rem;
-    padding: 1rem;
-    background: var(--white);
-    border-bottom: 1px solid #ddd;
-    position: sticky;
-    top: var(--header-h);
-    z-index: 99;
-  }
-  nav button {
-    flex: 0 0 auto;
-    padding: 0.6rem 1.2rem;
-    border: 2px solid var(--red);
-    background: var(--white);
-    color: var(--red);
-    border-radius: 999px;
-    font-weight: 600;
-    cursor: pointer;
-    white-space: nowrap;
-    transition: all 0.2s;
-  }
-  nav button.active, nav button:hover {
-    background: var(--red);
-    color: var(--white);
-  }
-  main { max-width: 900px; margin: 0 auto; padding: 1rem; }
-  section { display: none; animation: fadeIn 0.3s ease; }
-  section.active { display: block; }
-  @keyframes fadeIn { from { opacity: 0; transform: translateY(10px);} to { opacity: 1; transform: translateY(0);} }
+/* ─── TOKENS ─────────────────────────────────────── */
+:root {
+  --red:       #e60012;
+  --red-dk:    #b0000d;
+  --red-lt:    #fff0f1;
+  --orange:    #ff7043;
+  --yellow:    #ffca28;
+  --yellow-lt: #fffde7;
+  --green:     #2e7d32;
+  --green-lt:  #e8f5e9;
+  --green-mid: #43a047;
+  --blue:      #1565c0;
+  --blue-lt:   #e3f2fd;
+  --black:     #1a1a1a;
+  --gray-1:    #333;
+  --gray-2:    #666;
+  --gray-3:    #999;
+  --gray-4:    #ddd;
+  --gray-5:    #f0f2f5;
+  --white:     #fff;
+  --shadow-sm: 0 1px 3px rgba(0,0,0,.07), 0 4px 10px rgba(0,0,0,.05);
+  --shadow-md: 0 2px 6px rgba(0,0,0,.08), 0 8px 20px rgba(0,0,0,.06);
+  --r:         14px;
+  --r-sm:      8px;
+  --header-h:  56px;
+  --nav-h:     60px;
+}
 
-  .card {
-    background: var(--white);
-    border-radius: 16px;
-    padding: 1.5rem;
-    margin-bottom: 1rem;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.06);
-    border-left: 6px solid var(--red);
-  }
-  .card.yellow { border-left-color: var(--yellow); }
-  .card.green { border-left-color: var(--success); }
-  .card h2 { font-size: 1.2rem; margin-bottom: 0.75rem; color: var(--black); }
-  .card h3 { font-size: 1rem; margin: 1rem 0 0.5rem; color: var(--red); }
-  .card ul { margin-left: 1.25rem; margin-bottom: 0.75rem; }
-  .card li { margin-bottom: 0.4rem; }
+/* ─── RESET ──────────────────────────────────────── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  background: var(--gray-5);
+  color: var(--gray-1);
+  line-height: 1.55;
+  font-size: 15px;
+}
+a { color: var(--red); }
 
-  .tier-grid {
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: 1rem;
-  }
-  @media(min-width: 640px) {
-    .tier-grid { grid-template-columns: repeat(3, 1fr); }
-  }
-  .tier-card {
-    background: var(--white);
-    border-radius: 16px;
-    overflow: hidden;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.08);
-    transition: transform 0.2s;
-  }
-  .tier-card:hover { transform: translateY(-4px); }
-  .tier-header {
-    padding: 1.25rem;
-    color: var(--white);
-    text-align: center;
-    font-weight: 800;
-  }
-  .tier-header.t1 { background: linear-gradient(135deg, #ff9f43, #ff6b6b); }
-  .tier-header.t2 { background: linear-gradient(135deg, #ff4757, #e60012); }
-  .tier-header.t3 { background: linear-gradient(135deg, #2ed573, #1e90ff); }
-  .tier-body { padding: 1.25rem; }
-  .price-tag {
-    font-size: 2rem;
-    font-weight: 900;
-    display: block;
-    margin-bottom: 0.25rem;
-  }
-  .tier-body ul { list-style: none; margin: 0.75rem 0; }
-  .tier-body li { padding: 0.35rem 0; border-bottom: 1px dashed #eee; font-size: 0.9rem; }
-  .tier-body li:last-child { border-bottom: none; }
+/* ─── HEADER ─────────────────────────────────────── */
+header {
+  height: var(--header-h);
+  background: linear-gradient(110deg, var(--red-dk), var(--red));
+  color: var(--white);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 1rem;
+  position: sticky;
+  top: 0;
+  z-index: 200;
+  box-shadow: 0 2px 8px rgba(0,0,0,.2);
+}
+header h1 { font-size: 1.05rem; font-weight: 800; letter-spacing: -.3px; }
+header h1 span { opacity: .75; font-weight: 500; font-size: .85rem; margin-left: .4rem; }
+.hbadge {
+  background: var(--yellow);
+  color: var(--black);
+  font-size: .65rem;
+  font-weight: 800;
+  padding: .2rem .6rem;
+  border-radius: 99px;
+  text-transform: uppercase;
+  letter-spacing: .5px;
+  white-space: nowrap;
+}
 
-  .script-box {
-    background: #fff8e1;
-    border: 1px solid var(--yellow);
-    border-radius: 12px;
-    padding: 1rem;
-    margin: 0.75rem 0;
-    position: relative;
-  }
-  .script-box .label {
-    position: absolute;
-    top: -10px;
-    left: 12px;
-    background: var(--yellow);
-    color: var(--black);
-    font-size: 0.7rem;
-    font-weight: 700;
-    padding: 0.15rem 0.5rem;
-    border-radius: 4px;
-    text-transform: uppercase;
-  }
-  .script-box p { font-style: italic; color: var(--darkgray); margin-top: 0.25rem; }
-  .copy-btn {
-    float: right;
-    background: var(--black);
-    color: var(--white);
-    border: none;
-    padding: 0.3rem 0.7rem;
-    border-radius: 6px;
-    font-size: 0.75rem;
-    cursor: pointer;
-    margin-top: -0.2rem;
-  }
-  .copy-btn.copied { background: var(--success); transition: background 0.2s; }
+/* ─── NAV ────────────────────────────────────────── */
+nav {
+  height: var(--nav-h);
+  background: var(--white);
+  border-bottom: 1px solid var(--gray-4);
+  display: flex;
+  align-items: center;
+  gap: .4rem;
+  padding: 0 .75rem;
+  overflow-x: auto;
+  position: sticky;
+  top: var(--header-h);
+  z-index: 199;
+  scrollbar-width: none;
+}
+nav::-webkit-scrollbar { display: none; }
+nav button {
+  flex: 0 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+  padding: .45rem .8rem;
+  border: none;
+  background: transparent;
+  color: var(--gray-2);
+  border-radius: var(--r-sm);
+  font-size: .72rem;
+  font-weight: 600;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: background .15s, color .15s;
+  line-height: 1;
+}
+nav button .nicon { font-size: 1.1rem; }
+nav button.active {
+  background: var(--red);
+  color: var(--white);
+}
+nav button:not(.active):hover { background: var(--gray-5); color: var(--black); }
+nav .nav-divider {
+  width: 1px;
+  height: 28px;
+  background: var(--gray-4);
+  flex: 0 0 auto;
+  border-radius: 1px;
+}
 
-  .flow-step {
-    display: flex;
-    align-items: flex-start;
-    gap: 1rem;
-    margin-bottom: 1.25rem;
-  }
-  .flow-num {
-    min-width: 36px;
-    height: 36px;
-    background: var(--red);
-    color: var(--white);
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-weight: 700;
-    font-size: 0.9rem;
-    flex-shrink: 0;
-  }
-  .flow-content { flex: 1; }
-  .flow-content h4 { margin-bottom: 0.25rem; color: var(--black); }
+/* ─── MAIN ───────────────────────────────────────── */
+main {
+  max-width: 880px;
+  margin: 0 auto;
+  padding: 1rem .75rem 2rem;
+}
+section { display: none; }
+section.active { display: block; animation: up .25s ease; }
+@keyframes up { from { opacity:0; transform:translateY(8px); } to { opacity:1; transform:translateY(0); } }
 
-  .exception-table {
-    width: 100%;
-    border-collapse: collapse;
-    font-size: 0.9rem;
-    margin-top: 0.5rem;
-  }
-  .exception-table th, .exception-table td {
-    border: 1px solid #ddd;
-    padding: 0.6rem;
-    text-align: left;
-  }
-  .exception-table th { background: var(--black); color: var(--white); }
-  .exception-table tr:nth-child(even) { background: #fafafa; }
-  .yes { color: var(--success); font-weight: 700; }
-  .no { color: var(--red); font-weight: 700; }
+/* ─── CARDS ──────────────────────────────────────── */
+.card {
+  background: var(--white);
+  border-radius: var(--r);
+  padding: 1.25rem;
+  margin-bottom: .875rem;
+  box-shadow: var(--shadow-sm);
+}
+.card + .card { margin-top: 0; }
+.card-title {
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--black);
+  margin-bottom: .75rem;
+  display: flex;
+  align-items: center;
+  gap: .45rem;
+}
+.card-title .ct-icon { font-size: 1.15rem; }
+.card-sub { font-size: .85rem; color: var(--gray-2); margin-bottom: .6rem; }
 
-  .highlight-box {
-    background: var(--black);
-    color: var(--white);
-    padding: 1rem;
-    border-radius: 12px;
-    margin: 1rem 0;
-  }
-  .highlight-box strong { color: var(--yellow); }
+/* card accent variants */
+.card-red   { border-left: 4px solid var(--red); }
+.card-orange { border-left: 4px solid var(--orange); }
+.card-green { border-left: 4px solid var(--green-mid); }
+.card-yellow { border-left: 4px solid var(--yellow); }
+.card-blue  { border-left: 4px solid var(--blue); }
 
-  .toggle-btn {
-    width: 100%;
-    text-align: left;
-    background: var(--white);
-    border: 1px solid #ddd;
-    padding: 1rem;
-    border-radius: 12px;
-    font-weight: 700;
-    cursor: pointer;
-    margin-bottom: 0.5rem;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-  }
-  .toggle-btn::after {
-    content: "+";
-    font-size: 1.2rem;
-    color: var(--red);
-  }
-  .toggle-btn.open::after { content: "−"; }
-  .toggle-content {
-    overflow: hidden;
-    max-height: 0;
-    transition: max-height 0.3s ease;
-    padding: 0 1rem;
-  }
-  .toggle-content.show { max-height: 800px; padding-bottom: 1rem; }
+/* inset coloured panels */
+.panel {
+  border-radius: var(--r-sm);
+  padding: .875rem 1rem;
+  margin: .75rem 0;
+}
+.panel-dark  { background: var(--black); color: var(--white); }
+.panel-dark strong { color: var(--yellow); }
+.panel-warn  { background: var(--yellow-lt); border: 1.5px solid var(--yellow); }
+.panel-green { background: var(--green-lt); border: 1.5px solid #a5d6a7; }
+.panel-red   { background: var(--red-lt);  border: 1.5px solid #ffcdd2; }
+.panel-blue  { background: var(--blue-lt); border: 1.5px solid #90caf9; }
+.panel p, .panel li { font-size: .9rem; }
 
-  footer {
-    text-align: center;
-    padding: 2rem 1rem;
-    font-size: 0.8rem;
-    color: #888;
-  }
-  .tier-objective { font-size: 0.85rem; color: #666; }
-  .card-mt { margin-top: 1rem; }
-  .mld-intro { margin-bottom: 0.75rem; }
-  .flow-note { margin-top: 0.5rem; color: #666; font-size: 0.9rem; }
+/* ─── OVERVIEW — MAGIC NUMBERS ───────────────────── */
+.magic-grid {
+  display: grid;
+  grid-template-columns: repeat(3,1fr);
+  gap: .6rem;
+  margin: .75rem 0;
+}
+@media(max-width:480px){ .magic-grid { grid-template-columns: 1fr; } }
+.magic-card {
+  border-radius: var(--r);
+  padding: 1rem .75rem;
+  text-align: center;
+  color: var(--white);
+  box-shadow: var(--shadow-md);
+}
+.magic-card.mc1 { background: linear-gradient(135deg,#ff9f43,#ff6b6b); }
+.magic-card.mc2 { background: linear-gradient(135deg,var(--red),#c62828); }
+.magic-card.mc3 { background: linear-gradient(135deg,#43a047,#1565c0); }
+.magic-card .mc-spend { font-size: 1.6rem; font-weight: 900; line-height: 1; }
+.magic-card .mc-label { font-size: .7rem; opacity: .8; margin-bottom: .5rem; }
+.magic-card .mc-perks { list-style: none; margin: 0; padding: 0; }
+.magic-card .mc-perks li {
+  font-size: .78rem;
+  padding: .2rem 0;
+  border-top: 1px solid rgba(255,255,255,.2);
+  text-align: left;
+  padding-left: .25rem;
+}
+.magic-card .mc-perks li:first-child { border-top: none; }
 
-  /* Grand Lucky Draw Prizes */
-  .prizes-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
-    gap: 0.75rem;
-    margin-top: 0.75rem;
-  }
-  .prize-item {
-    background: linear-gradient(135deg, #fff8e1, #fff3cd);
-    border: 2px solid var(--yellow);
-    border-radius: 12px;
-    padding: 0.75rem 0.5rem;
-    text-align: center;
-    font-size: 0.85rem;
-    font-weight: 600;
-  }
-  .prize-item .prize-icon { font-size: 1.6rem; display: block; margin-bottom: 0.3rem; }
-  .prize-item.grand {
-    background: linear-gradient(135deg, #ffd700, #ff9f43);
-    border-color: #e67e00;
-    color: var(--black);
-  }
+/* stat row */
+.stat-row {
+  display: flex;
+  gap: .5rem;
+  flex-wrap: wrap;
+  margin: .75rem 0;
+}
+.stat-pill {
+  display: flex;
+  align-items: center;
+  gap: .35rem;
+  background: var(--white);
+  border: 1.5px solid var(--gray-4);
+  border-radius: 99px;
+  padding: .3rem .75rem;
+  font-size: .8rem;
+  font-weight: 600;
+  white-space: nowrap;
+}
+.stat-pill .sp-icon { font-size: 1rem; }
 
-  /* Entry limit callout */
-  .limit-box {
-    display: flex;
-    align-items: center;
-    gap: 0.75rem;
-    background: #fff3cd;
-    border: 2px solid #ffc107;
-    border-radius: 12px;
-    padding: 0.75rem 1rem;
-    margin: 0.75rem 0;
-    font-size: 0.9rem;
-  }
-  .limit-box .limit-icon { font-size: 1.5rem; flex-shrink: 0; }
+/* flow arrow row */
+.flow-row {
+  display: flex;
+  align-items: center;
+  gap: .4rem;
+  padding: .5rem 0;
+  border-bottom: 1px dashed var(--gray-4);
+  font-size: .88rem;
+}
+.flow-row:last-child { border-bottom: none; }
+.flow-row .fr-amt {
+  background: var(--red);
+  color: var(--white);
+  padding: .15rem .55rem;
+  border-radius: 6px;
+  font-weight: 700;
+  font-size: .82rem;
+  flex: 0 0 auto;
+  white-space: nowrap;
+}
+.flow-row .fr-arrow { color: var(--red); font-weight: 900; flex: 0 0 auto; }
+.flow-row .fr-text { color: var(--gray-1); }
 
-  /* Natural flow callout */
-  .flow-path {
-    display: flex;
-    flex-direction: column;
-    gap: 0.5rem;
-    margin-top: 0.75rem;
-  }
-  .flow-arrow {
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-    font-size: 0.9rem;
-  }
-  .flow-arrow .arrow { color: var(--red); font-weight: 900; font-size: 1.1rem; }
-  .flow-arrow .amount {
-    background: var(--red);
-    color: white;
-    padding: 0.2rem 0.6rem;
-    border-radius: 6px;
-    font-weight: 700;
-    white-space: nowrap;
-  }
+/* ─── TIERS ──────────────────────────────────────── */
+.tier-grid {
+  display: grid;
+  grid-template-columns: repeat(3,1fr);
+  gap: .75rem;
+}
+@media(max-width:560px){ .tier-grid { grid-template-columns: 1fr; } }
+.tier-card {
+  background: var(--white);
+  border-radius: var(--r);
+  overflow: hidden;
+  box-shadow: var(--shadow-sm);
+}
+.tier-hd {
+  padding: .875rem .75rem;
+  color: var(--white);
+  text-align: center;
+  font-weight: 800;
+  font-size: .88rem;
+}
+.tier-hd.th1 { background: linear-gradient(135deg,#ff9f43,#ff6b6b); }
+.tier-hd.th2 { background: linear-gradient(135deg,var(--red),#c62828); }
+.tier-hd.th3 { background: linear-gradient(135deg,#43a047,#1565c0); }
+.tier-bd { padding: .875rem .75rem; }
+.tier-price { font-size: 1.8rem; font-weight: 900; line-height: 1; }
+.tier-sub   { font-size: .72rem; color: var(--gray-2); margin-bottom: .6rem; }
+.tier-perks { list-style: none; margin: 0; padding: 0; }
+.tier-perks li {
+  font-size: .82rem;
+  padding: .3rem 0;
+  border-bottom: 1px dashed var(--gray-4);
+}
+.tier-perks li:last-child { border-bottom: none; }
+.tier-goal { font-size: .78rem; color: var(--gray-2); margin-top: .6rem; }
 
-  /* Multiplier cards */
-  .multiplier-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
-    gap: 0.75rem;
-    margin: 0.75rem 0;
-  }
-  .multiplier-card {
-    border-radius: 14px;
-    padding: 1rem 0.75rem;
-    text-align: center;
-    color: white;
-    font-weight: 700;
-  }
-  .multiplier-card.m3 { background: linear-gradient(135deg, #ff9f43, #ff6b6b); }
-  .multiplier-card.m4 { background: linear-gradient(135deg, #e60012, #c0392b); }
-  .multiplier-card.m5 { background: linear-gradient(135deg, #2c3e50, #e74c3c); }
-  .multiplier-card .spend { font-size: 1.4rem; font-weight: 900; }
-  .multiplier-card .mult { font-size: 2rem; font-weight: 900; color: var(--yellow); line-height: 1; margin: 0.3rem 0; }
-  .multiplier-card .result { font-size: 0.85rem; opacity: 0.9; }
+/* ─── GRAND DRAW — PRIZES ────────────────────────── */
+.prizes-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit,minmax(100px,1fr));
+  gap: .6rem;
+  margin: .6rem 0;
+}
+.prize-card {
+  border-radius: var(--r-sm);
+  padding: .75rem .5rem;
+  text-align: center;
+  font-size: .8rem;
+  font-weight: 700;
+  border: 2px solid var(--gray-4);
+  background: var(--white);
+}
+.prize-card .pc-icon { font-size: 1.6rem; display: block; margin-bottom: .25rem; }
+.prize-card.pc-grand {
+  background: linear-gradient(135deg,#ffd700,#ffb300);
+  border-color: #e65100;
+  color: var(--black);
+  grid-column: 1/-1;
+}
 
-  /* Staff rewards */
-  .reward-tier-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 0.75rem;
-    margin-top: 0.75rem;
-  }
-  @media(max-width: 480px) { .reward-tier-grid { grid-template-columns: 1fr; } }
-  .reward-tier-card {
-    border-radius: 12px;
-    padding: 1rem;
-    border: 2px solid #ddd;
-  }
-  .reward-tier-card.t1 { border-color: #ff9f43; background: #fff8f0; }
-  .reward-tier-card.t2 { border-color: #1e90ff; background: #f0f7ff; }
-  .reward-tier-card h4 { margin-bottom: 0.5rem; font-size: 0.9rem; }
-  .reward-tier-card ul { margin-left: 1rem; font-size: 0.85rem; }
+/* multiplier */
+.mult-grid {
+  display: grid;
+  grid-template-columns: repeat(3,1fr);
+  gap: .6rem;
+  margin: .75rem 0;
+}
+@media(max-width:480px){ .mult-grid { grid-template-columns: 1fr; } }
+.mult-card {
+  border-radius: var(--r);
+  padding: 1rem .75rem;
+  text-align: center;
+  color: var(--white);
+  box-shadow: var(--shadow-md);
+}
+.mult-card.m3 { background: linear-gradient(135deg,#ff9f43,#ff6b6b); }
+.mult-card.m4 { background: linear-gradient(135deg,var(--red),#880000); }
+.mult-card.m5 { background: linear-gradient(135deg,#1a237e,#6a1b9a); }
+.mult-card .mc-spend { font-size: 1.25rem; font-weight: 900; }
+.mult-card .mc-mult  { font-size: 2.2rem; font-weight: 900; color: var(--yellow); line-height: 1; margin: .2rem 0; }
+.mult-card .mc-result { font-size: .82rem; opacity: .9; }
 
-  .ticket-table {
-    width: 100%;
-    border-collapse: collapse;
-    font-size: 0.9rem;
-    margin-top: 0.75rem;
-  }
-  .ticket-table th, .ticket-table td {
-    border: 1px solid #ddd;
-    padding: 0.6rem 0.75rem;
-    text-align: center;
-  }
-  .ticket-table th { background: var(--black); color: white; }
-  .ticket-table .peak { background: #fff3cd; font-weight: 600; }
-  .ticket-table .normal { background: #f4f4f4; }
-  .ticket-num { font-size: 1.2rem; font-weight: 900; color: var(--red); }
+/* entry steps */
+.entry-row {
+  display: flex;
+  align-items: center;
+  gap: .75rem;
+  padding: .6rem 0;
+  border-bottom: 1px solid var(--gray-5);
+}
+.entry-row:last-child { border-bottom: none; }
+.entry-row .er-spend {
+  background: var(--red);
+  color: var(--white);
+  padding: .25rem .65rem;
+  border-radius: 6px;
+  font-weight: 700;
+  font-size: .85rem;
+  min-width: 80px;
+  text-align: center;
+}
+.entry-row .er-arrow { color: var(--red); font-weight: 900; font-size: 1.1rem; }
+.entry-row .er-val { font-weight: 700; font-size: 1rem; }
+.entry-row .er-note { font-size: .8rem; color: var(--gray-2); }
 
-  /* June release */
-  .sku-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
-    gap: 0.75rem;
-    margin-top: 0.75rem;
-  }
-  .sku-card {
-    border-radius: 12px;
-    padding: 0.75rem;
-    text-align: center;
-    border: 2px solid #ddd;
-    background: white;
-  }
-  .sku-card .sku-old { font-size: 0.75rem; color: #999; text-decoration: line-through; }
-  .sku-card .sku-new { font-size: 1.5rem; font-weight: 900; color: var(--red); }
-  .sku-card .sku-label { font-size: 0.8rem; color: #555; margin-top: 0.25rem; }
-  .bundle-item {
-    display: flex;
-    align-items: flex-start;
-    gap: 0.75rem;
-    padding: 0.6rem 0;
-    border-bottom: 1px dashed #eee;
-    font-size: 0.9rem;
-  }
-  .bundle-item:last-child { border-bottom: none; }
-  .bundle-item .bnum {
-    min-width: 28px; height: 28px;
-    background: var(--red); color: white;
-    border-radius: 50%;
-    display: flex; align-items: center; justify-content: center;
-    font-weight: 700; font-size: 0.8rem; flex-shrink: 0;
-  }
-  .period-badge {
-    display: inline-block;
-    background: var(--red);
-    color: white;
-    font-size: 0.75rem;
-    font-weight: 700;
-    padding: 0.2rem 0.6rem;
-    border-radius: 6px;
-    margin-bottom: 0.5rem;
-  }
-  .period-badge.green { background: var(--success); }
-  @media print {
-    header { position: static; box-shadow: none; background: none; color: #000; padding: 0.5rem 0; }
-    header h1 { font-size: 1.2rem; }
-    nav { display: none; }
-    section { display: block !important; animation: none; page-break-inside: avoid; }
-    .copy-btn, .toggle-btn::after { display: none; }
-    .toggle-content { max-height: none !important; overflow: visible !important; }
-    .tier-card:hover { transform: none; }
-    .card, .tier-card { box-shadow: none; border: 1px solid #ccc; }
-    .highlight-box { background: none; color: #000; border: 1px solid #000; }
-    footer { font-size: 0.75rem; }
-  }
+/* ─── MLD PRIZES ─────────────────────────────────── */
+.mld-list { list-style: none; padding: 0; margin: 0; }
+.mld-list li {
+  display: flex;
+  align-items: flex-start;
+  gap: .6rem;
+  padding: .6rem 0;
+  border-bottom: 1px solid var(--gray-5);
+  font-size: .88rem;
+}
+.mld-list li:last-child { border-bottom: none; }
+.mld-num {
+  min-width: 26px; height: 26px;
+  background: var(--red);
+  color: var(--white);
+  border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  font-size: .75rem; font-weight: 700; flex-shrink: 0;
+}
+
+/* ─── SCRIPTS ────────────────────────────────────── */
+.script-box {
+  background: var(--yellow-lt);
+  border: 1.5px solid var(--yellow);
+  border-radius: var(--r-sm);
+  padding: .875rem 1rem;
+  margin: .75rem 0;
+  position: relative;
+  cursor: pointer;
+  transition: box-shadow .15s;
+}
+.script-box:hover { box-shadow: 0 0 0 2px var(--yellow); }
+.script-tag {
+  position: absolute;
+  top: -10px; left: 12px;
+  background: var(--yellow);
+  color: var(--black);
+  font-size: .65rem; font-weight: 800;
+  padding: .1rem .5rem;
+  border-radius: 4px;
+  text-transform: uppercase;
+  letter-spacing: .4px;
+}
+.script-box p { font-style: italic; font-size: .88rem; color: var(--gray-1); margin-top: .1rem; }
+.copy-btn {
+  float: right;
+  background: var(--black);
+  color: var(--white);
+  border: none;
+  padding: .25rem .65rem;
+  border-radius: 5px;
+  font-size: .72rem;
+  cursor: pointer;
+  margin-top: -.1rem;
+  transition: background .15s;
+}
+.copy-btn.copied { background: var(--green); }
+
+.phrase-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(130px,1fr));
+  gap: .5rem;
+  margin-top: .6rem;
+}
+.phrase-pill {
+  background: var(--black);
+  color: var(--white);
+  text-align: center;
+  padding: .5rem .75rem;
+  border-radius: 99px;
+  font-size: .8rem;
+  font-weight: 600;
+}
+
+/* ─── TIMELINE FLOW ──────────────────────────────── */
+.timeline { position: relative; padding-left: 3rem; }
+.timeline::before {
+  content: '';
+  position: absolute;
+  left: 1.1rem;
+  top: 0; bottom: 0;
+  width: 2px;
+  background: var(--gray-4);
+}
+.tl-step { position: relative; margin-bottom: 1.25rem; }
+.tl-step:last-child { margin-bottom: 0; }
+.tl-num {
+  position: absolute;
+  left: -2.75rem;
+  top: 0;
+  width: 36px; height: 36px;
+  background: var(--red);
+  color: var(--white);
+  border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  font-weight: 800; font-size: .9rem;
+  box-shadow: 0 0 0 3px var(--gray-5), 0 0 0 4px var(--red);
+}
+.tl-title { font-weight: 700; font-size: .95rem; margin-bottom: .35rem; color: var(--black); }
+.tl-body  { font-size: .87rem; color: var(--gray-1); }
+.tl-body ul { margin-left: 1.1rem; margin-top: .35rem; }
+.tl-body li { margin-bottom: .3rem; }
+.tl-note {
+  background: var(--gray-5);
+  border-radius: var(--r-sm);
+  padding: .5rem .75rem;
+  font-size: .82rem;
+  color: var(--gray-2);
+  margin-top: .5rem;
+}
+
+/* journey pills */
+.journey {
+  display: flex;
+  flex-direction: column;
+  gap: .5rem;
+  margin: .75rem 0;
+}
+.journey-step {
+  display: flex;
+  align-items: flex-start;
+  gap: .5rem;
+  font-size: .87rem;
+}
+.jp-amount {
+  flex: 0 0 auto;
+  padding: .25rem .65rem;
+  border-radius: 6px;
+  font-weight: 800;
+  font-size: .82rem;
+  color: var(--white);
+  min-width: 80px;
+  text-align: center;
+}
+.jp-arrow { color: var(--red); font-size: 1rem; font-weight: 900; flex: 0 0 auto; margin-top: .15rem; }
+
+/* ─── STAFF REWARDS ──────────────────────────────── */
+.ticket-card {
+  border-radius: var(--r-sm);
+  padding: .875rem 1rem;
+  text-align: center;
+  border: 2px solid var(--gray-4);
+}
+.ticket-card.tc-gold { border-color: var(--yellow); background: var(--yellow-lt); }
+.ticket-card.tc-silver { border-color: var(--gray-4); background: var(--gray-5); }
+.tc-prize { font-size: 1.5rem; font-weight: 900; }
+.tc-place { font-size: .78rem; color: var(--gray-2); margin-top: .2rem; }
+
+.target-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: .87rem;
+  margin-top: .6rem;
+  border-radius: var(--r-sm);
+  overflow: hidden;
+}
+.target-table th {
+  background: var(--black);
+  color: var(--white);
+  padding: .6rem .75rem;
+  text-align: center;
+  font-size: .8rem;
+}
+.target-table td {
+  padding: .65rem .75rem;
+  text-align: center;
+  border-bottom: 1px solid var(--gray-4);
+}
+.target-table tr:last-child td { border-bottom: none; }
+.target-table .peak-row { background: #fffde7; font-weight: 600; }
+.target-table .norm-row { background: var(--gray-5); }
+.big-num { font-size: 1.4rem; font-weight: 900; color: var(--red); line-height: 1; }
+
+.store-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: .75rem;
+  margin-top: .6rem;
+}
+@media(max-width:400px){ .store-grid { grid-template-columns: 1fr; } }
+.store-card {
+  border-radius: var(--r-sm);
+  padding: .875rem 1rem;
+  border: 2px solid var(--gray-4);
+}
+.store-card.sc-t1 { border-color: var(--orange); background: #fff8f0; }
+.store-card.sc-t2 { border-color: var(--blue);   background: var(--blue-lt); }
+.store-card h4 { font-size: .85rem; font-weight: 700; margin-bottom: .5rem; }
+.store-card ul { list-style: none; padding: 0; }
+.store-card li { font-size: .83rem; padding: .2rem 0; }
+
+/* ─── JUNE RELEASE ───────────────────────────────── */
+.bundle-step {
+  display: flex;
+  align-items: flex-start;
+  gap: .75rem;
+  padding: .65rem 0;
+  border-bottom: 1px solid var(--gray-5);
+  font-size: .88rem;
+}
+.bundle-step:last-child { border-bottom: none; }
+.bs-num {
+  min-width: 28px; height: 28px;
+  background: var(--orange);
+  color: var(--white);
+  border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  font-weight: 700; font-size: .78rem; flex-shrink: 0;
+}
+.sku-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit,minmax(130px,1fr));
+  gap: .6rem;
+  margin-top: .6rem;
+}
+.sku-card {
+  border-radius: var(--r-sm);
+  padding: .875rem;
+  text-align: center;
+  border: 2px solid var(--gray-4);
+  background: var(--white);
+}
+.sku-old { font-size: .72rem; color: var(--gray-3); text-decoration: line-through; margin-bottom: .15rem; }
+.sku-new { font-size: 1.75rem; font-weight: 900; color: var(--red); line-height: 1; }
+.sku-label { font-size: .78rem; color: var(--gray-2); margin-top: .25rem; }
+
+.raya-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: .87rem;
+  margin-top: .6rem;
+  border-radius: var(--r-sm);
+  overflow: hidden;
+}
+.raya-table th {
+  background: var(--black);
+  color: var(--white);
+  padding: .55rem .75rem;
+  text-align: left;
+  font-size: .8rem;
+}
+.raya-table td {
+  padding: .6rem .75rem;
+  border-bottom: 1px solid var(--gray-4);
+}
+.raya-table tr:last-child td { border-bottom: none; }
+.raya-table tr:nth-child(even) td { background: var(--gray-5); }
+
+/* ─── FAQ ────────────────────────────────────────── */
+.faq-item { margin-bottom: .5rem; }
+.faq-btn {
+  width: 100%;
+  background: var(--white);
+  border: 1.5px solid var(--gray-4);
+  border-radius: var(--r-sm);
+  padding: .875rem 1rem;
+  text-align: left;
+  font-weight: 700;
+  font-size: .88rem;
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  transition: border-color .15s;
+}
+.faq-btn:hover { border-color: var(--red); }
+.faq-btn.open { border-color: var(--red); border-bottom-left-radius: 0; border-bottom-right-radius: 0; }
+.faq-btn::after { content: "+"; font-size: 1.2rem; color: var(--red); flex-shrink: 0; }
+.faq-btn.open::after { content: "−"; }
+.faq-body {
+  overflow: hidden;
+  max-height: 0;
+  transition: max-height .3s ease;
+  background: var(--white);
+  border: 1.5px solid var(--red);
+  border-top: none;
+  border-bottom-left-radius: var(--r-sm);
+  border-bottom-right-radius: var(--r-sm);
+  font-size: .87rem;
+}
+.faq-body.show { max-height: 600px; }
+.faq-body-inner { padding: .875rem 1rem; }
+.faq-body ul { margin-left: 1.1rem; margin-top: .35rem; }
+.faq-body li { margin-bottom: .3rem; }
+
+.exc-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: .85rem;
+  margin-top: .6rem;
+  border-radius: var(--r-sm);
+  overflow: hidden;
+}
+.exc-table th {
+  background: var(--black);
+  color: var(--white);
+  padding: .55rem .75rem;
+  text-align: left;
+  font-size: .78rem;
+}
+.exc-table td {
+  padding: .6rem .75rem;
+  border-bottom: 1px solid var(--gray-4);
+}
+.exc-table tr:last-child td { border-bottom: none; }
+.exc-table tr:nth-child(even) td { background: var(--gray-5); }
+
+/* ─── UTILITIES ──────────────────────────────────── */
+.yes { color: var(--green); font-weight: 700; }
+.no  { color: var(--red);   font-weight: 700; }
+.tag {
+  display: inline-block;
+  font-size: .72rem;
+  font-weight: 700;
+  padding: .15rem .55rem;
+  border-radius: 99px;
+  margin-bottom: .5rem;
+}
+.tag-red   { background: var(--red);      color: var(--white); }
+.tag-green { background: var(--green-mid);color: var(--white); }
+.tag-blue  { background: var(--blue);     color: var(--white); }
+.tag-orange{ background: var(--orange);   color: var(--white); }
+.warn-box {
+  display: flex;
+  align-items: flex-start;
+  gap: .6rem;
+  background: var(--yellow-lt);
+  border: 1.5px solid var(--yellow);
+  border-radius: var(--r-sm);
+  padding: .65rem .875rem;
+  font-size: .85rem;
+  margin: .65rem 0;
+}
+.warn-box .wi { font-size: 1.2rem; flex-shrink: 0; }
+.info-box {
+  display: flex;
+  align-items: flex-start;
+  gap: .6rem;
+  background: var(--blue-lt);
+  border: 1.5px solid #90caf9;
+  border-radius: var(--r-sm);
+  padding: .65rem .875rem;
+  font-size: .85rem;
+  margin: .65rem 0;
+}
+.info-box .wi { font-size: 1.2rem; flex-shrink: 0; }
+.deny-box {
+  display: flex;
+  align-items: flex-start;
+  gap: .6rem;
+  background: var(--red-lt);
+  border: 1.5px solid #ffcdd2;
+  border-radius: var(--r-sm);
+  padding: .65rem .875rem;
+  font-size: .85rem;
+  margin: .65rem 0;
+}
+.deny-box .wi { font-size: 1.2rem; flex-shrink: 0; }
+
+/* dates */
+.date-list { list-style: none; padding: 0; }
+.date-list li {
+  display: flex;
+  align-items: baseline;
+  gap: .6rem;
+  padding: .5rem 0;
+  border-bottom: 1px solid var(--gray-5);
+  font-size: .88rem;
+}
+.date-list li:last-child { border-bottom: none; }
+.date-list .dl-date { font-weight: 700; color: var(--red); white-space: nowrap; }
+
+/* ─── FOOTER ─────────────────────────────────────── */
+footer {
+  text-align: center;
+  padding: 1.5rem 1rem 2rem;
+  font-size: .78rem;
+  color: var(--gray-3);
+}
+
+/* ─── PRINT ──────────────────────────────────────── */
+@media print {
+  header, nav { position: static; box-shadow: none; }
+  header { background: none; color: #000; border-bottom: 2px solid #000; }
+  section { display: block !important; page-break-before: always; }
+  section:first-child { page-break-before: auto; }
+  .copy-btn, .faq-btn::after { display: none; }
+  .faq-body { max-height: none !important; }
+  .magic-card, .mult-card, .tier-hd { print-color-adjust: exact; -webkit-print-color-adjust: exact; }
+}
 </style>
 </head>
 <body>
 
+<!-- ══════════════════════════════════════════════════
+     HEADER
+══════════════════════════════════════════════════ -->
 <header>
-  <h1>🎯 Lokalteez 2026 Q2 Retail Activities</h1>
-  <p>7 April – 30 June 2026 &nbsp;|&nbsp; Excluded: Clearance Store</p>
-  <p style="font-size:0.85rem;opacity:0.85;margin-top:0.3rem;">Featuring the <strong>5th Anniversary Grand Lucky Draw</strong> — 999 prizes worth up to RM50k+</p>
-  <span class="badge">Staff Quick Guide</span>
+  <h1>🎯 Lokalteez Q2 2026 <span>7 Apr – 30 Jun</span></h1>
+  <span class="hbadge">Staff Guide</span>
 </header>
 
-<nav role="tablist">
-  <button role="tab" aria-selected="true" aria-controls="overview" class="active" onclick="showSection('overview', this)">Overview</button>
-  <button role="tab" aria-selected="false" aria-controls="tiers" onclick="showSection('tiers', this)">3 Tiers</button>
-  <button role="tab" aria-selected="false" aria-controls="grandprizes" onclick="showSection('grandprizes', this)">🏆 Grand Prizes</button>
-  <button role="tab" aria-selected="false" aria-controls="mld" onclick="showSection('mld', this)">Mini Lucky Draw</button>
-  <button role="tab" aria-selected="false" aria-controls="scripts" onclick="showSection('scripts', this)">Staff Scripts</button>
-  <button role="tab" aria-selected="false" aria-controls="flow" onclick="showSection('flow', this)">Step-by-Step</button>
-  <button role="tab" aria-selected="false" aria-controls="staffrewards" onclick="showSection('staffrewards', this)">💰 Staff Rewards</button>
-  <button role="tab" aria-selected="false" aria-controls="junerelease" onclick="showSection('junerelease', this)">🆕 June Release</button>
-  <button role="tab" aria-selected="false" aria-controls="rules" onclick="showSection('rules', this)">Rules & FAQs</button>
+<!-- ══════════════════════════════════════════════════
+     NAV
+══════════════════════════════════════════════════ -->
+<nav role="tablist" aria-label="Main navigation">
+  <button role="tab" aria-controls="overview"     class="active" onclick="go('overview',this)">
+    <span class="nicon">🏠</span>Overview
+  </button>
+  <button role="tab" aria-controls="tiers"                       onclick="go('tiers',this)">
+    <span class="nicon">🎯</span>3 Tiers
+  </button>
+  <button role="tab" aria-controls="grandprizes"                 onclick="go('grandprizes',this)">
+    <span class="nicon">🏆</span>Grand Draw
+  </button>
+  <button role="tab" aria-controls="mld"                         onclick="go('mld',this)">
+    <span class="nicon">🎲</span>Mini Draw
+  </button>
+  <div class="nav-divider"></div>
+  <button role="tab" aria-controls="flow"                        onclick="go('flow',this)">
+    <span class="nicon">🔄</span>How to Sell
+  </button>
+  <button role="tab" aria-controls="scripts"                     onclick="go('scripts',this)">
+    <span class="nicon">💬</span>Scripts
+  </button>
+  <div class="nav-divider"></div>
+  <button role="tab" aria-controls="staffrewards"                onclick="go('staffrewards',this)">
+    <span class="nicon">💰</span>Staff Rewards
+  </button>
+  <button role="tab" aria-controls="junerelease"                 onclick="go('junerelease',this)">
+    <span class="nicon">🆕</span>June Release
+  </button>
+  <div class="nav-divider"></div>
+  <button role="tab" aria-controls="rules"                       onclick="go('rules',this)">
+    <span class="nicon">❓</span>FAQ
+  </button>
 </nav>
 
 <main>
 
-<!-- OVERVIEW -->
+<!-- ══════════════════════════════════════════════════
+  1. OVERVIEW
+══════════════════════════════════════════════════ -->
 <section id="overview" class="active" role="tabpanel">
-  <div class="card">
-    <h2>📋 Campaign at a Glance</h2>
-    <ul>
-      <li><strong>Period:</strong> 7 April 2026 – 30 June 2026</li>
-      <li><strong>Scope:</strong> All stores (Clearance Store excluded)</li>
-      <li><strong>Goal:</strong> Increase TC (transactions), ATV (average transaction value) & UPT (units per transaction)</li>
-    </ul>
-    <div class="highlight-box">
-      <strong>Remember the 3 magic numbers:</strong><br><br>
-      💰 <strong style="color:var(--yellow)">RM100</strong> → RM20 Instant Rebate + 1 Grand Lucky Draw Entry<br>
-      🔥 <strong style="color:var(--yellow)">RM180</strong> → 2 Grand Entries (double your winning chances!) + PWP Set RM19<br>
-      🎁 <strong style="color:var(--yellow)">RM250</strong> → FREE Nekozilla Set (worth RM79) + 2 Grand Entries
+
+  <!-- Campaign stats strip -->
+  <div class="card" style="padding:.875rem 1.25rem;">
+    <div class="stat-row">
+      <div class="stat-pill"><span class="sp-icon">📅</span> 7 Apr – 30 Jun 2026</div>
+      <div class="stat-pill"><span class="sp-icon">🏆</span> 999 Prizes</div>
+      <div class="stat-pill"><span class="sp-icon">🎫</span> Needs 9,999 tickets</div>
+      <div class="stat-pill"><span class="sp-icon">📣</span> Winners: end July</div>
     </div>
-    <div class="limit-box">
-      <span class="limit-icon">⚠️</span>
-      <span><strong>Entry Cap:</strong> Maximum <strong>2 Grand Lucky Draw entries per transaction</strong>, regardless of total spend.</span>
+    <p style="font-size:.82rem;color:var(--gray-2);margin-top:.25rem;">All stores eligible · Clearance Store excluded · 5th Anniversary Grand Lucky Draw</p>
+  </div>
+
+  <!-- Magic numbers -->
+  <div class="card card-red">
+    <div class="card-title"><span class="ct-icon">💡</span> The 3 Magic Numbers — Memorise These!</div>
+    <div class="magic-grid">
+      <div class="magic-card mc1">
+        <div class="mc-label">Nett spend</div>
+        <div class="mc-spend">RM100</div>
+        <ul class="mc-perks">
+          <li>💸 RM20 Instant Rebate</li>
+          <li>🎰 × 1 Grand Lucky Draw entry</li>
+          <li>🎲 Mini Draw spin</li>
+        </ul>
+      </div>
+      <div class="magic-card mc2">
+        <div class="mc-label">Nett spend — Best Push 🔥</div>
+        <div class="mc-spend">RM180</div>
+        <ul class="mc-perks">
+          <li>🎰 × 2 Grand Entries (double!)</li>
+          <li>🛍️ PWP Nekozilla set RM19</li>
+          <li>🎲 Mini Draw spin</li>
+        </ul>
+      </div>
+      <div class="magic-card mc3">
+        <div class="mc-label">Nett spend — Max Reward 🎁</div>
+        <div class="mc-spend">RM250</div>
+        <ul class="mc-perks">
+          <li>🎁 FREE Nekozilla set (RM79)</li>
+          <li>🎰 × 2 Grand Entries</li>
+          <li>🎲 Mini Draw spin</li>
+        </ul>
+      </div>
+    </div>
+    <div class="warn-box" style="margin-top:.75rem;">
+      <span class="wi">⚠️</span>
+      <span><strong>Max 2 Grand Lucky Draw entries per transaction</strong>, no matter how much is spent.</span>
     </div>
   </div>
 
-  <div class="card">
-    <h2>🔢 How to Qualify — Quick Reference</h2>
-    <div class="flow-path">
-      <div class="flow-arrow">
-        <span class="amount">Any purchase</span>
-        <span class="arrow">→</span>
-        <span>🎲 1 Mini Lucky Draw spin (on the spot!)</span>
+  <!-- Quick reference flow -->
+  <div class="card card-blue">
+    <div class="card-title"><span class="ct-icon">⚡</span> Quick Spend → Reward Reference</div>
+    <div class="flow-row">
+      <span class="fr-amt">Any purchase</span>
+      <span class="fr-arrow">→</span>
+      <span class="fr-text">🎲 1 Mini Lucky Draw spin <em>(no minimum!)</em></span>
+    </div>
+    <div class="flow-row">
+      <span class="fr-amt">RM100 nett</span>
+      <span class="fr-arrow">→</span>
+      <span class="fr-text">💸 RM20 rebate · 🎰 × 1 Grand entry</span>
+    </div>
+    <div class="flow-row">
+      <span class="fr-amt">RM180 nett</span>
+      <span class="fr-arrow">→</span>
+      <span class="fr-text">🎰 × 2 Grand entries · 🛍️ Nekozilla PWP RM19</span>
+    </div>
+    <div class="flow-row">
+      <span class="fr-amt">RM250 nett</span>
+      <span class="fr-arrow">→</span>
+      <span class="fr-text">🎁 FREE Nekozilla set (RM79) · 🎰 × 2 Grand entries</span>
+    </div>
+  </div>
+
+  <!-- GWP vs PWP -->
+  <div class="card card-yellow">
+    <div class="card-title"><span class="ct-icon">📖</span> Key Terms — Know the Difference</div>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:.6rem;margin-bottom:.75rem;">
+      <div class="panel panel-green" style="margin:0;">
+        <p style="font-weight:800;font-size:1rem;">GWP</p>
+        <p style="font-weight:600;margin:.2rem 0;">Gift With Purchase</p>
+        <p style="font-size:.82rem;color:var(--gray-1);">= <span class="yes">FREE</span> gift<br>e.g. Nekozilla at RM250</p>
       </div>
-      <div class="flow-arrow">
-        <span class="amount">RM100 nett</span>
-        <span class="arrow">→</span>
-        <span>💸 RM20 rebate + 🎰 x1 Grand Entry</span>
+      <div class="panel panel-warn" style="margin:0;">
+        <p style="font-weight:800;font-size:1rem;">PWP</p>
+        <p style="font-weight:600;margin:.2rem 0;">Purchase With Purchase</p>
+        <p style="font-size:.82rem;color:var(--gray-1);">= Discounted add-on<br>e.g. Nekozilla RM19 at RM180</p>
       </div>
-      <div class="flow-arrow">
-        <span class="amount">RM180 nett</span>
-        <span class="arrow">→</span>
-        <span>🎰 x2 Grand Entries + 🛍️ PWP Nekozilla at RM19</span>
+    </div>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:.6rem;">
+      <div style="font-size:.82rem;background:var(--gray-5);border-radius:var(--r-sm);padding:.6rem .75rem;">
+        <strong>C1</strong> = Normal Price items<br><span style="color:var(--gray-2);">3 pcs = 1 staff ticket</span>
       </div>
-      <div class="flow-arrow">
-        <span class="amount">RM250 nett</span>
-        <span class="arrow">→</span>
-        <span>🎁 FREE Nekozilla Set (RM79 value!) + 🎰 x2 Grand Entries</span>
+      <div style="font-size:.82rem;background:var(--gray-5);border-radius:var(--r-sm);padding:.6rem .75rem;">
+        <strong>C3 / MD</strong> = Markdown items<br><span style="color:var(--gray-2);">5 pcs = 1 staff ticket</span>
       </div>
     </div>
   </div>
 
-  <div class="card yellow">
-    <h2>🎁 What is GWP vs PWP?</h2>
-    <ul>
-      <li><strong>GWP (Gift With Purchase)</strong> = <span class="yes">FREE</span> — e.g., Nekozilla Set free when you spend RM250</li>
-      <li><strong>PWP (Purchase With Purchase)</strong> = <span class="no">Discounted add-on</span> — e.g., Nekozilla Set at only RM19 when you spend RM180</li>
-    </ul>
-    <p style="font-size:0.85rem;margin-top:0.5rem;color:#666;">💡 <em>At RM180, the customer can <strong>buy</strong> the set for RM19. At RM250, they get it <strong>free</strong>.</em></p>
-  </div>
-
-  <div class="card green">
-    <h2>🎲 Mini Lucky Draw (MLD) — Quick Facts</h2>
-    <ul>
-      <li>✅ <strong>ANY purchase</strong> qualifies — no minimum spend</li>
-      <li>✅ 1 draw per transaction</li>
-      <li>✅ Prizes redeemed <strong>on the spot, immediately</strong></li>
-      <li>⚠️ Vouchers valid on <strong>normal price items only</strong> (unless the prize says "FREE")</li>
-    </ul>
-  </div>
 </section>
 
-<!-- TIERS -->
+<!-- ══════════════════════════════════════════════════
+  2. 3 TIERS
+══════════════════════════════════════════════════ -->
 <section id="tiers" role="tabpanel">
-  <div class="limit-box" style="margin-bottom:1rem;">
-    <span class="limit-icon">⚠️</span>
-    <span><strong>Entry Cap:</strong> Maximum <strong>2 Grand Lucky Draw entries per transaction</strong> — even if total spend exceeds RM360.</span>
+
+  <div class="warn-box" style="margin-bottom:.875rem;">
+    <span class="wi">⚠️</span>
+    <span><strong>Entry cap:</strong> Max 2 Grand Lucky Draw entries per transaction, even if spend exceeds RM360.</span>
   </div>
 
-  <div class="tier-grid">
-    <div class="tier-card">
-      <div class="tier-header t1">Tier 1 — Traffic Driver</div>
-      <div class="tier-body">
-        <span class="price-tag">RM100</span>
-        <small>Nett spend minimum</small>
-        <ul>
-          <li>✅ <strong>RM20 Instant Rebate</strong></li>
-          <li>✅ <strong>x1</strong> 5th Anniversary Grand Lucky Draw Entry</li>
-          <li>✅ 1 Mini Lucky Draw spin</li>
-        </ul>
-        <p class="tier-objective"><strong>Goal:</strong> Lower entry barrier. Convert window shoppers to buyers. Push any RM90 basket to RM100 (just 1 more item!).</p>
+  <div class="card" style="padding:.875rem;">
+    <div class="tier-grid">
+      <div class="tier-card">
+        <div class="tier-hd th1">Tier 1 — Traffic Driver</div>
+        <div class="tier-bd">
+          <div class="tier-price">RM100</div>
+          <div class="tier-sub">Nett spend minimum</div>
+          <ul class="tier-perks">
+            <li>✅ RM20 Instant Rebate</li>
+            <li>🎰 × 1 Grand Draw Entry</li>
+            <li>🎲 Mini Draw spin</li>
+          </ul>
+          <p class="tier-goal">Push RM90 baskets up. Just 1 more item gets the rebate!</p>
+        </div>
       </div>
-    </div>
-    <div class="tier-card">
-      <div class="tier-header t2">Tier 2 — Best Push 🔥</div>
-      <div class="tier-body">
-        <span class="price-tag">RM180</span>
-        <small>Nett spend (after rebate)</small>
-        <ul>
-          <li>✅ <strong>x2</strong> Grand Lucky Draw Entries</li>
-          <li>✅ 1 Mini Lucky Draw spin</li>
-          <li>✅ <strong>PWP:</strong> Nekozilla Set at only RM19 <em>(worth RM79!)</em></li>
-        </ul>
-        <p class="tier-objective"><strong>Goal:</strong> Double winning chances. Best value for money. Target customers already at RM120–RM179 and push them up.</p>
+      <div class="tier-card">
+        <div class="tier-hd th2">Tier 2 — Best Push 🔥</div>
+        <div class="tier-bd">
+          <div class="tier-price">RM180</div>
+          <div class="tier-sub">Nett spend</div>
+          <ul class="tier-perks">
+            <li>🎰 × 2 Grand Draw Entries</li>
+            <li>🛍️ PWP Nekozilla RM19</li>
+            <li>🎲 Mini Draw spin</li>
+          </ul>
+          <p class="tier-goal">Double the winning chances. Best value push. Target RM120–179 shoppers.</p>
+        </div>
       </div>
-    </div>
-    <div class="tier-card">
-      <div class="tier-header t3">Tier 3 — Upsell Max 🎁</div>
-      <div class="tier-body">
-        <span class="price-tag">RM250</span>
-        <small>Nett spend (after rebate)</small>
-        <ul>
-          <li>✅ <strong>FREE</strong> Nekozilla Set <em>(worth RM79!)</em></li>
-          <li>✅ <strong>x2</strong> Grand Lucky Draw Entries</li>
-          <li>✅ 1 Mini Lucky Draw spin</li>
-        </ul>
-        <p class="tier-objective"><strong>Goal:</strong> Maximise ATV. Reward the biggest basket with a free limited-edition gift set.</p>
+      <div class="tier-card">
+        <div class="tier-hd th3">Tier 3 — Max Reward 🎁</div>
+        <div class="tier-bd">
+          <div class="tier-price">RM250</div>
+          <div class="tier-sub">Nett spend</div>
+          <ul class="tier-perks">
+            <li>🎁 FREE Nekozilla set</li>
+            <li>🎰 × 2 Grand Draw Entries</li>
+            <li>🎲 Mini Draw spin</li>
+          </ul>
+          <p class="tier-goal">Max ATV. Reward the biggest basket with a free limited-edition gift.</p>
+        </div>
       </div>
     </div>
   </div>
 
-  <div class="card card-mt">
-    <h2>🎁 Nekozilla Set — What's Inside?</h2>
-    <p style="margin-bottom:0.75rem;font-size:0.9rem;color:#666;">This limited-edition set is the carrot for Tier 2 (PWP RM19) and Tier 3 (FREE).</p>
-    <ul>
-      <li>🛍️ Tote Bag</li>
-      <li>🔑 Keychain</li>
-      <li>🪢 Lanyard</li>
-      <li>🗒️ Sticker</li>
-      <li>📌 Dinoz &amp; Nekoz Enamel Pin</li>
-    </ul>
-    <div class="limit-box" style="margin-top:0.75rem;">
-      <span class="limit-icon">🏪</span>
-      <span><strong>Sogo / Manjung / AC stores only:</strong> FREE Nekozilla Set (RM250 tier) is <strong>NOT applicable</strong> for Markdown (MD) items.</span>
+  <!-- Nekozilla Set -->
+  <div class="card card-green">
+    <div class="card-title"><span class="ct-icon">🎁</span> Nekozilla Set Contents</div>
+    <p class="card-sub">The exclusive set used for Tier 2 PWP (RM19) and Tier 3 FREE gift.</p>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(120px,1fr));gap:.5rem;">
+      <div style="background:var(--gray-5);border-radius:var(--r-sm);padding:.6rem;text-align:center;font-size:.83rem;font-weight:600;">🛍️<br>Tote Bag</div>
+      <div style="background:var(--gray-5);border-radius:var(--r-sm);padding:.6rem;text-align:center;font-size:.83rem;font-weight:600;">🔑<br>Keychain</div>
+      <div style="background:var(--gray-5);border-radius:var(--r-sm);padding:.6rem;text-align:center;font-size:.83rem;font-weight:600;">🪢<br>Lanyard</div>
+      <div style="background:var(--gray-5);border-radius:var(--r-sm);padding:.6rem;text-align:center;font-size:.83rem;font-weight:600;">🗒️<br>Sticker</div>
+      <div style="background:var(--gray-5);border-radius:var(--r-sm);padding:.6rem;text-align:center;font-size:.83rem;font-weight:600;">📌<br>Enamel Pin</div>
+    </div>
+    <div class="deny-box" style="margin-top:.75rem;">
+      <span class="wi">🏪</span>
+      <span><strong>Sogo / Manjung / AC only:</strong> FREE Nekozilla set (Tier 3) does <strong>NOT apply</strong> to Markdown items.</span>
     </div>
   </div>
+
 </section>
 
-<!-- GRAND PRIZES -->
+<!-- ══════════════════════════════════════════════════
+  3. GRAND LUCKY DRAW
+══════════════════════════════════════════════════ -->
 <section id="grandprizes" role="tabpanel">
-  <div class="card">
-    <h2>🏆 5th Anniversary Grand Lucky Draw</h2>
-    <p style="margin-bottom:0.75rem;">This is our <strong>biggest promotion of the year</strong>. Use it to create excitement and close every sale!</p>
 
-    <div class="highlight-box">
-      <strong>🎯 Total Prizes: 999 Winners!</strong><br>
-      <span style="font-size:0.85rem;opacity:0.9;">Draw activates once <strong>9,999 tickets</strong> are collected. Winners announced <strong>end of July 2026</strong>.</span><br><br>
-      <span style="font-size:0.85rem;opacity:0.85;">📊 Odds example: Every ~10 customers = 1 winner. With 2 entries, your chances are <strong>2× higher</strong>!</span>
+  <!-- Header stats -->
+  <div class="card" style="background:linear-gradient(135deg,var(--red-dk),var(--red));color:var(--white);padding:1.25rem;">
+    <div style="font-size:1.1rem;font-weight:800;margin-bottom:.25rem;">🏆 5th Anniversary Grand Lucky Draw</div>
+    <p style="opacity:.9;font-size:.88rem;margin-bottom:.75rem;">Our biggest promotion of the year. Use this to excite every customer!</p>
+    <div style="display:flex;gap:.5rem;flex-wrap:wrap;">
+      <div style="background:rgba(255,255,255,.15);border-radius:8px;padding:.4rem .75rem;font-size:.82rem;font-weight:700;">🎯 999 total prizes</div>
+      <div style="background:rgba(255,255,255,.15);border-radius:8px;padding:.4rem .75rem;font-size:.82rem;font-weight:700;">🎫 Activates at 9,999 tickets</div>
+      <div style="background:rgba(255,255,255,.15);border-radius:8px;padding:.4rem .75rem;font-size:.82rem;font-weight:700;">📣 Winners: end of July 2026</div>
     </div>
+  </div>
 
-    <h3 style="margin-top:1rem;color:#e67e00;font-size:1rem;">🥇 Grand Prize</h3>
+  <!-- Prizes -->
+  <div class="card card-orange">
+    <div class="card-title"><span class="ct-icon">🎁</span> What Can Customers Win?</div>
     <div class="prizes-grid">
-      <div class="prize-item grand">
-        <span class="prize-icon">🏍️</span>
-        Motorcycle
+      <div class="prize-card pc-grand">
+        <span class="pc-icon">🏍️</span>
+        Grand Prize — Motorcycle
       </div>
-    </div>
-
-    <h3 style="margin-top:1rem;color:var(--red);font-size:1rem;">🥈 Major Prizes</h3>
-    <div class="prizes-grid">
-      <div class="prize-item">
-        <span class="prize-icon">✈️</span>
+      <div class="prize-card">
+        <span class="pc-icon">✈️</span>
         Japan Trip
       </div>
-      <div class="prize-item">
-        <span class="prize-icon">🟡</span>
+      <div class="prize-card">
+        <span class="pc-icon">🟡</span>
         Gold Bar
       </div>
-      <div class="prize-item">
-        <span class="prize-icon">📱</span>
+      <div class="prize-card">
+        <span class="pc-icon">📱</span>
         Handphone
       </div>
-      <div class="prize-item">
-        <span class="prize-icon">📺</span>
-        TV
+      <div class="prize-card">
+        <span class="pc-icon">📺</span>
+        Television
       </div>
-      <div class="prize-item">
-        <span class="prize-icon">🎁</span>
-        + More prizes!
+      <div class="prize-card">
+        <span class="pc-icon">🎁</span>
+        + More!
       </div>
+    </div>
+    <div class="info-box" style="margin-top:.75rem;">
+      <span class="wi">📊</span>
+      <span>Odds: every ~10 people = 1 winner. With 2 entries, your customer's chances are <strong>2× higher</strong>!</span>
     </div>
   </div>
 
-  <div class="card yellow">
-    <h2>📝 How to Earn Entries — Standard (7 Apr – 21 May &amp; 8 Jun – 30 Jun)</h2>
-    <div class="flow-path" style="margin-top:0.5rem;">
-      <div class="flow-arrow">
-        <span class="amount">Nett RM100</span>
-        <span class="arrow">→</span>
-        <span>🎰 <strong>x1 entry</strong></span>
-      </div>
-      <div class="flow-arrow">
-        <span class="amount">Nett RM180</span>
-        <span class="arrow">→</span>
-        <span>🎰 <strong>x2 entries</strong> (double chance to win!)</span>
-      </div>
+  <!-- Standard entries -->
+  <div class="card card-yellow">
+    <div class="card-title"><span class="ct-icon">🎰</span> Standard Entries (7 Apr – 21 May &amp; 8 Jun – 30 Jun)</div>
+    <div class="entry-row">
+      <span class="er-spend">RM100 nett</span>
+      <span class="er-arrow">→</span>
+      <div><span class="er-val">× 1 entry</span></div>
     </div>
-    <div class="limit-box" style="margin-top:0.75rem;">
-      <span class="limit-icon">⚠️</span>
-      <span><strong>Max 2 entries per transaction.</strong> To earn more, come back for another visit — campaign runs until end of June!</span>
+    <div class="entry-row">
+      <span class="er-spend">RM180 nett</span>
+      <span class="er-arrow">→</span>
+      <div><span class="er-val">× 2 entries</span> <span class="er-note">— double the winning chance!</span></div>
+    </div>
+    <div class="warn-box">
+      <span class="wi">⚠️</span>
+      <span><strong>Max 2 entries per transaction.</strong> Want more? Encourage customers to come back — campaign runs until end of June!</span>
     </div>
   </div>
 
-  <div class="card" style="border-left-color:#e67e00;">
-    <h2>🔥 5× MULTIPLIER BOOST — 22 May – 7 June 2026</h2>
-    <p style="margin-bottom:0.75rem;font-size:0.9rem;">Special limited period! Customers can multiply their Grand Lucky Draw entries up to <strong>15 entries in ONE transaction</strong>. Push hard during this window!</p>
-    <div class="multiplier-grid">
-      <div class="multiplier-card m3">
-        <div class="spend">RM250</div>
-        <div class="mult">×3</div>
-        <div class="result">= 9 entries 🎰</div>
+  <!-- 5× Multiplier -->
+  <div class="card card-orange" style="border-left-color:var(--orange);">
+    <div class="card-title"><span class="ct-icon">🔥</span> 5× MULTIPLIER BOOST</div>
+    <span class="tag tag-red">22 May – 7 June 2026 only!</span>
+    <p class="card-sub">Customers can earn UP TO 15 entries in one transaction. Push hard during this window!</p>
+    <div class="mult-grid">
+      <div class="mult-card m3">
+        <div class="mc-spend">RM250</div>
+        <div class="mc-mult">×3</div>
+        <div class="mc-result">= 9 entries 🎰</div>
       </div>
-      <div class="multiplier-card m4">
-        <div class="spend">RM380</div>
-        <div class="mult">×4</div>
-        <div class="result">= 12 entries 🎰🎰</div>
+      <div class="mult-card m4">
+        <div class="mc-spend">RM380</div>
+        <div class="mc-mult">×4</div>
+        <div class="mc-result">= 12 entries 🎰🎰</div>
       </div>
-      <div class="multiplier-card m5">
-        <div class="spend">RM500</div>
-        <div class="mult">×5</div>
-        <div class="result">= 15 entries 🎰🎰🎰</div>
+      <div class="mult-card m5">
+        <div class="mc-spend">RM500</div>
+        <div class="mc-mult">×5</div>
+        <div class="mc-result">= 15 entries 🎰🎰🎰</div>
       </div>
     </div>
-    <div class="script-box" style="margin-top:1rem;" onclick="copyText(this)">
-      <span class="label">Multiplier Pitch</span>
+    <div class="script-box" style="margin-top:.875rem;" onclick="copyScript(this)">
+      <span class="script-tag">Multiplier Pitch</span>
       <button class="copy-btn">Copy</button>
-      <p>"Right now we have a SUPER BOOST promo! If you spend RM250, you get 9 entries instead of just 2 — that's 3 times your chances! Spend RM500 and you get 15 entries — almost guaranteed to win something from our 999 prizes! ✈️🏍️"</p>
+      <p>"Right now we have a SUPER BOOST promo! Spend RM250 and you get 9 entries — 3× your chances! Spend RM500 and you get 15 entries. With 999 prizes, your chances of winning something are really high! ✈️🏍️"</p>
     </div>
   </div>
 
-  <div class="card green">
-    <h2>🎤 Use This to Sell — Staff Script</h2>
-    <div class="script-box" onclick="copyText(this)">
-      <span class="label">Grand Prize Pitch</span>
-      <button class="copy-btn">Copy</button>
-      <p>"You're very close to RM180. If you add just a bit more, you get 2 entries instead of 1 — double your chances to win the grand prize! We have 999 prizes total, so your odds are actually very good. Means every 10 people = 1 winner, and with 2 entries your chances are super high!"</p>
-    </div>
-
-    <h3>Why this works:</h3>
-    <ul style="margin-left:1.25rem;font-size:0.9rem;">
-      <li>Creates excitement &amp; urgency ("999 prizes!", "draw activates when tickets run out!")</li>
-      <li>Encourages higher spend per transaction (ATV &amp; UPT)</li>
-      <li>Increases repeat visits ("come back again to get more entries!")</li>
-    </ul>
-  </div>
 </section>
 
-<!-- MLD -->
+<!-- ══════════════════════════════════════════════════
+  4. MINI LUCKY DRAW
+══════════════════════════════════════════════════ -->
 <section id="mld" role="tabpanel">
-  <div class="card">
-    <h2>🎲 Mini Lucky Draw Prizes</h2>
-    <p class="mld-intro">Customer draws <strong>1 prize per transaction</strong> with <strong>ANY purchase</strong> (no minimum). Must redeem on the spot.</p>
-    <ol>
-      <li>Buy 1 Free 1</li>
-      <li>50% Off Next Bill (limit 2pcs)</li>
-      <li>Spend above RM39 → Free JP series (worth RM45)</li>
-      <li>Nekozilla set (Jersey + Tote + Lanyard) at RM49 only (RP: RM99)</li>
-      <li>Grab JP & Kawaii at RM25 each (limit 2pcs, RP: RM45)</li>
-      <li>Grab any item at 50% OFF (limit 2pcs)</li>
-      <li>Buy RM45 → Free RM59</li>
-    </ol>
-    <div class="highlight-box">
-      <strong>Staff Tip:</strong> Use the voucher won to upsell immediately! "Wah good deal! You can grab the jersey at half price now, only RM22. Better grab 2 pieces to fully utilise!"
+
+  <div class="card card-green">
+    <div class="card-title"><span class="ct-icon">🎲</span> Mini Lucky Draw</div>
+    <div style="display:flex;gap:.5rem;flex-wrap:wrap;margin-bottom:.75rem;">
+      <div class="tag tag-green">ANY purchase qualifies</div>
+      <div class="tag tag-green">1 draw per transaction</div>
+      <div class="tag tag-orange">Redeem on the spot!</div>
+    </div>
+
+    <ul class="mld-list">
+      <li><div class="mld-num">1</div><div><strong>Buy 1 Free 1</strong></div></li>
+      <li><div class="mld-num">2</div><div><strong>50% Off</strong> next bill <em>(limit 2 pcs)</em></div></li>
+      <li><div class="mld-num">3</div><div>Spend above RM39 → <strong>Free JP series</strong> (worth RM45)</div></li>
+      <li><div class="mld-num">4</div><div>Nekozilla set (Jersey + Tote + Lanyard) at <strong>RM49 only</strong> <em>(RP: RM99)</em></div></li>
+      <li><div class="mld-num">5</div><div>JP &amp; Kawaii at <strong>RM25 each</strong> <em>(limit 2 pcs, RP: RM45)</em></div></li>
+      <li><div class="mld-num">6</div><div>Any item at <strong>50% OFF</strong> <em>(limit 2 pcs)</em></div></li>
+      <li><div class="mld-num">7</div><div>Buy RM45 → <strong>Free RM59 item</strong></div></li>
+    </ul>
+
+    <div class="panel panel-dark" style="margin-top:.75rem;">
+      <strong>Staff Tip 💡</strong>
+      <p style="margin-top:.35rem;font-style:italic;">"Wah, you won 50% off! Grab the jersey you like at half price now — only RM22. Better take 2 pieces to fully use your voucher. Super worth!"</p>
     </div>
   </div>
 
-  <div class="card yellow">
-    <h2>⚠️ Voucher Rules</h2>
-    <ul>
-      <li>Vouchers apply to <strong>normal price items only</strong></li>
-      <li>Unless the voucher itself says "FREE" — then it can be used on anything</li>
-      <li>All MLD prizes must be redeemed <strong>immediately</strong></li>
+  <div class="card card-yellow">
+    <div class="card-title"><span class="ct-icon">⚠️</span> Voucher Rules</div>
+    <ul style="margin-left:1.1rem;font-size:.88rem;">
+      <li style="margin-bottom:.4rem;">Vouchers apply to <strong>normal price items only</strong></li>
+      <li style="margin-bottom:.4rem;">Exception: if the prize says "FREE" — it can be used on any item</li>
+      <li>All prizes must be redeemed <strong>immediately on the same visit</strong></li>
     </ul>
   </div>
+
 </section>
 
-<!-- SCRIPTS -->
-<section id="scripts" role="tabpanel">
-  <div class="card">
-    <h2>🗣️ Active Selling Scripts</h2>
-    <p>Tap any box to copy the script.</p>
-
-    <div class="script-box" onclick="copyText(this)">
-      <span class="label">Rebate Close</span>
-      <button class="copy-btn">Copy</button>
-      <p>"You're at RM90 now. If you add just 1 more pc (RM45), you can enjoy RM20 rebate. Average RM38 per piece only. 3rd pc at RM25 only!"</p>
-    </div>
-
-    <div class="script-box" onclick="copyText(this)">
-      <span class="label">Mix & Match</span>
-      <button class="copy-btn">Copy</button>
-      <p>"You can mix different designs. Many customers take 2 so they can rotate. If you add 1 more piece like this BR (RM65), you get instant RM20 rebate, so average only RM50+ per pc, very worth it!"</p>
-    </div>
-
-    <div class="script-box" onclick="copyText(this)">
-      <span class="label">Double Entry Push</span>
-      <button class="copy-btn">Copy</button>
-      <p>"You're very close. If you go to RM180, you'll get 2 entries instead of 1 — double chance to win. Since we have 999 prizes, your chances are quite high. Means every 10 people = 1 winner, and you got 2 entries, your possibilities are super high!"</p>
-    </div>
-
-    <div class="script-box" onclick="copyText(this)">
-      <span class="label">Free Gift Close</span>
-      <button class="copy-btn">Copy</button>
-      <p>"Spend RM250 nett (after RM20 rebate) and get FREE Nekozilla Set worth RM79 + 2 Grand Lucky Draw entries. Double your chance to win big!"</p>
-    </div>
-
-    <div class="script-box" onclick="copyText(this)">
-      <span class="label">Upsell After MLD Win</span>
-      <button class="copy-btn">Copy</button>
-      <p>"Wah good deal! You can grab the jersey you like at half price now, only RM22. Since it's 50% off, better grab 2 more pieces to fully utilise your voucher. Super worth!"</p>
-    </div>
-  </div>
-
-  <div class="card green">
-    <h2>💡 Magic Phrases</h2>
-    <ul>
-      <li>"Super worth"</li>
-      <li>"Only for today"</li>
-      <li>"Immediate use"</li>
-      <li>"Instant discount"</li>
-      <li>"Half price only"</li>
-      <li>"It's Free"</li>
-    </ul>
-  </div>
-</section>
-
-<!-- FLOW -->
+<!-- ══════════════════════════════════════════════════
+  5. HOW TO SELL — STEP BY STEP
+══════════════════════════════════════════════════ -->
 <section id="flow" role="tabpanel">
 
-  <div class="card yellow">
-    <h2>💡 Natural Customer Journey — Starting at RM90</h2>
-    <p style="margin-bottom:0.75rem;font-size:0.9rem;color:#555;">Use this as your mental script for any customer who comes in spending around RM90.</p>
-    <div class="flow-path">
-      <div class="flow-arrow">
-        <span class="amount" style="background:#888;">RM90 basket</span>
-        <span class="arrow">→</span>
-        <span>"Add 1 more item → hit RM100, get RM20 rebate + 1 entry + Mini Draw spin!"</span>
+  <!-- Natural journey -->
+  <div class="card card-yellow">
+    <div class="card-title"><span class="ct-icon">🛒</span> Natural Upsell Journey — Customer Starts at RM90</div>
+    <div class="journey">
+      <div class="journey-step">
+        <span class="jp-amount" style="background:#9e9e9e;">RM90 basket</span>
+        <span class="jp-arrow">→</span>
+        <span>"Add 1 item → hit RM100, get RM20 rebate + entry + Mini Draw spin!"</span>
       </div>
-      <div class="flow-arrow">
-        <span class="amount" style="background:#ff9f43;">RM100 hit</span>
-        <span class="arrow">→</span>
-        <span>"Top up a bit more → Nett RM180, get double entries + PWP Nekozilla at only RM19 (worth RM79)"</span>
+      <div class="journey-step">
+        <span class="jp-amount" style="background:var(--orange);">RM100 ✅</span>
+        <span class="jp-arrow">→</span>
+        <span>"Top up to RM180 nett — double entries + Nekozilla PWP at only RM19!"</span>
       </div>
-      <div class="flow-arrow">
-        <span class="amount" style="background:#e60012;">RM180 hit</span>
-        <span class="arrow">→</span>
-        <span>"Best deal is Nett RM250 → FREE Nekozilla Set (RM79) + 2 entries + Mini Draw"</span>
+      <div class="journey-step">
+        <span class="jp-amount" style="background:var(--red);">RM180 ✅</span>
+        <span class="jp-arrow">→</span>
+        <span>"Best deal: Nett RM250 → FREE Nekozilla set (RM79) + 2 entries!"</span>
       </div>
-      <div class="flow-arrow">
-        <span class="amount" style="background:#2ed573;color:#111;">RM250 hit ✅</span>
-        <span class="arrow">→</span>
-        <span>After payment → Mini Lucky Draw → then register for Grand Lucky Draw!</span>
-      </div>
-    </div>
-  </div>
-
-  <div class="card">
-    <h2>🔄 Step-by-Step Selling Flow</h2>
-
-    <div class="flow-step">
-      <div class="flow-num">1</div>
-      <div class="flow-content">
-        <h4>First Purchase — Push to the Right Tier</h4>
-        <p>Before checkout, you <strong>must already know</strong> the customer's basket total and your upsell target.</p>
-        <ul>
-          <li>Push to <strong>RM100</strong> → RM20 rebate + x1 entry + Mini Draw spin</li>
-          <li>Best push to <strong>RM180</strong> → x2 entries + Mini Draw + PWP Nekozilla RM19</li>
-          <li>Max push to <strong>RM250</strong> → FREE Nekozilla Set + x2 entries + Mini Draw</li>
-        </ul>
-        <p class="flow-note">💡 Tip: Know the gap. "You're at RM140 — just RM40 more and you get double entries AND a discounted Nekozilla set at RM19!"</p>
-      </div>
-    </div>
-
-    <div class="flow-step">
-      <div class="flow-num">2</div>
-      <div class="flow-content">
-        <h4>Mini Lucky Draw — Instant Excitement 🎉</h4>
-        <p>"Tahniah! You get a FREE Mini Lucky Draw right now!" — Customer draws their prize on the spot.</p>
-        <p class="flow-note">Hand the draw slip right after payment. Don't let them leave without doing it!</p>
-      </div>
-    </div>
-
-    <div class="flow-step">
-      <div class="flow-num">3</div>
-      <div class="flow-content">
-        <h4>⭐ Upsell Using the MLD Win (MOST IMPORTANT STEP)</h4>
-        <p>Immediately after they draw, use the prize to push a second purchase.</p>
-        <ul>
-          <li>If 1st purchase <strong>below RM180 nett:</strong><br>
-            <em>"You can use your voucher now! Top up a bit to RM180 nett — we combine the receipts, so you get double Grand Lucky Draw entries too 🔥"</em></li>
-          <li>If 1st purchase <strong>already RM180+ nett:</strong><br>
-            <em>"Wah, good deal! Grab the jersey you like at half price now, only RM22. Better get 2 pieces to fully use your voucher — super worth!"</em></li>
-        </ul>
-        <p class="flow-note">✅ You can combine today's receipts (original + Mini Draw receipt) when registering the Grand Lucky Draw.</p>
-      </div>
-    </div>
-
-    <div class="flow-step">
-      <div class="flow-num">4</div>
-      <div class="flow-content">
-        <h4>Register for Grand Lucky Draw (LAST STEP)</h4>
-        <p>"Please scan this QR code to register your Lucky Draw entry. Make sure your phone number is correct — we'll call you if you win! 👍"</p>
-        <ul>
-          <li>Collect: <strong>Name, Phone, MyKad No., Purchase Date, State, Total Purchase Amount</strong></li>
-          <li>Combine same-day receipts before filling in the total</li>
-          <li>Staff must guide and double-check all details</li>
-        </ul>
-        <p style="margin-top:0.5rem;background:#f4f4f4;padding:0.75rem;border-radius:8px;font-size:0.9rem;">
-          🗣️ <em>"Thank you for your support! 🙏 This campaign runs until end of June, feel free to come back and earn more entries. Winners will be announced end of July 2026 — good luck! 🎉"</em>
-        </p>
+      <div class="journey-step">
+        <span class="jp-amount" style="background:var(--green-mid);">RM250 🎉</span>
+        <span class="jp-arrow">→</span>
+        <span>Payment → Mini Draw → Register Grand Lucky Draw!</span>
       </div>
     </div>
   </div>
+
+  <!-- Timeline -->
+  <div class="card card-red">
+    <div class="card-title"><span class="ct-icon">🔄</span> Step-by-Step Selling Flow</div>
+    <div class="timeline">
+
+      <div class="tl-step">
+        <div class="tl-num">1</div>
+        <div class="tl-title">Push to the Right Tier (Before Checkout)</div>
+        <div class="tl-body">
+          Know the customer's basket total and your target <em>before</em> going to the counter.
+          <ul>
+            <li><strong>RM100</strong> → RM20 rebate + ×1 entry + Mini Draw</li>
+            <li><strong>RM180</strong> → ×2 entries + Mini Draw + PWP Nekozilla RM19</li>
+            <li><strong>RM250</strong> → FREE Nekozilla + ×2 entries + Mini Draw</li>
+          </ul>
+          <div class="tl-note">💡 Know the gap: "You're at RM140 — just RM40 more and you get double entries AND Nekozilla at RM19!"</div>
+        </div>
+      </div>
+
+      <div class="tl-step">
+        <div class="tl-num">2</div>
+        <div class="tl-title">Mini Lucky Draw — Instant Excitement 🎉</div>
+        <div class="tl-body">
+          "Tahniah! You get a FREE Mini Lucky Draw right now!"
+          <div class="tl-note">Hand the slip right after payment. Don't let the customer leave without drawing!</div>
+        </div>
+      </div>
+
+      <div class="tl-step">
+        <div class="tl-num" style="background:var(--orange);">3</div>
+        <div class="tl-title">⭐ Upsell Using the Prize Won — MOST IMPORTANT</div>
+        <div class="tl-body">
+          Use the MLD prize to push a second purchase immediately.
+          <ul>
+            <li><strong>1st purchase below RM180 nett:</strong><br>
+              <em>"Use your voucher now! Top up to RM180 — we combine receipts, so you get double Grand Draw entries too 🔥"</em></li>
+            <li style="margin-top:.35rem;"><strong>1st purchase already RM180+:</strong><br>
+              <em>"Grab the jersey at half price, only RM22. Better take 2 to fully use your voucher — super worth!"</em></li>
+          </ul>
+          <div class="tl-note">✅ Receipts from the same day can be combined before Grand Draw registration.</div>
+        </div>
+      </div>
+
+      <div class="tl-step">
+        <div class="tl-num" style="background:var(--green-mid);">4</div>
+        <div class="tl-title">Register for Grand Lucky Draw — Last Step</div>
+        <div class="tl-body">
+          "Scan this QR code to register your entry. Make sure your phone number is correct — we'll call you if you win! 👍"
+          <ul>
+            <li>Collect: <strong>Name · Phone · MyKad · Date · State · Total Amount</strong></li>
+            <li>Sum up same-day receipts before entering the total</li>
+            <li>Guide and verify all details with the customer</li>
+          </ul>
+          <div class="tl-note">🗣️ "Campaign runs until end of June — come back to earn more entries! Winners announced end of July 🎉"</div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
 </section>
 
-<!-- STAFF REWARDS -->
+<!-- ══════════════════════════════════════════════════
+  6. STAFF SCRIPTS
+══════════════════════════════════════════════════ -->
+<section id="scripts" role="tabpanel">
+
+  <div class="card card-red">
+    <div class="card-title"><span class="ct-icon">💬</span> Active Selling Scripts</div>
+    <p class="card-sub">Tap any script box to copy it instantly.</p>
+
+    <div class="script-box" onclick="copyScript(this)">
+      <span class="script-tag">Rebate Close</span>
+      <button class="copy-btn">Copy</button>
+      <p>"You're at RM90 now. If you add just 1 more piece (RM45), you enjoy RM20 rebate — average only RM38 per piece! 3rd pc at RM25 only!"</p>
+    </div>
+
+    <div class="script-box" onclick="copyScript(this)">
+      <span class="script-tag">Mix &amp; Match Push</span>
+      <button class="copy-btn">Copy</button>
+      <p>"You can mix different designs! Many customers take 2 so they can rotate. Add 1 more piece like this BR (RM65), you get instant RM20 rebate — average only RM50+ per pc, very worth it!"</p>
+    </div>
+
+    <div class="script-box" onclick="copyScript(this)">
+      <span class="script-tag">Double Entry Push</span>
+      <button class="copy-btn">Copy</button>
+      <p>"You're very close! Top up to RM180 and you get 2 entries instead of 1 — double your chances! We have 999 prizes, so every ~10 people = 1 winner. With 2 entries, your possibilities are super high!"</p>
+    </div>
+
+    <div class="script-box" onclick="copyScript(this)">
+      <span class="script-tag">Free Gift Close (RM250)</span>
+      <button class="copy-btn">Copy</button>
+      <p>"Spend RM250 nett (after RM20 rebate) and you get a FREE Nekozilla set worth RM79 — plus 2 Grand Lucky Draw entries! Double your chance to win big!"</p>
+    </div>
+
+    <div class="script-box" onclick="copyScript(this)">
+      <span class="script-tag">Upsell After Mini Draw Win</span>
+      <button class="copy-btn">Copy</button>
+      <p>"Wah, good deal! You can grab the jersey you like at half price — only RM22. Since it's 50% off, better grab 2 pieces to fully use your voucher. Super worth!"</p>
+    </div>
+
+    <div class="script-box" onclick="copyScript(this)">
+      <span class="script-tag">Multiplier Pitch (22 May–7 Jun)</span>
+      <button class="copy-btn">Copy</button>
+      <p>"Right now we have a SUPER BOOST promo! Spend RM250 and you get 9 Lucky Draw entries — 3× your chances to win the motorcycle or Japan trip! ✈️🏍️"</p>
+    </div>
+  </div>
+
+  <!-- Magic phrases -->
+  <div class="card card-green">
+    <div class="card-title"><span class="ct-icon">✨</span> Power Phrases — Use These!</div>
+    <div class="phrase-grid">
+      <div class="phrase-pill">"Super worth"</div>
+      <div class="phrase-pill">"Only today"</div>
+      <div class="phrase-pill">"Instant discount"</div>
+      <div class="phrase-pill">"Half price only"</div>
+      <div class="phrase-pill">"It's free!"</div>
+      <div class="phrase-pill">"Almost guaranteed"</div>
+    </div>
+  </div>
+
+</section>
+
+<!-- ══════════════════════════════════════════════════
+  7. STAFF REWARDS
+══════════════════════════════════════════════════ -->
 <section id="staffrewards" role="tabpanel">
 
-  <div class="card" style="border-left-color:#2ed573;">
-    <h2>💰 Staff Daily Rewards — Individual Challenge</h2>
-    <span class="period-badge green">27 May – 7 June 2026</span>
-    <p style="font-size:0.9rem;margin-bottom:0.75rem;">Earn tickets daily and compete for <strong>cash prizes every single day!</strong></p>
+  <!-- Individual challenge -->
+  <div class="card card-green">
+    <div class="card-title"><span class="ct-icon">💰</span> Individual Daily Challenge</div>
+    <span class="tag tag-green">27 May – 7 June 2026</span>
+    <p class="card-sub" style="margin-top:.4rem;">Earn tickets every day. Hit your target to compete for <strong>daily cash prizes!</strong></p>
 
-    <div class="highlight-box">
-      <strong>How to earn tickets:</strong><br><br>
-      🧾 Every <strong style="color:var(--yellow)">3 pcs sold</strong> (C1 – Normal Price) = <strong style="color:var(--yellow)">1 ticket</strong><br>
-      🏷️ Every <strong style="color:var(--yellow)">5 pcs sold</strong> (C3 – Markdown) = <strong style="color:var(--yellow)">1 ticket</strong>
+    <div class="panel panel-dark">
+      <strong>How to earn tickets:</strong>
+      <p style="margin-top:.5rem;">🧾 Every <strong>3 pcs sold</strong> (C1 – Normal Price) = <strong>1 ticket</strong></p>
+      <p>🏷️ Every <strong>5 pcs sold</strong> (C3 – Markdown) = <strong>1 ticket</strong></p>
     </div>
 
-    <h3 style="margin-top:1rem;">🏆 Daily Prizes — 2 Winners per Tier per Day</h3>
-    <div style="display:flex;gap:1rem;margin-top:0.5rem;flex-wrap:wrap;">
-      <div style="flex:1;min-width:120px;background:#fff8e1;border:2px solid var(--yellow);border-radius:12px;padding:0.75rem;text-align:center;">
+    <div class="card-title" style="margin-top:.875rem;margin-bottom:.5rem;"><span class="ct-icon">🏆</span> Daily Cash Prizes — 2 Winners per Store Tier per Day</div>
+    <div style="display:flex;gap:.6rem;">
+      <div class="ticket-card tc-gold" style="flex:1;min-width:110px;">
         <div style="font-size:1.5rem;">🥇</div>
-        <div style="font-size:1.4rem;font-weight:900;color:#e67e00;">RM50</div>
-        <div style="font-size:0.8rem;color:#666;">Top 1</div>
+        <div class="tc-prize" style="color:#e65100;">RM50</div>
+        <div class="tc-place">Top 1</div>
       </div>
-      <div style="flex:1;min-width:120px;background:#f4f4f4;border:2px solid #ccc;border-radius:12px;padding:0.75rem;text-align:center;">
+      <div class="ticket-card tc-silver" style="flex:1;min-width:110px;">
         <div style="font-size:1.5rem;">🥈</div>
-        <div style="font-size:1.4rem;font-weight:900;color:#888;">RM25</div>
-        <div style="font-size:0.8rem;color:#666;">Top 2</div>
+        <div class="tc-prize" style="color:#757575;">RM25</div>
+        <div class="tc-place">Top 2</div>
       </div>
     </div>
-    <p style="font-size:0.85rem;color:#666;margin-top:0.75rem;">⚠️ Staff must hit the <strong>minimum ticket target</strong> to be eligible for prizes (see table below).</p>
+    <div class="warn-box" style="margin-top:.75rem;">
+      <span class="wi">⚠️</span>
+      <span>Must hit <strong>minimum ticket target</strong> below to be eligible for prizes.</span>
+    </div>
   </div>
 
-  <div class="card yellow">
-    <h2>🎯 Minimum Ticket Targets</h2>
-    <table class="ticket-table">
-      <tr>
-        <th>Day Type</th>
-        <th>Dates</th>
-        <th>Tier 1 Target</th>
-        <th>Tier 2 Target</th>
-      </tr>
-      <tr class="peak">
-        <td>⭐ Peak Days<br><small>(Sat, Sun &amp; Super Peak)</small></td>
-        <td style="font-size:0.8rem;">23/5, 24/5<br>27/5–2/6, 6/6–7/6</td>
-        <td><span class="ticket-num">8</span><br><small>tickets</small></td>
-        <td><span class="ticket-num">5</span><br><small>tickets</small></td>
-      </tr>
-      <tr class="normal">
-        <td>📅 Other Days</td>
-        <td style="font-size:0.8rem;">22/5, 25/5–26/5<br>3/6–5/6</td>
-        <td><span class="ticket-num">7</span><br><small>tickets</small></td>
-        <td><span class="ticket-num">4</span><br><small>tickets</small></td>
-      </tr>
+  <!-- Ticket targets -->
+  <div class="card card-yellow">
+    <div class="card-title"><span class="ct-icon">🎯</span> Minimum Ticket Targets</div>
+    <table class="target-table">
+      <thead>
+        <tr>
+          <th style="text-align:left;">Day Type</th>
+          <th>Dates</th>
+          <th>Tier 1</th>
+          <th>Tier 2</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr class="peak-row">
+          <td style="text-align:left;">⭐ Peak Days<br><small style="font-weight:400;">(Sat, Sun &amp; Super Peak)</small></td>
+          <td style="font-size:.78rem;">23/5, 24/5<br>27/5–2/6<br>6/6–7/6</td>
+          <td><div class="big-num">8</div><small>tickets</small></td>
+          <td><div class="big-num">5</div><small>tickets</small></td>
+        </tr>
+        <tr class="norm-row">
+          <td style="text-align:left;">📅 Other Days</td>
+          <td style="font-size:.78rem;">22/5<br>25/5–26/5<br>3/6–5/6</td>
+          <td><div class="big-num">7</div><small>tickets</small></td>
+          <td><div class="big-num">4</div><small>tickets</small></td>
+        </tr>
+      </tbody>
     </table>
-    <p style="font-size:0.8rem;margin-top:0.5rem;color:#555;">💡 Tip: Hitting 8 tickets on a peak day means selling ~24 normal-price pieces. That's the goal!</p>
+    <div class="info-box" style="margin-top:.75rem;">
+      <span class="wi">💡</span>
+      <span>8 tickets on a peak day ≈ selling ~24 normal-price pieces. Plan your day!</span>
+    </div>
   </div>
 
-  <div class="card">
-    <h2>🏪 Store Tiers</h2>
-    <div class="reward-tier-grid">
-      <div class="reward-tier-card t1">
+  <!-- Store tiers -->
+  <div class="card card-blue">
+    <div class="card-title"><span class="ct-icon">🏪</span> Store Tiers</div>
+    <div class="store-grid">
+      <div class="store-card sc-t1">
         <h4>🟠 Tier 1 Stores</h4>
         <ul>
-          <li>Angsana</li>
-          <li>Toppen</li>
-          <li>Paradigm</li>
-          <li>JBBi</li>
-          <li>SCM</li>
-          <li>Imago</li>
-          <li>Kangar</li>
+          <li>Angsana</li><li>Toppen</li><li>Paradigm</li>
+          <li>JBBi</li><li>SCM</li><li>Imago</li><li>Kangar</li>
         </ul>
       </div>
-      <div class="reward-tier-card t2">
+      <div class="store-card sc-t2">
         <h4>🔵 Tier 2 Stores</h4>
         <ul>
-          <li>Sogo</li>
-          <li>AC</li>
-          <li>Manjung</li>
-          <li>AJM</li>
+          <li>Sogo</li><li>AC</li><li>Manjung</li><li>AJM</li>
           <li>SWM <small>(excl. rejected)</small></li>
           <li>Kulim <small>(excl. rejected)</small></li>
         </ul>
@@ -939,80 +1357,91 @@
     </div>
   </div>
 
-  <div class="card green">
-    <h2>📣 Team Challenge — All Locations</h2>
-    <span class="period-badge green">22 May – 7 June 2026</span>
-    <p style="margin-top:0.5rem;font-size:0.9rem;">As a team, make sure <strong>EVERY customer understands</strong> the 5× multiplier promo and is encouraged to spend more!</p>
-    <div class="limit-box" style="margin-top:0.75rem;">
-      <span class="limit-icon">🎯</span>
-      <span>Goal: push customers to RM250 / RM380 / RM500 to unlock massive entry multipliers. See the <strong>🏆 Grand Prizes</strong> tab for the full multiplier table.</span>
+  <!-- Team challenge -->
+  <div class="card card-green">
+    <div class="card-title"><span class="ct-icon">📣</span> Team Challenge — All Locations</div>
+    <span class="tag tag-green">22 May – 7 June 2026</span>
+    <p style="font-size:.88rem;margin:.5rem 0;">Make sure <strong>every customer</strong> understands the 5× multiplier and is pushed to spend more!</p>
+    <div class="info-box">
+      <span class="wi">🎯</span>
+      <span>Target: push customers to RM250 / RM380 / RM500 for massive entry multipliers. See the <strong>Grand Draw</strong> tab for details.</span>
     </div>
   </div>
 
 </section>
 
-<!-- JUNE RELEASE -->
+<!-- ══════════════════════════════════════════════════
+  8. JUNE RELEASE
+══════════════════════════════════════════════════ -->
 <section id="junerelease" role="tabpanel">
 
-  <div class="card" style="border-left-color:#e67e00;">
-    <h2>🆕 June Bundle Deal — Best Value!</h2>
-    <span class="period-badge">June 2026 — Tier 1 Stores</span>
-    <p style="margin:0.5rem 0 0.75rem;font-size:0.9rem;">Buy <strong>any 4 jerseys</strong> to unlock all of these:</p>
-    <div class="bundle-item">
-      <div class="bnum">1</div>
+  <!-- Bundle deal -->
+  <div class="card card-orange">
+    <div class="card-title"><span class="ct-icon">🛒</span> June Bundle Deal — Best Value!</div>
+    <span class="tag tag-orange">June 2026 · Tier 1 Stores</span>
+    <p class="card-sub" style="margin-top:.4rem;">Buy <strong>any 4 jerseys</strong> to unlock all of these:</p>
+
+    <div class="bundle-step">
+      <div class="bs-num">1</div>
       <div>💸 <strong>RM20 Instant Rebate</strong> automatically applied</div>
     </div>
-    <div class="bundle-item">
-      <div class="bnum">2</div>
+    <div class="bundle-step">
+      <div class="bs-num">2</div>
       <div>
-        🛒 <strong>PWP — New June Release at ~50% OFF:</strong>
-        <ul style="margin:0.4rem 0 0 1rem;font-size:0.85rem;">
-          <li><strong>RM28/pc:</strong> JP153, JP154, JP155, JP156, JP158, KF1, KF2 <em>(LS +RM5, Big Size +RM5)</em></li>
-          <li><strong>RM39/pc:</strong> BS56 <em>(LS +RM10, Big Size +RM5)</em></li>
-          <li>⚠️ Limited to <strong>100 pcs only</strong> — while stocks last!</li>
+        🛍️ <strong>PWP New Release at ~50% OFF:</strong>
+        <ul style="margin:.4rem 0 0 1rem;font-size:.83rem;">
+          <li><strong>RM28/pc</strong> — JP153, JP154, JP155, JP156, JP158, KF1, KF2 <em>(LS +RM5 | Big Size +RM5)</em></li>
+          <li><strong>RM39/pc</strong> — BS56 <em>(LS +RM10 | Big Size +RM5)</em></li>
         </ul>
       </div>
     </div>
-    <div class="bundle-item">
-      <div class="bnum">3</div>
-      <div>🎁 Spend <strong>RM250 nett</strong> → FREE Nekozilla Set (RM79) + Grand Lucky Draw entries ×3</div>
+    <div class="bundle-step">
+      <div class="bs-num">3</div>
+      <div>🎁 Nett <strong>RM250+</strong> → FREE Nekozilla set (RM79) + Grand Draw entries ×3</div>
     </div>
-    <div class="limit-box" style="margin-top:0.75rem;">
-      <span class="limit-icon">⛔</span>
-      <span><strong>IR20 &amp; MLD vouchers CANNOT be used on new launch items.</strong></span>
+
+    <div class="warn-box">
+      <span class="wi">⚠️</span>
+      <span>Limited <strong>100 pcs only</strong> — while stocks last!</span>
+    </div>
+    <div class="deny-box">
+      <span class="wi">⛔</span>
+      <span><strong>IR20 &amp; MLD Vouchers CANNOT be used on new launch items.</strong></span>
     </div>
   </div>
 
-  <div class="card yellow">
-    <h2>🏷️ Raya Design — Markdown Update</h2>
-    <span class="period-badge">Effective 22 May 2026 — All Locations</span>
-    <p style="margin:0.5rem 0 0.75rem;font-size:0.9rem;">Raya designs move to <strong>Markdown (C3)</strong> pricing:</p>
-    <table class="exception-table" style="margin-top:0.5rem;">
-      <tr>
-        <th>Design</th>
-        <th>New MD Price</th>
-        <th>Notes</th>
-      </tr>
-      <tr>
-        <td>RY22 &amp; RY23 (Adult)</td>
-        <td><strong>RM35</strong></td>
-        <td>LS +RM10 &nbsp;|&nbsp; Big Size +RM5</td>
-      </tr>
-      <tr>
-        <td>RY23kid (Kids)</td>
-        <td><strong>RM25</strong></td>
-        <td>—</td>
-      </tr>
+  <!-- Raya markdown -->
+  <div class="card card-yellow">
+    <div class="card-title"><span class="ct-icon">🏷️</span> Raya Design — Markdown Update</div>
+    <span class="tag tag-red">Effective 22 May 2026 · All Locations</span>
+    <p class="card-sub" style="margin-top:.4rem;">Raya designs move to <strong>Markdown (C3)</strong> pricing from 22 May.</p>
+    <table class="raya-table">
+      <thead>
+        <tr><th>Design</th><th>New MD Price</th><th>Size notes</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>RY22 &amp; RY23 (Adult)</td>
+          <td><strong>RM35</strong></td>
+          <td>LS +RM10 · Big Size +RM5</td>
+        </tr>
+        <tr>
+          <td>RY23kid (Kids)</td>
+          <td><strong>RM25</strong></td>
+          <td>—</td>
+        </tr>
+      </tbody>
     </table>
-    <div class="limit-box" style="margin-top:0.75rem;">
-      <span class="limit-icon">⛔</span>
-      <span><strong>IR20 (RM20 rebate) &amp; MLD Vouchers are NOT applicable</strong> on Raya Markdown items.</span>
+    <div class="deny-box" style="margin-top:.75rem;">
+      <span class="wi">⛔</span>
+      <span><strong>IR20 &amp; MLD Vouchers do NOT apply</strong> to these Markdown items.</span>
     </div>
   </div>
 
-  <div class="card">
-    <h2>🔤 New SKU Naming — From June 2026</h2>
-    <p style="font-size:0.9rem;margin-bottom:0.75rem;">Product codes are changing! Use the new codes when entering sales or referencing items.</p>
+  <!-- SKU rename -->
+  <div class="card card-blue">
+    <div class="card-title"><span class="ct-icon">🔤</span> New SKU Codes — From June 2026</div>
+    <p class="card-sub">Product codes are changing. Use these new codes in all sales entries.</p>
     <div class="sku-grid">
       <div class="sku-card">
         <div class="sku-old">JP (Female)</div>
@@ -1030,201 +1459,232 @@
         <div class="sku-label">JP City</div>
       </div>
     </div>
-    <div class="limit-box" style="margin-top:0.75rem;">
-      <span class="limit-icon">💡</span>
-      <span>Example: What was <em>JP KF1</em> before is now just <strong>KF1</strong>. Same for KM and CT series.</span>
+    <div class="info-box" style="margin-top:.75rem;">
+      <span class="wi">💡</span>
+      <span>Example: Old code <em>JP KF1</em> is now just <strong>KF1</strong>. Same applies for KM and CT series.</span>
     </div>
   </div>
 
-  <div class="card green">
-    <h2>✨ New Drop — Kawaii Female (KF) Collection</h2>
-    <p style="font-size:0.9rem;">Lokalteez's new jersey collection <strong>made for her</strong> — stylish, comfortable &amp; made to stand out! ✨</p>
-    <ul style="margin:0.75rem 0 0 1.25rem;font-size:0.9rem;">
-      <li>New designs: <strong>KF1, KF2</strong> (part of June Bundle Deal PWP)</li>
-      <li>Limited stock — push early!</li>
-      <li>Catalogue: <a href="https://canva.link/d2xzuhd2o1l22ji" target="_blank" style="color:var(--red);">canva.link/d2xzuhd2o1l22ji</a></li>
+  <!-- New drop -->
+  <div class="card card-green">
+    <div class="card-title"><span class="ct-icon">✨</span> NEW DROP — Kawaii Female (KF) Collection</div>
+    <p style="font-size:.88rem;">Lokalteez's first jersey collection <strong>made for her</strong> — stylish, comfortable &amp; made to stand out!</p>
+    <ul style="margin:.6rem 0 0 1.1rem;font-size:.87rem;">
+      <li>New designs: <strong>KF1, KF2</strong> — included in the June Bundle PWP</li>
+      <li>Limited stock — push early before it sells out!</li>
+      <li>Catalogue: <a href="https://canva.link/d2xzuhd2o1l22ji" target="_blank">canva.link/d2xzuhd2o1l22ji</a></li>
     </ul>
   </div>
 
 </section>
 
-<!-- RULES -->
+<!-- ══════════════════════════════════════════════════
+  9. RULES / FAQ
+══════════════════════════════════════════════════ -->
 <section id="rules" role="tabpanel">
-  <div class="card">
-    <h2>📜 Frequently Asked Questions</h2>
 
-    <button class="toggle-btn" aria-expanded="false" onclick="toggle(this)">How many Grand Lucky Draw entries can I earn per transaction?</button>
-    <div class="toggle-content">
-      <p><strong>Maximum 2 entries per transaction</strong>, regardless of total spend.</p>
-      <ul>
-        <li><span class="amount" style="background:var(--red);color:white;padding:0.1rem 0.4rem;border-radius:4px;font-size:0.85rem;">RM100 nett</span> → x1 entry</li>
-        <li><span class="amount" style="background:var(--red);color:white;padding:0.1rem 0.4rem;border-radius:4px;font-size:0.85rem;">RM180 nett</span> → x2 entries (max)</li>
-        <li>Spending RM300, RM400 etc. still gives max x2 entries</li>
-      </ul>
-      <p style="margin-top:0.5rem;"><em>💡 To earn more entries: encourage the customer to come back for another purchase on another day!</em></p>
+  <div class="card card-red">
+    <div class="card-title"><span class="ct-icon">❓</span> Frequently Asked Questions</div>
+
+    <div class="faq-item">
+      <button class="faq-btn" onclick="faq(this)">How many Grand Lucky Draw entries per transaction?</button>
+      <div class="faq-body">
+        <div class="faq-body-inner">
+          <p><strong>Maximum 2 entries per transaction</strong>, regardless of spend amount.</p>
+          <ul>
+            <li>RM100 nett → × 1 entry</li>
+            <li>RM180 nett → × 2 entries (max)</li>
+            <li>RM300, RM400 etc. → still max × 2 entries</li>
+          </ul>
+          <div class="info-box" style="margin-top:.6rem;">
+            <span class="wi">💡</span>
+            <span>More entries = more visits! "Come back again — campaign runs until end of June!"</span>
+          </div>
+        </div>
+      </div>
     </div>
 
-    <button class="toggle-btn" aria-expanded="false" onclick="toggle(this)">Can we combine receipts for Grand Lucky Draw registration?</button>
-    <div class="toggle-content">
-      <p><span class="yes">YES</span> — but only under these conditions:</p>
-      <ul>
-        <li>Original receipt + Mini Lucky Draw receipt</li>
-        <li>Must be <strong>same day</strong></li>
-        <li>Must combine <strong>BEFORE</strong> registering for Grand Lucky Draw</li>
-        <li>Customer fills in the <strong>total combined amount</strong> when registering</li>
-      </ul>
-      <p style="margin-top:0.5rem;"><em>Example: RM100 first purchase + RM80 MLD upsell = RM180 total → qualifies for 2 entries when registering</em></p>
+    <div class="faq-item">
+      <button class="faq-btn" onclick="faq(this)">Can we combine receipts for Grand Lucky Draw registration?</button>
+      <div class="faq-body">
+        <div class="faq-body-inner">
+          <p><span class="yes">YES</span> — under these conditions:</p>
+          <ul>
+            <li>Original receipt + Mini Lucky Draw receipt</li>
+            <li>Must be <strong>same day</strong></li>
+            <li>Combine <strong>before</strong> registering for Grand Lucky Draw</li>
+            <li>Enter the <strong>combined total</strong> when registering</li>
+          </ul>
+          <p style="margin-top:.5rem;font-style:italic;font-size:.83rem;">e.g. RM100 first buy + RM80 MLD upsell = RM180 total → 2 entries</p>
+        </div>
+      </div>
     </div>
 
-    <button class="toggle-btn" aria-expanded="false" onclick="toggle(this)">Can receipts be combined for the FREE Nekozilla Set (RM250)?</button>
-    <div class="toggle-content">
-      <p><span class="no">NO</span> — the FREE set requires a single checkout transaction of RM250 nett.</p>
-      <ul>
-        <li>Receipt combination <strong>only applies to Grand Lucky Draw registration</strong></li>
-        <li>If a customer checks out at RM180 first → they get the PWP option (RM19 for set), even if they spend more later</li>
-      </ul>
+    <div class="faq-item">
+      <button class="faq-btn" onclick="faq(this)">Can receipts be combined for the FREE Nekozilla Set?</button>
+      <div class="faq-body">
+        <div class="faq-body-inner">
+          <p><span class="no">NO</span> — FREE Nekozilla requires <strong>RM250 in a single checkout transaction</strong>.</p>
+          <ul>
+            <li>Receipt combining only counts for Grand Lucky Draw registration</li>
+            <li>If customer checks out at RM180 first → PWP path (RM19 for set), even if they spend more later</li>
+          </ul>
+        </div>
+      </div>
     </div>
 
-    <button class="toggle-btn" aria-expanded="false" onclick="toggle(this)">Can Markdown (MD) purchases qualify for Mini Lucky Draw?</button>
-    <div class="toggle-content">
-      <p><span class="yes">YES</span> — Mini Lucky Draw is available with <strong>ANY purchase</strong>, no minimum spend, including MD items.</p>
-      <p style="margin-top:0.5rem;"><strong>However</strong> — MLD <strong>vouchers won</strong> can only be redeemed on <strong>normal price items</strong> (unless the prize specifically says "FREE").</p>
+    <div class="faq-item">
+      <button class="faq-btn" onclick="faq(this)">Can Markdown (MD) purchases qualify for Mini Lucky Draw?</button>
+      <div class="faq-body">
+        <div class="faq-body-inner">
+          <p><span class="yes">YES</span> — Mini Lucky Draw has <strong>no minimum, any purchase qualifies</strong>, including MD items.</p>
+          <p style="margin-top:.5rem;"><strong>However</strong> — the voucher <em>won</em> can only be used on normal price items (unless it says "FREE").</p>
+        </div>
+      </div>
     </div>
 
-    <button class="toggle-btn" aria-expanded="false" onclick="toggle(this)">Can Markdown purchases earn the FREE Nekozilla Set (Sogo/Manjung/AC)?</button>
-    <div class="toggle-content">
-      <p><span class="no">NO</span> — explicitly excluded for those stores.</p>
-      <p>"Anniversary &amp; mini lucky draw <strong>are</strong> applicable for MD. But <strong>excluded for FREE Nekozilla set</strong>." (Sogo, Manjung &amp; AC stores)</p>
+    <div class="faq-item">
+      <button class="faq-btn" onclick="faq(this)">Can MD purchases earn the FREE Nekozilla Set? (Sogo/Manjung/AC)</button>
+      <div class="faq-body">
+        <div class="faq-body-inner">
+          <p><span class="no">NO</span> — explicitly excluded at those stores.</p>
+          <p style="margin-top:.4rem;">"Anniversary &amp; Mini Lucky Draw <strong>are</strong> applicable for MD. But <strong>excluded for FREE Nekozilla set</strong>."</p>
+        </div>
+      </div>
     </div>
 
-    <button class="toggle-btn" aria-expanded="false" onclick="toggle(this)">When does the Grand Lucky Draw activate?</button>
-    <div class="toggle-content">
-      <p>The draw activates once <strong>9,999 tickets</strong> are collected nationwide.</p>
-      <ul>
-        <li>Total of <strong>999 prizes</strong> to be won</li>
-        <li>Winners announced: <strong>End of July 2026</strong></li>
-        <li>Use this as urgency: <em>"Tickets are filling up fast — get yours before the draw activates!"</em></li>
-      </ul>
+    <div class="faq-item">
+      <button class="faq-btn" onclick="faq(this)">When does the Grand Lucky Draw activate?</button>
+      <div class="faq-body">
+        <div class="faq-body-inner">
+          <p>The draw activates once <strong>9,999 tickets</strong> are collected nationwide.</p>
+          <ul>
+            <li>Total <strong>999 prizes</strong> to be won</li>
+            <li>Winners announced: <strong>end of July 2026</strong></li>
+          </ul>
+          <div class="info-box" style="margin-top:.5rem;">
+            <span class="wi">🎤</span>
+            <span><em>"Tickets are filling up — get yours before the draw activates!"</em></span>
+          </div>
+        </div>
+      </div>
     </div>
+
   </div>
 
-  <div class="card">
-    <h2>🏪 Store Exceptions Table (Sogo, Manjung & AC)</h2>
-    <table class="exception-table">
-      <tr>
-        <th>Promotion</th>
-        <th>Normal Price Items</th>
-        <th>MD Items</th>
-      </tr>
-      <tr>
-        <td>Mini Lucky Draw — earn spin</td>
-        <td class="yes">YES</td>
-        <td class="yes">YES</td>
-      </tr>
-      <tr>
-        <td>5th Anniversary Grand Lucky Draw — earn entries</td>
-        <td class="yes">YES</td>
-        <td class="yes">YES</td>
-      </tr>
-      <tr>
-        <td>FREE Nekozilla Set (RM250 tier)</td>
-        <td class="yes">YES</td>
-        <td class="no">NO</td>
-      </tr>
-      <tr>
-        <td>MLD Voucher redemption</td>
-        <td class="yes">YES</td>
-        <td class="no">NO (unless prize says FREE)</td>
-      </tr>
+  <!-- Store exception table -->
+  <div class="card card-blue">
+    <div class="card-title"><span class="ct-icon">🏪</span> Store Exceptions — Sogo, Manjung &amp; AC</div>
+    <table class="exc-table">
+      <thead>
+        <tr><th>Promotion</th><th>Normal Price</th><th>MD Items</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Mini Lucky Draw spin</td>
+          <td class="yes">✅ YES</td>
+          <td class="yes">✅ YES</td>
+        </tr>
+        <tr>
+          <td>Grand Lucky Draw entries</td>
+          <td class="yes">✅ YES</td>
+          <td class="yes">✅ YES</td>
+        </tr>
+        <tr>
+          <td>FREE Nekozilla Set (RM250 tier)</td>
+          <td class="yes">✅ YES</td>
+          <td class="no">❌ NO</td>
+        </tr>
+        <tr>
+          <td>MLD Voucher redemption</td>
+          <td class="yes">✅ YES</td>
+          <td class="no">❌ NO <small>(unless prize says FREE)</small></td>
+        </tr>
+      </tbody>
     </table>
   </div>
 
-  <div class="card yellow">
-    <h2>⏰ Important Dates</h2>
-    <ul>
-      <li>📅 <strong>Campaign Period:</strong> 7 April – 30 June 2026</li>
-      <li>🎰 <strong>Grand Draw Activation:</strong> Once 9,999 tickets are collected</li>
-      <li>🏆 <strong>Winner Announcement:</strong> End of July 2026</li>
-      <li>🏷️ <strong>Campaign ends:</strong> 30 June 2026 — encourage customers to come back before then!</li>
+  <!-- Important dates -->
+  <div class="card card-yellow">
+    <div class="card-title"><span class="ct-icon">📅</span> Important Dates</div>
+    <ul class="date-list">
+      <li><span class="dl-date">7 Apr – 30 Jun 2026</span> Main campaign period</li>
+      <li><span class="dl-date">22 May 2026</span> Raya MD pricing starts · 5× Multiplier begins</li>
+      <li><span class="dl-date">27 May – 7 Jun 2026</span> Staff Individual Daily Challenge</li>
+      <li><span class="dl-date">7 Jun 2026</span> 5× Multiplier boost ends</li>
+      <li><span class="dl-date">30 Jun 2026</span> Campaign closes — push for last entries!</li>
+      <li><span class="dl-date">End of July 2026</span> Grand Lucky Draw winners announced 🎉</li>
     </ul>
   </div>
+
 </section>
 
 </main>
 
 <footer>
-  Prepared by Emelia Hau &nbsp;|&nbsp; Lokalteez 2026 Q2 Retail Activities<br>
-  For internal staff use only
+  Prepared by Emelia Hau &nbsp;·&nbsp; Lokalteez 2026 Q2 Retail Activities &nbsp;·&nbsp; Internal use only
 </footer>
 
 <script>
-  function showSection(id, btn) {
-    document.querySelectorAll('section').forEach(s => s.classList.remove('active'));
-    document.getElementById(id).classList.add('active');
-    document.querySelectorAll('nav button').forEach(b => {
-      b.classList.remove('active');
-      b.setAttribute('aria-selected', 'false');
+/* ── Section switching ────────────────────────── */
+function go(id, btn) {
+  document.querySelectorAll('section').forEach(s => s.classList.remove('active'));
+  document.querySelectorAll('nav button').forEach(b => b.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
+  btn.classList.add('active');
+  history.replaceState(null, '', '#' + id);
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+/* ── Copy script ──────────────────────────────── */
+function copyScript(el) {
+  const text = el.querySelector('p').innerText;
+  const btn  = el.querySelector('.copy-btn');
+  const orig = btn.innerText;
+  function ok() {
+    btn.innerText = '✓ Copied!';
+    btn.classList.add('copied');
+    setTimeout(() => { btn.innerText = orig; btn.classList.remove('copied'); }, 1600);
+  }
+  if (navigator.clipboard && location.protocol !== 'file:') {
+    navigator.clipboard.writeText(text).then(ok).catch(fb);
+  } else { fb(); }
+  function fb() {
+    const ta = Object.assign(document.createElement('textarea'), {
+      value: text, style: 'position:fixed;opacity:0'
     });
-    btn.classList.add('active');
-    btn.setAttribute('aria-selected', 'true');
-    history.replaceState(null, '', '#' + id);
-    window.scrollTo(0, 0);
+    document.body.appendChild(ta);
+    ta.select();
+    try { document.execCommand('copy'); ok(); } catch(e) {}
+    ta.remove();
   }
+}
 
-  function copyText(el) {
-    const text = el.querySelector('p').innerText;
-    const btn = el.querySelector('.copy-btn');
-    const orig = btn.innerText;
-    function showSuccess() {
-      btn.innerText = 'Copied!';
-      btn.classList.add('copied');
-      setTimeout(() => { btn.innerText = orig; btn.classList.remove('copied'); }, 1500);
-    }
-    if (navigator.clipboard && window.isSecureContext) {
-      navigator.clipboard.writeText(text).then(showSuccess).catch(fallback);
-    } else { fallback(); }
-    function fallback() {
-      const ta = document.createElement('textarea');
-      ta.value = text;
-      ta.style.cssText = 'position:fixed;opacity:0;top:0;left:0';
-      document.body.appendChild(ta);
-      ta.focus(); ta.select();
-      try { document.execCommand('copy'); showSuccess(); } catch(e) {}
-      document.body.removeChild(ta);
-    }
+/* ── FAQ accordion ────────────────────────────── */
+function faq(btn) {
+  const body = btn.nextElementSibling;
+  const open = body.classList.contains('show');
+  // close all
+  document.querySelectorAll('.faq-body.show').forEach(b => { b.classList.remove('show'); b.previousElementSibling.classList.remove('open'); });
+  if (!open) { body.classList.add('show'); btn.classList.add('open'); }
+}
+
+/* ── Script box keyboard ──────────────────────── */
+document.querySelectorAll('.script-box').forEach(b => {
+  b.setAttribute('tabindex', '0');
+  b.setAttribute('role', 'button');
+  b.addEventListener('keydown', e => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); copyScript(b); } });
+});
+
+/* ── Hash restore ─────────────────────────────── */
+(function() {
+  const valid = ['overview','tiers','grandprizes','mld','flow','scripts','staffrewards','junerelease','rules'];
+  const h = location.hash.slice(1);
+  if (valid.includes(h)) {
+    const btn = document.querySelector(`[aria-controls="${h}"]`);
+    if (btn) go(h, btn);
   }
-
-  function toggle(btn) {
-    const content = btn.nextElementSibling;
-    content.classList.toggle('show');
-    btn.classList.toggle('open');
-    btn.setAttribute('aria-expanded', content.classList.contains('show'));
-  }
-
-  document.querySelectorAll('.script-box').forEach(function(box) {
-    box.setAttribute('tabindex', '0');
-    box.setAttribute('role', 'button');
-    box.setAttribute('aria-label', 'Copy script: ' + box.querySelector('p').innerText.substring(0, 40));
-    box.addEventListener('keydown', function(e) {
-      if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); copyText(box); }
-    });
-  });
-
-  function updateNavOffset() {
-    document.documentElement.style.setProperty('--header-h',
-      document.querySelector('header').getBoundingClientRect().height + 'px');
-  }
-  updateNavOffset();
-  window.addEventListener('resize', updateNavOffset);
-
-  (function() {
-    const hash = location.hash.replace('#', '');
-    const valid = ['overview', 'tiers', 'grandprizes', 'mld', 'scripts', 'flow', 'staffrewards', 'junerelease', 'rules'];
-    if (hash && valid.includes(hash)) {
-      const btn = document.querySelector('[aria-controls="' + hash + '"]');
-      if (btn) showSection(hash, btn);
-    }
-  })();
+})();
 </script>
 
 </body>
