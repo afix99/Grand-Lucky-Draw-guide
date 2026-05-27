@@ -236,7 +236,7 @@
     transition: max-height 0.3s ease;
     padding: 0 1rem;
   }
-  .toggle-content.show { max-height: 600px; padding-bottom: 1rem; }
+  .toggle-content.show { max-height: 800px; padding-bottom: 1rem; }
 
   footer {
     text-align: center;
@@ -308,6 +308,106 @@
     font-weight: 700;
     white-space: nowrap;
   }
+
+  /* Multiplier cards */
+  .multiplier-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+    gap: 0.75rem;
+    margin: 0.75rem 0;
+  }
+  .multiplier-card {
+    border-radius: 14px;
+    padding: 1rem 0.75rem;
+    text-align: center;
+    color: white;
+    font-weight: 700;
+  }
+  .multiplier-card.m3 { background: linear-gradient(135deg, #ff9f43, #ff6b6b); }
+  .multiplier-card.m4 { background: linear-gradient(135deg, #e60012, #c0392b); }
+  .multiplier-card.m5 { background: linear-gradient(135deg, #2c3e50, #e74c3c); }
+  .multiplier-card .spend { font-size: 1.4rem; font-weight: 900; }
+  .multiplier-card .mult { font-size: 2rem; font-weight: 900; color: var(--yellow); line-height: 1; margin: 0.3rem 0; }
+  .multiplier-card .result { font-size: 0.85rem; opacity: 0.9; }
+
+  /* Staff rewards */
+  .reward-tier-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.75rem;
+    margin-top: 0.75rem;
+  }
+  @media(max-width: 480px) { .reward-tier-grid { grid-template-columns: 1fr; } }
+  .reward-tier-card {
+    border-radius: 12px;
+    padding: 1rem;
+    border: 2px solid #ddd;
+  }
+  .reward-tier-card.t1 { border-color: #ff9f43; background: #fff8f0; }
+  .reward-tier-card.t2 { border-color: #1e90ff; background: #f0f7ff; }
+  .reward-tier-card h4 { margin-bottom: 0.5rem; font-size: 0.9rem; }
+  .reward-tier-card ul { margin-left: 1rem; font-size: 0.85rem; }
+
+  .ticket-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.9rem;
+    margin-top: 0.75rem;
+  }
+  .ticket-table th, .ticket-table td {
+    border: 1px solid #ddd;
+    padding: 0.6rem 0.75rem;
+    text-align: center;
+  }
+  .ticket-table th { background: var(--black); color: white; }
+  .ticket-table .peak { background: #fff3cd; font-weight: 600; }
+  .ticket-table .normal { background: #f4f4f4; }
+  .ticket-num { font-size: 1.2rem; font-weight: 900; color: var(--red); }
+
+  /* June release */
+  .sku-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+    gap: 0.75rem;
+    margin-top: 0.75rem;
+  }
+  .sku-card {
+    border-radius: 12px;
+    padding: 0.75rem;
+    text-align: center;
+    border: 2px solid #ddd;
+    background: white;
+  }
+  .sku-card .sku-old { font-size: 0.75rem; color: #999; text-decoration: line-through; }
+  .sku-card .sku-new { font-size: 1.5rem; font-weight: 900; color: var(--red); }
+  .sku-card .sku-label { font-size: 0.8rem; color: #555; margin-top: 0.25rem; }
+  .bundle-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.75rem;
+    padding: 0.6rem 0;
+    border-bottom: 1px dashed #eee;
+    font-size: 0.9rem;
+  }
+  .bundle-item:last-child { border-bottom: none; }
+  .bundle-item .bnum {
+    min-width: 28px; height: 28px;
+    background: var(--red); color: white;
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-weight: 700; font-size: 0.8rem; flex-shrink: 0;
+  }
+  .period-badge {
+    display: inline-block;
+    background: var(--red);
+    color: white;
+    font-size: 0.75rem;
+    font-weight: 700;
+    padding: 0.2rem 0.6rem;
+    border-radius: 6px;
+    margin-bottom: 0.5rem;
+  }
+  .period-badge.green { background: var(--success); }
   @media print {
     header { position: static; box-shadow: none; background: none; color: #000; padding: 0.5rem 0; }
     header h1 { font-size: 1.2rem; }
@@ -338,6 +438,8 @@
   <button role="tab" aria-selected="false" aria-controls="mld" onclick="showSection('mld', this)">Mini Lucky Draw</button>
   <button role="tab" aria-selected="false" aria-controls="scripts" onclick="showSection('scripts', this)">Staff Scripts</button>
   <button role="tab" aria-selected="false" aria-controls="flow" onclick="showSection('flow', this)">Step-by-Step</button>
+  <button role="tab" aria-selected="false" aria-controls="staffrewards" onclick="showSection('staffrewards', this)">💰 Staff Rewards</button>
+  <button role="tab" aria-selected="false" aria-controls="junerelease" onclick="showSection('junerelease', this)">🆕 June Release</button>
   <button role="tab" aria-selected="false" aria-controls="rules" onclick="showSection('rules', this)">Rules & FAQs</button>
 </nav>
 
@@ -522,7 +624,7 @@
   </div>
 
   <div class="card yellow">
-    <h2>📝 How to Earn Entries</h2>
+    <h2>📝 How to Earn Entries — Standard (7 Apr – 21 May &amp; 8 Jun – 30 Jun)</h2>
     <div class="flow-path" style="margin-top:0.5rem;">
       <div class="flow-arrow">
         <span class="amount">Nett RM100</span>
@@ -537,7 +639,34 @@
     </div>
     <div class="limit-box" style="margin-top:0.75rem;">
       <span class="limit-icon">⚠️</span>
-      <span><strong>Max 2 entries per transaction.</strong> To earn more entries, come back for another visit — campaign runs until end of June!</span>
+      <span><strong>Max 2 entries per transaction.</strong> To earn more, come back for another visit — campaign runs until end of June!</span>
+    </div>
+  </div>
+
+  <div class="card" style="border-left-color:#e67e00;">
+    <h2>🔥 5× MULTIPLIER BOOST — 22 May – 7 June 2026</h2>
+    <p style="margin-bottom:0.75rem;font-size:0.9rem;">Special limited period! Customers can multiply their Grand Lucky Draw entries up to <strong>15 entries in ONE transaction</strong>. Push hard during this window!</p>
+    <div class="multiplier-grid">
+      <div class="multiplier-card m3">
+        <div class="spend">RM250</div>
+        <div class="mult">×3</div>
+        <div class="result">= 9 entries 🎰</div>
+      </div>
+      <div class="multiplier-card m4">
+        <div class="spend">RM380</div>
+        <div class="mult">×4</div>
+        <div class="result">= 12 entries 🎰🎰</div>
+      </div>
+      <div class="multiplier-card m5">
+        <div class="spend">RM500</div>
+        <div class="mult">×5</div>
+        <div class="result">= 15 entries 🎰🎰🎰</div>
+      </div>
+    </div>
+    <div class="script-box" style="margin-top:1rem;" onclick="copyText(this)">
+      <span class="label">Multiplier Pitch</span>
+      <button class="copy-btn">Copy</button>
+      <p>"Right now we have a SUPER BOOST promo! If you spend RM250, you get 9 entries instead of just 2 — that's 3 times your chances! Spend RM500 and you get 15 entries — almost guaranteed to win something from our 999 prizes! ✈️🏍️"</p>
     </div>
   </div>
 
@@ -726,6 +855,199 @@
   </div>
 </section>
 
+<!-- STAFF REWARDS -->
+<section id="staffrewards" role="tabpanel">
+
+  <div class="card" style="border-left-color:#2ed573;">
+    <h2>💰 Staff Daily Rewards — Individual Challenge</h2>
+    <span class="period-badge green">27 May – 7 June 2026</span>
+    <p style="font-size:0.9rem;margin-bottom:0.75rem;">Earn tickets daily and compete for <strong>cash prizes every single day!</strong></p>
+
+    <div class="highlight-box">
+      <strong>How to earn tickets:</strong><br><br>
+      🧾 Every <strong style="color:var(--yellow)">3 pcs sold</strong> (C1 – Normal Price) = <strong style="color:var(--yellow)">1 ticket</strong><br>
+      🏷️ Every <strong style="color:var(--yellow)">5 pcs sold</strong> (C3 – Markdown) = <strong style="color:var(--yellow)">1 ticket</strong>
+    </div>
+
+    <h3 style="margin-top:1rem;">🏆 Daily Prizes — 2 Winners per Tier per Day</h3>
+    <div style="display:flex;gap:1rem;margin-top:0.5rem;flex-wrap:wrap;">
+      <div style="flex:1;min-width:120px;background:#fff8e1;border:2px solid var(--yellow);border-radius:12px;padding:0.75rem;text-align:center;">
+        <div style="font-size:1.5rem;">🥇</div>
+        <div style="font-size:1.4rem;font-weight:900;color:#e67e00;">RM50</div>
+        <div style="font-size:0.8rem;color:#666;">Top 1</div>
+      </div>
+      <div style="flex:1;min-width:120px;background:#f4f4f4;border:2px solid #ccc;border-radius:12px;padding:0.75rem;text-align:center;">
+        <div style="font-size:1.5rem;">🥈</div>
+        <div style="font-size:1.4rem;font-weight:900;color:#888;">RM25</div>
+        <div style="font-size:0.8rem;color:#666;">Top 2</div>
+      </div>
+    </div>
+    <p style="font-size:0.85rem;color:#666;margin-top:0.75rem;">⚠️ Staff must hit the <strong>minimum ticket target</strong> to be eligible for prizes (see table below).</p>
+  </div>
+
+  <div class="card yellow">
+    <h2>🎯 Minimum Ticket Targets</h2>
+    <table class="ticket-table">
+      <tr>
+        <th>Day Type</th>
+        <th>Dates</th>
+        <th>Tier 1 Target</th>
+        <th>Tier 2 Target</th>
+      </tr>
+      <tr class="peak">
+        <td>⭐ Peak Days<br><small>(Sat, Sun &amp; Super Peak)</small></td>
+        <td style="font-size:0.8rem;">23/5, 24/5<br>27/5–2/6, 6/6–7/6</td>
+        <td><span class="ticket-num">8</span><br><small>tickets</small></td>
+        <td><span class="ticket-num">5</span><br><small>tickets</small></td>
+      </tr>
+      <tr class="normal">
+        <td>📅 Other Days</td>
+        <td style="font-size:0.8rem;">22/5, 25/5–26/5<br>3/6–5/6</td>
+        <td><span class="ticket-num">7</span><br><small>tickets</small></td>
+        <td><span class="ticket-num">4</span><br><small>tickets</small></td>
+      </tr>
+    </table>
+    <p style="font-size:0.8rem;margin-top:0.5rem;color:#555;">💡 Tip: Hitting 8 tickets on a peak day means selling ~24 normal-price pieces. That's the goal!</p>
+  </div>
+
+  <div class="card">
+    <h2>🏪 Store Tiers</h2>
+    <div class="reward-tier-grid">
+      <div class="reward-tier-card t1">
+        <h4>🟠 Tier 1 Stores</h4>
+        <ul>
+          <li>Angsana</li>
+          <li>Toppen</li>
+          <li>Paradigm</li>
+          <li>JBBi</li>
+          <li>SCM</li>
+          <li>Imago</li>
+          <li>Kangar</li>
+        </ul>
+      </div>
+      <div class="reward-tier-card t2">
+        <h4>🔵 Tier 2 Stores</h4>
+        <ul>
+          <li>Sogo</li>
+          <li>AC</li>
+          <li>Manjung</li>
+          <li>AJM</li>
+          <li>SWM <small>(excl. rejected)</small></li>
+          <li>Kulim <small>(excl. rejected)</small></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="card green">
+    <h2>📣 Team Challenge — All Locations</h2>
+    <span class="period-badge green">22 May – 7 June 2026</span>
+    <p style="margin-top:0.5rem;font-size:0.9rem;">As a team, make sure <strong>EVERY customer understands</strong> the 5× multiplier promo and is encouraged to spend more!</p>
+    <div class="limit-box" style="margin-top:0.75rem;">
+      <span class="limit-icon">🎯</span>
+      <span>Goal: push customers to RM250 / RM380 / RM500 to unlock massive entry multipliers. See the <strong>🏆 Grand Prizes</strong> tab for the full multiplier table.</span>
+    </div>
+  </div>
+
+</section>
+
+<!-- JUNE RELEASE -->
+<section id="junerelease" role="tabpanel">
+
+  <div class="card" style="border-left-color:#e67e00;">
+    <h2>🆕 June Bundle Deal — Best Value!</h2>
+    <span class="period-badge">June 2026 — Tier 1 Stores</span>
+    <p style="margin:0.5rem 0 0.75rem;font-size:0.9rem;">Buy <strong>any 4 jerseys</strong> to unlock all of these:</p>
+    <div class="bundle-item">
+      <div class="bnum">1</div>
+      <div>💸 <strong>RM20 Instant Rebate</strong> automatically applied</div>
+    </div>
+    <div class="bundle-item">
+      <div class="bnum">2</div>
+      <div>
+        🛒 <strong>PWP — New June Release at ~50% OFF:</strong>
+        <ul style="margin:0.4rem 0 0 1rem;font-size:0.85rem;">
+          <li><strong>RM28/pc:</strong> JP153, JP154, JP155, JP156, JP158, KF1, KF2 <em>(LS +RM5, Big Size +RM5)</em></li>
+          <li><strong>RM39/pc:</strong> BS56 <em>(LS +RM10, Big Size +RM5)</em></li>
+          <li>⚠️ Limited to <strong>100 pcs only</strong> — while stocks last!</li>
+        </ul>
+      </div>
+    </div>
+    <div class="bundle-item">
+      <div class="bnum">3</div>
+      <div>🎁 Spend <strong>RM250 nett</strong> → FREE Nekozilla Set (RM79) + Grand Lucky Draw entries ×3</div>
+    </div>
+    <div class="limit-box" style="margin-top:0.75rem;">
+      <span class="limit-icon">⛔</span>
+      <span><strong>IR20 &amp; MLD vouchers CANNOT be used on new launch items.</strong></span>
+    </div>
+  </div>
+
+  <div class="card yellow">
+    <h2>🏷️ Raya Design — Markdown Update</h2>
+    <span class="period-badge">Effective 22 May 2026 — All Locations</span>
+    <p style="margin:0.5rem 0 0.75rem;font-size:0.9rem;">Raya designs move to <strong>Markdown (C3)</strong> pricing:</p>
+    <table class="exception-table" style="margin-top:0.5rem;">
+      <tr>
+        <th>Design</th>
+        <th>New MD Price</th>
+        <th>Notes</th>
+      </tr>
+      <tr>
+        <td>RY22 &amp; RY23 (Adult)</td>
+        <td><strong>RM35</strong></td>
+        <td>LS +RM10 &nbsp;|&nbsp; Big Size +RM5</td>
+      </tr>
+      <tr>
+        <td>RY23kid (Kids)</td>
+        <td><strong>RM25</strong></td>
+        <td>—</td>
+      </tr>
+    </table>
+    <div class="limit-box" style="margin-top:0.75rem;">
+      <span class="limit-icon">⛔</span>
+      <span><strong>IR20 (RM20 rebate) &amp; MLD Vouchers are NOT applicable</strong> on Raya Markdown items.</span>
+    </div>
+  </div>
+
+  <div class="card">
+    <h2>🔤 New SKU Naming — From June 2026</h2>
+    <p style="font-size:0.9rem;margin-bottom:0.75rem;">Product codes are changing! Use the new codes when entering sales or referencing items.</p>
+    <div class="sku-grid">
+      <div class="sku-card">
+        <div class="sku-old">JP (Female)</div>
+        <div class="sku-new">KF</div>
+        <div class="sku-label">Kawaii Female</div>
+      </div>
+      <div class="sku-card">
+        <div class="sku-old">JP (Male)</div>
+        <div class="sku-new">KM</div>
+        <div class="sku-label">Kawaii Male</div>
+      </div>
+      <div class="sku-card">
+        <div class="sku-old">JP (City)</div>
+        <div class="sku-new">CT</div>
+        <div class="sku-label">JP City</div>
+      </div>
+    </div>
+    <div class="limit-box" style="margin-top:0.75rem;">
+      <span class="limit-icon">💡</span>
+      <span>Example: What was <em>JP KF1</em> before is now just <strong>KF1</strong>. Same for KM and CT series.</span>
+    </div>
+  </div>
+
+  <div class="card green">
+    <h2>✨ New Drop — Kawaii Female (KF) Collection</h2>
+    <p style="font-size:0.9rem;">Lokalteez's new jersey collection <strong>made for her</strong> — stylish, comfortable &amp; made to stand out! ✨</p>
+    <ul style="margin:0.75rem 0 0 1.25rem;font-size:0.9rem;">
+      <li>New designs: <strong>KF1, KF2</strong> (part of June Bundle Deal PWP)</li>
+      <li>Limited stock — push early!</li>
+      <li>Catalogue: <a href="https://canva.link/d2xzuhd2o1l22ji" target="_blank" style="color:var(--red);">canva.link/d2xzuhd2o1l22ji</a></li>
+    </ul>
+  </div>
+
+</section>
+
 <!-- RULES -->
 <section id="rules" role="tabpanel">
   <div class="card">
@@ -897,7 +1219,7 @@
 
   (function() {
     const hash = location.hash.replace('#', '');
-    const valid = ['overview', 'tiers', 'grandprizes', 'mld', 'scripts', 'flow', 'rules'];
+    const valid = ['overview', 'tiers', 'grandprizes', 'mld', 'scripts', 'flow', 'staffrewards', 'junerelease', 'rules'];
     if (hash && valid.includes(hash)) {
       const btn = document.querySelector('[aria-controls="' + hash + '"]');
       if (btn) showSection(hash, btn);
