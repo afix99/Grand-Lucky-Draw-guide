@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Lokalteez 2026 Q2 Retail Activities — Quick Guide</title>
+<title>Lokalteez 2026 Q2 Retail Activities — Staff Quick Guide</title>
 <style>
   :root {
     --red: #e60012;
@@ -248,6 +248,66 @@
   .card-mt { margin-top: 1rem; }
   .mld-intro { margin-bottom: 0.75rem; }
   .flow-note { margin-top: 0.5rem; color: #666; font-size: 0.9rem; }
+
+  /* Grand Lucky Draw Prizes */
+  .prizes-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+    gap: 0.75rem;
+    margin-top: 0.75rem;
+  }
+  .prize-item {
+    background: linear-gradient(135deg, #fff8e1, #fff3cd);
+    border: 2px solid var(--yellow);
+    border-radius: 12px;
+    padding: 0.75rem 0.5rem;
+    text-align: center;
+    font-size: 0.85rem;
+    font-weight: 600;
+  }
+  .prize-item .prize-icon { font-size: 1.6rem; display: block; margin-bottom: 0.3rem; }
+  .prize-item.grand {
+    background: linear-gradient(135deg, #ffd700, #ff9f43);
+    border-color: #e67e00;
+    color: var(--black);
+  }
+
+  /* Entry limit callout */
+  .limit-box {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    background: #fff3cd;
+    border: 2px solid #ffc107;
+    border-radius: 12px;
+    padding: 0.75rem 1rem;
+    margin: 0.75rem 0;
+    font-size: 0.9rem;
+  }
+  .limit-box .limit-icon { font-size: 1.5rem; flex-shrink: 0; }
+
+  /* Natural flow callout */
+  .flow-path {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    margin-top: 0.75rem;
+  }
+  .flow-arrow {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.9rem;
+  }
+  .flow-arrow .arrow { color: var(--red); font-weight: 900; font-size: 1.1rem; }
+  .flow-arrow .amount {
+    background: var(--red);
+    color: white;
+    padding: 0.2rem 0.6rem;
+    border-radius: 6px;
+    font-weight: 700;
+    white-space: nowrap;
+  }
   @media print {
     header { position: static; box-shadow: none; background: none; color: #000; padding: 0.5rem 0; }
     header h1 { font-size: 1.2rem; }
@@ -267,12 +327,14 @@
 <header>
   <h1>🎯 Lokalteez 2026 Q2 Retail Activities</h1>
   <p>7 April – 30 June 2026 &nbsp;|&nbsp; Excluded: Clearance Store</p>
+  <p style="font-size:0.85rem;opacity:0.85;margin-top:0.3rem;">Featuring the <strong>5th Anniversary Grand Lucky Draw</strong> — 999 prizes worth up to RM50k+</p>
   <span class="badge">Staff Quick Guide</span>
 </header>
 
 <nav role="tablist">
   <button role="tab" aria-selected="true" aria-controls="overview" class="active" onclick="showSection('overview', this)">Overview</button>
   <button role="tab" aria-selected="false" aria-controls="tiers" onclick="showSection('tiers', this)">3 Tiers</button>
+  <button role="tab" aria-selected="false" aria-controls="grandprizes" onclick="showSection('grandprizes', this)">🏆 Grand Prizes</button>
   <button role="tab" aria-selected="false" aria-controls="mld" onclick="showSection('mld', this)">Mini Lucky Draw</button>
   <button role="tab" aria-selected="false" aria-controls="scripts" onclick="showSection('scripts', this)">Staff Scripts</button>
   <button role="tab" aria-selected="false" aria-controls="flow" onclick="showSection('flow', this)">Step-by-Step</button>
@@ -288,87 +350,210 @@
     <ul>
       <li><strong>Period:</strong> 7 April 2026 – 30 June 2026</li>
       <li><strong>Scope:</strong> All stores (Clearance Store excluded)</li>
-      <li><strong>Goal:</strong> Increase TC, ATV & UPT</li>
+      <li><strong>Goal:</strong> Increase TC (transactions), ATV (average transaction value) & UPT (units per transaction)</li>
     </ul>
     <div class="highlight-box">
-      <strong>Remember the 3 magic numbers:</strong><br>
-      RM100 → RM20 Rebate + 1 Grand Entry<br>
-      RM180 → 2 Grand Entries (double chance)<br>
-      RM250 → FREE Nekozilla Set + 2 Entries
+      <strong>Remember the 3 magic numbers:</strong><br><br>
+      💰 <strong style="color:var(--yellow)">RM100</strong> → RM20 Instant Rebate + 1 Grand Lucky Draw Entry<br>
+      🔥 <strong style="color:var(--yellow)">RM180</strong> → 2 Grand Entries (double your winning chances!) + PWP Set RM19<br>
+      🎁 <strong style="color:var(--yellow)">RM250</strong> → FREE Nekozilla Set (worth RM79) + 2 Grand Entries
+    </div>
+    <div class="limit-box">
+      <span class="limit-icon">⚠️</span>
+      <span><strong>Entry Cap:</strong> Maximum <strong>2 Grand Lucky Draw entries per transaction</strong>, regardless of total spend.</span>
+    </div>
+  </div>
+
+  <div class="card">
+    <h2>🔢 How to Qualify — Quick Reference</h2>
+    <div class="flow-path">
+      <div class="flow-arrow">
+        <span class="amount">Any purchase</span>
+        <span class="arrow">→</span>
+        <span>🎲 1 Mini Lucky Draw spin (on the spot!)</span>
+      </div>
+      <div class="flow-arrow">
+        <span class="amount">RM100 nett</span>
+        <span class="arrow">→</span>
+        <span>💸 RM20 rebate + 🎰 x1 Grand Entry</span>
+      </div>
+      <div class="flow-arrow">
+        <span class="amount">RM180 nett</span>
+        <span class="arrow">→</span>
+        <span>🎰 x2 Grand Entries + 🛍️ PWP Nekozilla at RM19</span>
+      </div>
+      <div class="flow-arrow">
+        <span class="amount">RM250 nett</span>
+        <span class="arrow">→</span>
+        <span>🎁 FREE Nekozilla Set (RM79 value!) + 🎰 x2 Grand Entries</span>
+      </div>
     </div>
   </div>
 
   <div class="card yellow">
     <h2>🎁 What is GWP vs PWP?</h2>
     <ul>
-      <li><strong>GWP</strong> = Gift With Purchase = <span class="yes">FREE</span> (e.g., Nekozilla at RM250)</li>
-      <li><strong>PWP</strong> = Purchase With Purchase = <span class="no">Discounted</span> add-on (e.g., Nekozilla at RM19 with RM180 spend)</li>
+      <li><strong>GWP (Gift With Purchase)</strong> = <span class="yes">FREE</span> — e.g., Nekozilla Set free when you spend RM250</li>
+      <li><strong>PWP (Purchase With Purchase)</strong> = <span class="no">Discounted add-on</span> — e.g., Nekozilla Set at only RM19 when you spend RM180</li>
     </ul>
+    <p style="font-size:0.85rem;margin-top:0.5rem;color:#666;">💡 <em>At RM180, the customer can <strong>buy</strong> the set for RM19. At RM250, they get it <strong>free</strong>.</em></p>
   </div>
 
   <div class="card green">
-    <h2>🎲 Mini Lucky Draw (MLD)</h2>
+    <h2>🎲 Mini Lucky Draw (MLD) — Quick Facts</h2>
     <ul>
-      <li><strong>Any purchase</strong> — no minimum spend</li>
-      <li>1 draw per transaction</li>
-      <li>Prizes redeemed <strong>on the spot</strong></li>
-      <li>Vouchers valid on <strong>normal price items</strong> only (unless stated FREE)</li>
+      <li>✅ <strong>ANY purchase</strong> qualifies — no minimum spend</li>
+      <li>✅ 1 draw per transaction</li>
+      <li>✅ Prizes redeemed <strong>on the spot, immediately</strong></li>
+      <li>⚠️ Vouchers valid on <strong>normal price items only</strong> (unless the prize says "FREE")</li>
     </ul>
   </div>
 </section>
 
 <!-- TIERS -->
 <section id="tiers" role="tabpanel">
+  <div class="limit-box" style="margin-bottom:1rem;">
+    <span class="limit-icon">⚠️</span>
+    <span><strong>Entry Cap:</strong> Maximum <strong>2 Grand Lucky Draw entries per transaction</strong> — even if total spend exceeds RM360.</span>
+  </div>
+
   <div class="tier-grid">
     <div class="tier-card">
       <div class="tier-header t1">Tier 1 — Traffic Driver</div>
       <div class="tier-body">
         <span class="price-tag">RM100</span>
-        <small>Minimum spend</small>
+        <small>Nett spend minimum</small>
         <ul>
-          <li>✅ RM20 Instant Rebate</li>
-          <li>✅ 1 Grand Lucky Draw Entry</li>
-          <li>✅ 1 Mini Lucky Draw</li>
+          <li>✅ <strong>RM20 Instant Rebate</strong></li>
+          <li>✅ <strong>x1</strong> 5th Anniversary Grand Lucky Draw Entry</li>
+          <li>✅ 1 Mini Lucky Draw spin</li>
         </ul>
-        <p class="tier-objective"><strong>Objective:</strong> Lower entry barrier. Convert window shoppers. Push RM90 customers to add 1 more item.</p>
+        <p class="tier-objective"><strong>Goal:</strong> Lower entry barrier. Convert window shoppers to buyers. Push any RM90 basket to RM100 (just 1 more item!).</p>
       </div>
     </div>
     <div class="tier-card">
-      <div class="tier-header t2">Tier 2 — Best Push</div>
+      <div class="tier-header t2">Tier 2 — Best Push 🔥</div>
       <div class="tier-body">
         <span class="price-tag">RM180</span>
-        <small>Nett price</small>
+        <small>Nett spend (after rebate)</small>
         <ul>
-          <li>✅ 2 Grand Lucky Draw Entries</li>
-          <li>✅ 1 Mini Lucky Draw</li>
-          <li>✅ PWP Nekozilla Set at RM19</li>
+          <li>✅ <strong>x2</strong> Grand Lucky Draw Entries</li>
+          <li>✅ 1 Mini Lucky Draw spin</li>
+          <li>✅ <strong>PWP:</strong> Nekozilla Set at only RM19 <em>(worth RM79!)</em></li>
         </ul>
-        <p class="tier-objective"><strong>Objective:</strong> Double chances to win. Create urgency. Best balance of spend vs reward.</p>
+        <p class="tier-objective"><strong>Goal:</strong> Double winning chances. Best value for money. Target customers already at RM120–RM179 and push them up.</p>
       </div>
     </div>
     <div class="tier-card">
-      <div class="tier-header t3">Tier 3 — Upsell Max</div>
+      <div class="tier-header t3">Tier 3 — Upsell Max 🎁</div>
       <div class="tier-body">
         <span class="price-tag">RM250</span>
-        <small>Nett price</small>
+        <small>Nett spend (after rebate)</small>
         <ul>
-          <li>✅ FREE Nekozilla Set (worth RM79)</li>
-          <li>✅ 2 Grand Lucky Draw Entries</li>
-          <li>✅ 1 Mini Lucky Draw</li>
+          <li>✅ <strong>FREE</strong> Nekozilla Set <em>(worth RM79!)</em></li>
+          <li>✅ <strong>x2</strong> Grand Lucky Draw Entries</li>
+          <li>✅ 1 Mini Lucky Draw spin</li>
         </ul>
-        <p class="tier-objective"><strong>Objective:</strong> Maximize ATV. Give away limited-edition merch to lock in highest basket size.</p>
+        <p class="tier-objective"><strong>Goal:</strong> Maximise ATV. Reward the biggest basket with a free limited-edition gift set.</p>
       </div>
     </div>
   </div>
 
   <div class="card card-mt">
-    <h2>🎁 Nekozilla Set Contents (worth RM79)</h2>
+    <h2>🎁 Nekozilla Set — What's Inside?</h2>
+    <p style="margin-bottom:0.75rem;font-size:0.9rem;color:#666;">This limited-edition set is the carrot for Tier 2 (PWP RM19) and Tier 3 (FREE).</p>
     <ul>
-      <li>Tote Bag — RM39</li>
-      <li>Keychain — RM29</li>
-      <li>Lanyard — RM29</li>
-      <li>Sticker — RM10</li>
-      <li>Dinoz & Nekoz Enamel Pin — RM39</li>
+      <li>🛍️ Tote Bag</li>
+      <li>🔑 Keychain</li>
+      <li>🪢 Lanyard</li>
+      <li>🗒️ Sticker</li>
+      <li>📌 Dinoz &amp; Nekoz Enamel Pin</li>
+    </ul>
+    <div class="limit-box" style="margin-top:0.75rem;">
+      <span class="limit-icon">🏪</span>
+      <span><strong>Sogo / Manjung / AC stores only:</strong> FREE Nekozilla Set (RM250 tier) is <strong>NOT applicable</strong> for Markdown (MD) items.</span>
+    </div>
+  </div>
+</section>
+
+<!-- GRAND PRIZES -->
+<section id="grandprizes" role="tabpanel">
+  <div class="card">
+    <h2>🏆 5th Anniversary Grand Lucky Draw</h2>
+    <p style="margin-bottom:0.75rem;">This is our <strong>biggest promotion of the year</strong>. Use it to create excitement and close every sale!</p>
+
+    <div class="highlight-box">
+      <strong>🎯 Total Prizes: 999 Winners!</strong><br>
+      <span style="font-size:0.85rem;opacity:0.9;">Draw activates once <strong>9,999 tickets</strong> are collected. Winners announced <strong>end of July 2026</strong>.</span><br><br>
+      <span style="font-size:0.85rem;opacity:0.85;">📊 Odds example: Every ~10 customers = 1 winner. With 2 entries, your chances are <strong>2× higher</strong>!</span>
+    </div>
+
+    <h3 style="margin-top:1rem;color:#e67e00;font-size:1rem;">🥇 Grand Prize</h3>
+    <div class="prizes-grid">
+      <div class="prize-item grand">
+        <span class="prize-icon">🏍️</span>
+        Motorcycle
+      </div>
+    </div>
+
+    <h3 style="margin-top:1rem;color:var(--red);font-size:1rem;">🥈 Major Prizes</h3>
+    <div class="prizes-grid">
+      <div class="prize-item">
+        <span class="prize-icon">✈️</span>
+        Japan Trip
+      </div>
+      <div class="prize-item">
+        <span class="prize-icon">🟡</span>
+        Gold Bar
+      </div>
+      <div class="prize-item">
+        <span class="prize-icon">📱</span>
+        Handphone
+      </div>
+      <div class="prize-item">
+        <span class="prize-icon">📺</span>
+        TV
+      </div>
+      <div class="prize-item">
+        <span class="prize-icon">🎁</span>
+        + More prizes!
+      </div>
+    </div>
+  </div>
+
+  <div class="card yellow">
+    <h2>📝 How to Earn Entries</h2>
+    <div class="flow-path" style="margin-top:0.5rem;">
+      <div class="flow-arrow">
+        <span class="amount">Nett RM100</span>
+        <span class="arrow">→</span>
+        <span>🎰 <strong>x1 entry</strong></span>
+      </div>
+      <div class="flow-arrow">
+        <span class="amount">Nett RM180</span>
+        <span class="arrow">→</span>
+        <span>🎰 <strong>x2 entries</strong> (double chance to win!)</span>
+      </div>
+    </div>
+    <div class="limit-box" style="margin-top:0.75rem;">
+      <span class="limit-icon">⚠️</span>
+      <span><strong>Max 2 entries per transaction.</strong> To earn more entries, come back for another visit — campaign runs until end of June!</span>
+    </div>
+  </div>
+
+  <div class="card green">
+    <h2>🎤 Use This to Sell — Staff Script</h2>
+    <div class="script-box" onclick="copyText(this)">
+      <span class="label">Grand Prize Pitch</span>
+      <button class="copy-btn">Copy</button>
+      <p>"You're very close to RM180. If you add just a bit more, you get 2 entries instead of 1 — double your chances to win the grand prize! We have 999 prizes total, so your odds are actually very good. Means every 10 people = 1 winner, and with 2 entries your chances are super high!"</p>
+    </div>
+
+    <h3>Why this works:</h3>
+    <ul style="margin-left:1.25rem;font-size:0.9rem;">
+      <li>Creates excitement &amp; urgency ("999 prizes!", "draw activates when tickets run out!")</li>
+      <li>Encourages higher spend per transaction (ATV &amp; UPT)</li>
+      <li>Increases repeat visits ("come back again to get more entries!")</li>
     </ul>
   </div>
 </section>
@@ -454,53 +639,88 @@
 
 <!-- FLOW -->
 <section id="flow" role="tabpanel">
+
+  <div class="card yellow">
+    <h2>💡 Natural Customer Journey — Starting at RM90</h2>
+    <p style="margin-bottom:0.75rem;font-size:0.9rem;color:#555;">Use this as your mental script for any customer who comes in spending around RM90.</p>
+    <div class="flow-path">
+      <div class="flow-arrow">
+        <span class="amount" style="background:#888;">RM90 basket</span>
+        <span class="arrow">→</span>
+        <span>"Add 1 more item → hit RM100, get RM20 rebate + 1 entry + Mini Draw spin!"</span>
+      </div>
+      <div class="flow-arrow">
+        <span class="amount" style="background:#ff9f43;">RM100 hit</span>
+        <span class="arrow">→</span>
+        <span>"Top up a bit more → Nett RM180, get double entries + PWP Nekozilla at only RM19 (worth RM79)"</span>
+      </div>
+      <div class="flow-arrow">
+        <span class="amount" style="background:#e60012;">RM180 hit</span>
+        <span class="arrow">→</span>
+        <span>"Best deal is Nett RM250 → FREE Nekozilla Set (RM79) + 2 entries + Mini Draw"</span>
+      </div>
+      <div class="flow-arrow">
+        <span class="amount" style="background:#2ed573;color:#111;">RM250 hit ✅</span>
+        <span class="arrow">→</span>
+        <span>After payment → Mini Lucky Draw → then register for Grand Lucky Draw!</span>
+      </div>
+    </div>
+  </div>
+
   <div class="card">
     <h2>🔄 Step-by-Step Selling Flow</h2>
 
     <div class="flow-step">
       <div class="flow-num">1</div>
       <div class="flow-content">
-        <h4>First Purchase — Push the Tier</h4>
-        <p>Before checkout, staff must already know the target ATV for this transaction.</p>
+        <h4>First Purchase — Push to the Right Tier</h4>
+        <p>Before checkout, you <strong>must already know</strong> the customer's basket total and your upsell target.</p>
         <ul>
-          <li>Push to <strong>RM100</strong> → rebate + 1 entry + mini draw</li>
-          <li>Best push <strong>RM180</strong> → 2 entries + mini draw + PWP</li>
-          <li>Max push <strong>RM250</strong> → free gift + 2 entries + mini draw</li>
+          <li>Push to <strong>RM100</strong> → RM20 rebate + x1 entry + Mini Draw spin</li>
+          <li>Best push to <strong>RM180</strong> → x2 entries + Mini Draw + PWP Nekozilla RM19</li>
+          <li>Max push to <strong>RM250</strong> → FREE Nekozilla Set + x2 entries + Mini Draw</li>
         </ul>
+        <p class="flow-note">💡 Tip: Know the gap. "You're at RM140 — just RM40 more and you get double entries AND a discounted Nekozilla set at RM19!"</p>
       </div>
     </div>
 
     <div class="flow-step">
       <div class="flow-num">2</div>
       <div class="flow-content">
-        <h4>Mini Lucky Draw — Instant Gratification</h4>
-        <p>"🎉 You get a FREE Mini Lucky Draw!" Customer draws prize on the spot.</p>
+        <h4>Mini Lucky Draw — Instant Excitement 🎉</h4>
+        <p>"Tahniah! You get a FREE Mini Lucky Draw right now!" — Customer draws their prize on the spot.</p>
+        <p class="flow-note">Hand the draw slip right after payment. Don't let them leave without doing it!</p>
       </div>
     </div>
 
     <div class="flow-step">
       <div class="flow-num">3</div>
       <div class="flow-content">
-        <h4>Upsell (MOST IMPORTANT)</h4>
-        <p>Use the MLD prize to upsell immediately.</p>
+        <h4>⭐ Upsell Using the MLD Win (MOST IMPORTANT STEP)</h4>
+        <p>Immediately after they draw, use the prize to push a second purchase.</p>
         <ul>
-          <li>If 1st purchase <strong>below RM180</strong>: "Top up a bit to RM180 for double entries 🔥"</li>
-          <li>If 1st purchase <strong>already RM180+</strong>: Use voucher to add more items at discount</li>
+          <li>If 1st purchase <strong>below RM180 nett:</strong><br>
+            <em>"You can use your voucher now! Top up a bit to RM180 nett — we combine the receipts, so you get double Grand Lucky Draw entries too 🔥"</em></li>
+          <li>If 1st purchase <strong>already RM180+ nett:</strong><br>
+            <em>"Wah, good deal! Grab the jersey you like at half price now, only RM22. Better get 2 pieces to fully use your voucher — super worth!"</em></li>
         </ul>
+        <p class="flow-note">✅ You can combine today's receipts (original + Mini Draw receipt) when registering the Grand Lucky Draw.</p>
       </div>
     </div>
 
     <div class="flow-step">
       <div class="flow-num">4</div>
       <div class="flow-content">
-        <h4>Register (LAST STEP)</h4>
-        <p>"Now please scan this QR code to register your Lucky Draw entry. Make sure your contact number is correct so we can reach you for the prize 👍"</p>
+        <h4>Register for Grand Lucky Draw (LAST STEP)</h4>
+        <p>"Please scan this QR code to register your Lucky Draw entry. Make sure your phone number is correct — we'll call you if you win! 👍"</p>
         <ul>
-          <li>Collect: Name, Phone, MyKad, Purchase Date, State, Total Purchase Amount</li>
-          <li>Can combine receipts (same day) before registering</li>
-          <li>Staff must guide and verify details</li>
+          <li>Collect: <strong>Name, Phone, MyKad No., Purchase Date, State, Total Purchase Amount</strong></li>
+          <li>Combine same-day receipts before filling in the total</li>
+          <li>Staff must guide and double-check all details</li>
         </ul>
-        <p class="flow-note">Winners announced end of July 2026. Campaign runs until end of June.</p>
+        <p style="margin-top:0.5rem;background:#f4f4f4;padding:0.75rem;border-radius:8px;font-size:0.9rem;">
+          🗣️ <em>"Thank you for your support! 🙏 This campaign runs until end of June, feel free to come back and earn more entries. Winners will be announced end of July 2026 — good luck! 🎉"</em>
+        </p>
       </div>
     </div>
   </div>
@@ -509,69 +729,90 @@
 <!-- RULES -->
 <section id="rules" role="tabpanel">
   <div class="card">
-    <h2>📜 Receipt Combination Rules</h2>
+    <h2>📜 Frequently Asked Questions</h2>
 
-    <button class="toggle-btn" aria-expanded="false" onclick="toggle(this)">Can we combine receipts for Grand Lucky Draw?</button>
+    <button class="toggle-btn" aria-expanded="false" onclick="toggle(this)">How many Grand Lucky Draw entries can I earn per transaction?</button>
+    <div class="toggle-content">
+      <p><strong>Maximum 2 entries per transaction</strong>, regardless of total spend.</p>
+      <ul>
+        <li><span class="amount" style="background:var(--red);color:white;padding:0.1rem 0.4rem;border-radius:4px;font-size:0.85rem;">RM100 nett</span> → x1 entry</li>
+        <li><span class="amount" style="background:var(--red);color:white;padding:0.1rem 0.4rem;border-radius:4px;font-size:0.85rem;">RM180 nett</span> → x2 entries (max)</li>
+        <li>Spending RM300, RM400 etc. still gives max x2 entries</li>
+      </ul>
+      <p style="margin-top:0.5rem;"><em>💡 To earn more entries: encourage the customer to come back for another purchase on another day!</em></p>
+    </div>
+
+    <button class="toggle-btn" aria-expanded="false" onclick="toggle(this)">Can we combine receipts for Grand Lucky Draw registration?</button>
     <div class="toggle-content">
       <p><span class="yes">YES</span> — but only under these conditions:</p>
       <ul>
         <li>Original receipt + Mini Lucky Draw receipt</li>
         <li>Must be <strong>same day</strong></li>
-        <li>Combine <strong>BEFORE</strong> registering for Grand Lucky Draw</li>
+        <li>Must combine <strong>BEFORE</strong> registering for Grand Lucky Draw</li>
         <li>Customer fills in the <strong>total combined amount</strong> when registering</li>
       </ul>
-      <p><em>Example: RM100 first purchase + RM80 upsell after MLD = RM180 total → 2 entries</em></p>
+      <p style="margin-top:0.5rem;"><em>Example: RM100 first purchase + RM80 MLD upsell = RM180 total → qualifies for 2 entries when registering</em></p>
     </div>
 
-    <button class="toggle-btn" aria-expanded="false" onclick="toggle(this)">Can we combine receipts for FREE Nekozilla Set (RM250)?</button>
+    <button class="toggle-btn" aria-expanded="false" onclick="toggle(this)">Can receipts be combined for the FREE Nekozilla Set (RM250)?</button>
     <div class="toggle-content">
-      <p><span class="no">NO</span> — not explicitly allowed.</p>
+      <p><span class="no">NO</span> — the FREE set requires a single checkout transaction of RM250 nett.</p>
       <ul>
-        <li>FREE Nekozilla requires <strong>RM250 in a single transaction at checkout</strong></li>
-        <li>Receipt combination rule only applies to <strong>Grand Lucky Draw registration</strong></li>
-        <li>If customer hits RM180 first, they remain on PWP path (RM19 for set), even if they add more later</li>
+        <li>Receipt combination <strong>only applies to Grand Lucky Draw registration</strong></li>
+        <li>If a customer checks out at RM180 first → they get the PWP option (RM19 for set), even if they spend more later</li>
       </ul>
     </div>
 
-    <button class="toggle-btn" aria-expanded="false" onclick="toggle(this)">Can Markdown (MD) purchases get Mini Lucky Draw?</button>
+    <button class="toggle-btn" aria-expanded="false" onclick="toggle(this)">Can Markdown (MD) purchases qualify for Mini Lucky Draw?</button>
     <div class="toggle-content">
-      <p><span class="yes">YES</span> — Mini Lucky Draw is available with <strong>ANY purchase</strong>, no minimum, regardless of MD or normal price.</p>
-      <ul>
-        <li>Page 7: "Additional prizes with any purchase — No minimum purchase"</li>
-        <li>Page 15 confirms for Sogo/Manjung/AC: MD items are applicable for Mini Lucky Draw</li>
-      </ul>
-      <p>However, MLD <strong>vouchers</strong> won can only be used on normal price items (unless the voucher says FREE).</p>
+      <p><span class="yes">YES</span> — Mini Lucky Draw is available with <strong>ANY purchase</strong>, no minimum spend, including MD items.</p>
+      <p style="margin-top:0.5rem;"><strong>However</strong> — MLD <strong>vouchers won</strong> can only be redeemed on <strong>normal price items</strong> (unless the prize specifically says "FREE").</p>
     </div>
 
-    <button class="toggle-btn" aria-expanded="false" onclick="toggle(this)">Can Markdown purchases get FREE Nekozilla?</button>
+    <button class="toggle-btn" aria-expanded="false" onclick="toggle(this)">Can Markdown purchases earn the FREE Nekozilla Set (Sogo/Manjung/AC)?</button>
     <div class="toggle-content">
-      <p><span class="no">NO</span> — explicitly excluded.</p>
-      <p>Page 15: "Sogo, Manjung & AC take Note: Anniversary & mini lucky draw are applicable for MD. <strong>But excluded for FREE Nekozilla.</strong>"</p>
+      <p><span class="no">NO</span> — explicitly excluded for those stores.</p>
+      <p>"Anniversary &amp; mini lucky draw <strong>are</strong> applicable for MD. But <strong>excluded for FREE Nekozilla set</strong>." (Sogo, Manjung &amp; AC stores)</p>
+    </div>
+
+    <button class="toggle-btn" aria-expanded="false" onclick="toggle(this)">When does the Grand Lucky Draw activate?</button>
+    <div class="toggle-content">
+      <p>The draw activates once <strong>9,999 tickets</strong> are collected nationwide.</p>
+      <ul>
+        <li>Total of <strong>999 prizes</strong> to be won</li>
+        <li>Winners announced: <strong>End of July 2026</strong></li>
+        <li>Use this as urgency: <em>"Tickets are filling up fast — get yours before the draw activates!"</em></li>
+      </ul>
     </div>
   </div>
 
   <div class="card">
-    <h2>🏪 Store Exceptions (Sogo, Manjung & AC)</h2>
+    <h2>🏪 Store Exceptions Table (Sogo, Manjung & AC)</h2>
     <table class="exception-table">
       <tr>
         <th>Promotion</th>
-        <th>MD Items Allowed?</th>
+        <th>Normal Price Items</th>
+        <th>MD Items</th>
       </tr>
       <tr>
-        <td>Mini Lucky Draw</td>
+        <td>Mini Lucky Draw — earn spin</td>
+        <td class="yes">YES</td>
         <td class="yes">YES</td>
       </tr>
       <tr>
-        <td>Anniversary Grand Lucky Draw (entries)</td>
+        <td>5th Anniversary Grand Lucky Draw — earn entries</td>
+        <td class="yes">YES</td>
         <td class="yes">YES</td>
       </tr>
       <tr>
         <td>FREE Nekozilla Set (RM250 tier)</td>
+        <td class="yes">YES</td>
         <td class="no">NO</td>
       </tr>
       <tr>
-        <td>MLD Vouchers redemption</td>
-        <td class="no">NO (normal price only, unless FREE)</td>
+        <td>MLD Voucher redemption</td>
+        <td class="yes">YES</td>
+        <td class="no">NO (unless prize says FREE)</td>
       </tr>
     </table>
   </div>
@@ -579,10 +820,10 @@
   <div class="card yellow">
     <h2>⏰ Important Dates</h2>
     <ul>
-      <li><strong>Campaign Period:</strong> 7 April – 30 June 2026</li>
-      <li><strong>Grand Draw Activation:</strong> Once 9,999 tickets collected</li>
-      <li><strong>Winner Announcement:</strong> End of July 2026</li>
-      <li><strong>All current promotions end:</strong> 30 June 2026 (tomorrow onwards new rules apply)</li>
+      <li>📅 <strong>Campaign Period:</strong> 7 April – 30 June 2026</li>
+      <li>🎰 <strong>Grand Draw Activation:</strong> Once 9,999 tickets are collected</li>
+      <li>🏆 <strong>Winner Announcement:</strong> End of July 2026</li>
+      <li>🏷️ <strong>Campaign ends:</strong> 30 June 2026 — encourage customers to come back before then!</li>
     </ul>
   </div>
 </section>
@@ -656,7 +897,7 @@
 
   (function() {
     const hash = location.hash.replace('#', '');
-    const valid = ['overview', 'tiers', 'mld', 'scripts', 'flow', 'rules'];
+    const valid = ['overview', 'tiers', 'grandprizes', 'mld', 'scripts', 'flow', 'rules'];
     if (hash && valid.includes(hash)) {
       const btn = document.querySelector('[aria-controls="' + hash + '"]');
       if (btn) showSection(hash, btn);
