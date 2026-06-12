@@ -400,6 +400,79 @@
   .design-chip.new { background: #fff3cd; border-color: var(--yellow); }
   .design-chip.new::before { content: "NEW "; color: #e67e00; font-weight: 900; font-size: 0.7rem; }
 
+  /* SKU image cards */
+  .sku-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+    gap: 0.75rem;
+    margin-top: 0.7rem;
+  }
+  .sku-card {
+    margin: 0;
+    background: var(--white);
+    border: 1px solid #eee;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.07);
+    transition: transform 0.15s, box-shadow 0.15s;
+  }
+  .sku-card:hover { transform: translateY(-3px); box-shadow: 0 6px 14px rgba(0,0,0,0.12); }
+  .sku-card img {
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    object-fit: cover;
+    display: block;
+    background: #f7f7f7;
+    cursor: zoom-in;
+  }
+  .sku-card figcaption {
+    padding: 0.5rem 0.4rem;
+    text-align: center;
+    font-size: 0.82rem;
+    font-weight: 700;
+    color: var(--black);
+    line-height: 1.25;
+  }
+  .sku-card figcaption .code {
+    display: block;
+    color: var(--red);
+    font-weight: 800;
+    font-size: 0.74rem;
+    margin-top: 0.1rem;
+  }
+
+  /* Lightbox */
+  .lightbox {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.88);
+    z-index: 200;
+    align-items: center;
+    justify-content: center;
+    padding: 1.5rem;
+    cursor: zoom-out;
+  }
+  .lightbox.open { display: flex; }
+  .lightbox img {
+    max-width: 100%;
+    max-height: 100%;
+    border-radius: 12px;
+    box-shadow: 0 10px 40px rgba(0,0,0,0.5);
+  }
+  .lightbox .lb-close {
+    position: absolute;
+    top: 1rem;
+    right: 1.25rem;
+    color: #fff;
+    font-size: 2rem;
+    font-weight: 700;
+    background: none;
+    border: none;
+    cursor: pointer;
+    line-height: 1;
+  }
+
   /* Clearance price rows */
   .clear-row {
     display: flex;
@@ -1087,74 +1160,86 @@
   <div id="my-designs" class="sub-panel">
     <div class="card">
       <h2>👕 C2 Design Lineup</h2>
-      <p style="color:#555;margin-bottom:0.5rem;">All designs below are part of the C2 Buy 2 Free 1 / IR20 promotion. Codes shown for quick POS lookup.</p>
+      <p style="color:#555;margin-bottom:0.5rem;">All designs below are part of the C2 Buy 2 Free 1 / IR20 promotion. Tap any image to enlarge. Codes shown for quick POS lookup.</p>
 
       <div class="design-cat">
-        <h3>🀄 JP Series</h3>
-        <div class="design-grid">
-          <span class="design-chip">Hakaiou</span>
-          <span class="design-chip">Jinko Mecha</span>
-          <span class="design-chip">Jinko Kenshi</span>
-          <span class="design-chip">Mecha Samurai</span>
+        <h3>🀄 JP — Japanese Edition</h3>
+        <div class="sku-grid">
+          <figure class="sku-card"><img loading="lazy" src="assets/sku/jp127.webp" alt="Hakaiou JP127"><figcaption>Hakaiou <span class="code">JP127</span></figcaption></figure>
+          <figure class="sku-card"><img loading="lazy" src="assets/sku/jp115.webp" alt="Jinko Mecha JP115"><figcaption>Jinko Mecha <span class="code">JP115</span></figcaption></figure>
+          <figure class="sku-card"><img loading="lazy" src="assets/sku/jp113.webp" alt="Jinko Kenshi JP113"><figcaption>Jinko Kenshi <span class="code">JP113</span></figcaption></figure>
+          <figure class="sku-card"><img loading="lazy" src="assets/sku/jp111.webp" alt="Mecha Samurai JP111"><figcaption>Mecha Samurai <span class="code">JP111</span></figcaption></figure>
+        </div>
+      </div>
+
+      <div class="design-cat">
+        <h3>🆕 JP — New Japanese Edition</h3>
+        <div class="sku-grid">
+          <figure class="sku-card"><img loading="lazy" src="assets/sku/jp133.webp" alt="Sakamori JP133"><figcaption>Sakamori <span class="code">JP133</span></figcaption></figure>
+          <figure class="sku-card"><img loading="lazy" src="assets/sku/jp134.webp" alt="Torashin JP134"><figcaption>Torashin <span class="code">JP134</span></figcaption></figure>
+          <figure class="sku-card"><img loading="lazy" src="assets/sku/jp135.webp" alt="Ranyuko JP135"><figcaption>Ranyuko <span class="code">JP135</span></figcaption></figure>
+          <figure class="sku-card"><img loading="lazy" src="assets/sku/jp136.webp" alt="Neonrai JP136"><figcaption>Neonrai <span class="code">JP136</span></figcaption></figure>
+          <figure class="sku-card"><img loading="lazy" src="assets/sku/jp138.webp" alt="Onida JP138"><figcaption>Onida <span class="code">JP138</span></figcaption></figure>
         </div>
       </div>
 
       <div class="design-cat">
         <h3>🌸 JP — Kawaii</h3>
-        <div class="design-grid">
-          <span class="design-chip">Hanahime <span class="code">JP130</span></span>
-          <span class="design-chip">Nyanko <span class="code">JP122</span></span>
-          <span class="design-chip new">Pekopeko <span class="code">JP141</span></span>
+        <div class="sku-grid">
+          <figure class="sku-card"><img loading="lazy" src="assets/sku/jp130.webp" alt="Hanahime JP130"><figcaption>Hanahime <span class="code">JP130</span></figcaption></figure>
+          <figure class="sku-card"><img loading="lazy" src="assets/sku/jp122.webp" alt="Nyanko JP122"><figcaption>Nyanko <span class="code">JP122</span></figcaption></figure>
+          <figure class="sku-card"><img loading="lazy" src="assets/sku/jp141.webp" alt="Pekopeko JP141"><figcaption>Pekopeko <span class="code">JP141</span></figcaption></figure>
         </div>
       </div>
 
       <div class="design-cat">
         <h3>🏙️ JP — City</h3>
-        <div class="design-grid">
-          <span class="design-chip">Kanazawa <span class="code">JP123</span></span>
-          <span class="design-chip">Yokohama <span class="code">JP105</span></span>
+        <div class="sku-grid">
+          <figure class="sku-card"><img loading="lazy" src="assets/sku/jp123.webp" alt="Kanazawa JP123"><figcaption>Kanazawa <span class="code">JP123</span></figcaption></figure>
+          <figure class="sku-card"><img loading="lazy" src="assets/sku/jp105.webp" alt="Yokohama JP105"><figcaption>Yokohama <span class="code">JP105</span></figcaption></figure>
         </div>
       </div>
 
       <div class="design-cat">
-        <h3>⚾ Baseball (BS)</h3>
-        <div class="design-grid">
-          <span class="design-chip">Genesis</span>
-          <span class="design-chip">Get Bersih</span>
-          <span class="design-chip new">Workaime <span class="code">BS46</span></span>
-          <span class="design-chip new">Kibou <span class="code">BS47</span></span>
-          <span class="design-chip new">Empress <span class="code">BS48</span></span>
-          <span class="design-chip new">Kachi <span class="code">BS49</span></span>
-          <span class="design-chip new">Sojin <span class="code">BS54</span></span>
-          <span class="design-chip new">Tokon <span class="code">BS55</span></span>
-          <span class="design-chip">Derma Kurnia <span class="code">RY23</span></span>
+        <h3>⚾ Baseball Edition (BS)</h3>
+        <div class="sku-grid">
+          <figure class="sku-card"><img loading="lazy" src="assets/sku/bs35.webp" alt="Toraski BS35"><figcaption>Toraski <span class="code">BS35</span></figcaption></figure>
+          <figure class="sku-card"><img loading="lazy" src="assets/sku/bs42.webp" alt="Go! Yahyu BS42"><figcaption>Go! Yahyu <span class="code">BS42</span></figcaption></figure>
+          <figure class="sku-card"><img loading="lazy" src="assets/sku/bs43.webp" alt="Genkina BS43"><figcaption>Genkina <span class="code">BS43</span></figcaption></figure>
+          <figure class="sku-card"><img loading="lazy" src="assets/sku/bs46.webp" alt="Murasaki BS46"><figcaption>Murasaki <span class="code">BS46</span></figcaption></figure>
+          <figure class="sku-card"><img loading="lazy" src="assets/sku/bs47.webp" alt="Raika BS47"><figcaption>Raika <span class="code">BS47</span></figcaption></figure>
+          <figure class="sku-card"><img loading="lazy" src="assets/sku/bs48.webp" alt="Umikaze BS48"><figcaption>Umikaze <span class="code">BS48</span></figcaption></figure>
+          <figure class="sku-card"><img loading="lazy" src="assets/sku/bs49.webp" alt="Kachi BS49"><figcaption>Kachi <span class="code">BS49</span></figcaption></figure>
+          <figure class="sku-card"><img loading="lazy" src="assets/sku/bs54.webp" alt="Sojin BS54"><figcaption>Sojin <span class="code">BS54</span></figcaption></figure>
+          <figure class="sku-card"><img loading="lazy" src="assets/sku/bs55.webp" alt="Tokon BS55"><figcaption>Tokon <span class="code">BS55</span></figcaption></figure>
+          <figure class="sku-card"><img loading="lazy" src="assets/sku/ry23.webp" alt="Derma Kurnia RY23"><figcaption>Derma Kurnia <span class="code">RY23</span></figcaption></figure>
         </div>
       </div>
 
       <div class="design-cat">
         <h3>🏈 NFL Edition</h3>
-        <div class="design-grid">
-          <span class="design-chip new">Kurogane <span class="code">NFL20</span></span>
-          <span class="design-chip new">Kurobyte <span class="code">NFL21</span></span>
-          <span class="design-chip new">Hyoga <span class="code">NFL23</span></span>
-          <span class="design-chip new">Teppeki 36 <span class="code">NFL24</span></span>
+        <div class="sku-grid">
+          <figure class="sku-card"><img loading="lazy" src="assets/sku/nfl20.webp" alt="Kurogane NFL20"><figcaption>Kurogane <span class="code">NFL20</span></figcaption></figure>
+          <figure class="sku-card"><img loading="lazy" src="assets/sku/nfl21.webp" alt="Kurobyte NFL21"><figcaption>Kurobyte <span class="code">NFL21</span></figcaption></figure>
+          <figure class="sku-card"><img loading="lazy" src="assets/sku/nfl23.webp" alt="Hyoga NFL23"><figcaption>Hyoga <span class="code">NFL23</span></figcaption></figure>
+          <figure class="sku-card"><img loading="lazy" src="assets/sku/nfl24.webp" alt="Teppeki 36 NFL24"><figcaption>Teppeki 36 <span class="code">NFL24</span></figcaption></figure>
         </div>
       </div>
 
       <div class="design-cat">
         <h3>👔 Retro Collar (RC) — IS BACK</h3>
-        <div class="design-grid">
-          <span class="design-chip">Shinju <span class="code">RC23</span></span>
-          <span class="design-chip">Shirokai <span class="code">RC24</span></span>
+        <div class="sku-grid">
+          <figure class="sku-card"><img loading="lazy" src="assets/sku/rc23.webp" alt="Shinju RC23"><figcaption>Shinju <span class="code">RC23</span></figcaption></figure>
+          <figure class="sku-card"><img loading="lazy" src="assets/sku/rc24.webp" alt="Shirokai RC24"><figcaption>Shirokai <span class="code">RC24</span></figcaption></figure>
         </div>
       </div>
 
       <div class="design-cat">
         <h3>✨ Others</h3>
-        <div class="design-grid">
-          <span class="design-chip new">Nakama <span class="code">BR17</span></span>
-          <span class="design-chip">Faito <span class="code">BR11</span></span>
-          <span class="design-chip">Byakko — Varsity Jacket <span class="code">JT06</span></span>
+        <div class="sku-grid">
+          <figure class="sku-card"><img loading="lazy" src="assets/sku/br17.webp" alt="Nakama BR17"><figcaption>Nakama <span class="code">BR17</span></figcaption></figure>
+          <figure class="sku-card"><img loading="lazy" src="assets/sku/br11.webp" alt="Faito BR11"><figcaption>Faito <span class="code">BR11</span></figcaption></figure>
+          <figure class="sku-card"><img loading="lazy" src="assets/sku/jt06.webp" alt="Byakko Varsity Jacket JT06"><figcaption>Byakko · Varsity Jacket <span class="code">JT06</span></figcaption></figure>
         </div>
       </div>
     </div>
@@ -1238,6 +1323,11 @@
 
 </main>
 
+<div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Enlarged design image">
+  <button class="lb-close" aria-label="Close">&times;</button>
+  <img src="" alt="">
+</div>
+
 <footer>
   Prepared by Emelia Hau &nbsp;|&nbsp; Lokalteez 2026 Retail Activities<br>
   For internal staff use only
@@ -1309,6 +1399,23 @@
       if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); copyText(box); }
     });
   });
+
+  (function setupLightbox() {
+    const lb = document.getElementById('lightbox');
+    const lbImg = lb.querySelector('img');
+    function close() { lb.classList.remove('open'); lbImg.src = ''; }
+    document.querySelectorAll('.sku-card img').forEach(function(img) {
+      img.addEventListener('click', function() {
+        lbImg.src = img.src;
+        lbImg.alt = img.alt;
+        lb.classList.add('open');
+      });
+    });
+    lb.addEventListener('click', close);
+    document.addEventListener('keydown', function(e) {
+      if (e.key === 'Escape' && lb.classList.contains('open')) close();
+    });
+  })();
 
   function updateNavOffset() {
     const h = document.querySelector('header').getBoundingClientRect().height;
