@@ -80,6 +80,54 @@
     background: var(--yellow);
     color: var(--black);
   }
+  nav.mainnav button.ended {
+    border-color: #777;
+    color: #bbb;
+    opacity: 0.85;
+  }
+  nav.mainnav button.ended::after {
+    content: "ENDED";
+    font-size: 0.55rem;
+    background: #777;
+    color: #fff;
+    padding: 0.1rem 0.35rem;
+    border-radius: 999px;
+    margin-left: 0.4rem;
+    vertical-align: middle;
+    letter-spacing: 0.5px;
+  }
+  nav.mainnav button.ended.active, nav.mainnav button.ended:hover {
+    background: #777;
+    color: #fff;
+    border-color: #777;
+  }
+  nav.mainnav button.ended.active::after, nav.mainnav button.ended:hover::after {
+    background: #fff;
+    color: #777;
+  }
+
+  .ended-banner {
+    background: #ececec;
+    border: 1px dashed #aaa;
+    color: #666;
+    border-radius: 12px;
+    padding: 0.75rem 1rem;
+    margin-bottom: 1rem;
+    font-size: 0.9rem;
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+  }
+  .ended-banner .tag {
+    background: #777;
+    color: #fff;
+    font-weight: 800;
+    font-size: 0.7rem;
+    padding: 0.15rem 0.5rem;
+    border-radius: 999px;
+    letter-spacing: 0.5px;
+    flex-shrink: 0;
+  }
 
   /* SUB NAV (within a main section) */
   nav.subnav {
@@ -570,23 +618,224 @@
 
 <header>
   <h1>🎯 Lokalteez 2026 Retail Activities</h1>
-  <p>Staff Quick Guide &nbsp;|&nbsp; Excluded: Clearance Store &amp; Kulim (where noted)</p>
-  <p style="font-size:0.85rem;opacity:0.85;margin-top:0.3rem;">Two campaigns: <strong>5th Anniversary Grand Lucky Draw</strong> &amp; <strong>Mid Year Sale (Buy 2 Free 1)</strong></p>
+  <p>Staff Quick Guide &nbsp;|&nbsp; Current campaign: <strong>August 2026</strong></p>
+  <p style="font-size:0.85rem;opacity:0.85;margin-top:0.3rem;">🔴 Live: <strong>C1 Promotion + Merdeka Edition</strong> (1–31 Aug) &nbsp;·&nbsp; ⚪ Archived: Grand Lucky Draw, Mid Year Sale</p>
   <span class="badge">Staff Quick Guide</span>
 </header>
 
 <!-- ===== MAIN NAV (one bar) ===== -->
 <nav class="mainnav" role="tablist">
-  <button role="tab" aria-selected="true" aria-controls="gld" class="active" onclick="showMain('gld', this)">🎯 Grand Lucky Draw</button>
-  <button role="tab" aria-selected="false" aria-controls="midyear" onclick="showMain('midyear', this)">🔥 Mid Year Sale</button>
+  <button role="tab" aria-selected="true" aria-controls="august" class="active" onclick="showMain('august', this)">🇲🇾 August Promo</button>
+  <button role="tab" aria-selected="false" aria-controls="gld" class="ended" onclick="showMain('gld', this)">🎯 Grand Lucky Draw</button>
+  <button role="tab" aria-selected="false" aria-controls="midyear" class="ended" onclick="showMain('midyear', this)">🔥 Mid Year Sale</button>
 </nav>
 
 <main>
 
 <!-- ============================================================= -->
+<!-- MAIN SECTION 0: AUGUST 2026 PROMO (current / default)          -->
+<!-- ============================================================= -->
+<div id="august" class="main-section active" role="tabpanel">
+
+  <nav class="subnav" role="tablist" aria-label="August promotion sections">
+    <button class="active" aria-selected="true" onclick="showSub('aug-overview', this)">Overview</button>
+    <button aria-selected="false" onclick="showSub('aug-c1', this)">C1 Deals</button>
+    <button aria-selected="false" onclick="showSub('aug-rules', this)">Price Card Rules</button>
+    <button aria-selected="false" onclick="showSub('aug-merdeka', this)">🇲🇾 Merdeka Edition</button>
+  </nav>
+
+  <!-- AUG OVERVIEW -->
+  <div id="aug-overview" class="sub-panel active">
+    <div class="card blue">
+      <h2>🗓️ August 2026 Campaign — At a Glance</h2>
+      <ul>
+        <li><strong>Period:</strong> 1 August – 31 August 2026</li>
+        <li><strong>Two things running:</strong> the <strong>C1 Promotion</strong> (main, most stores) and the limited <strong>Merdeka Edition</strong> (roadshow + select stores)</li>
+      </ul>
+      <div class="highlight-box">
+        <strong>Remember the C1 headline deals:</strong><br><br>
+        🎁 <strong style="color:var(--yellow)">Buy 3 Free 1</strong> — new designs (Silver/Gold card): free jersey OR tumbler<br>
+        💸 <strong style="color:var(--yellow)">Buy 2 @ 10% OFF</strong> — Brotherhood &amp; Baseball series<br>
+        🇲🇾 <strong style="color:var(--yellow)">Merdeka Edition</strong> — MR18 + MR21 bundle at RM39
+      </div>
+    </div>
+
+    <div class="card yellow">
+      <h2>⚡ Quick Reference</h2>
+      <div class="flow-path">
+        <div class="flow-arrow">
+          <span class="amount" style="background:#1e90ff;">Buy 3</span>
+          <span class="arrow">→</span>
+          <span>🎁 Free 1 (jersey or tumbler) — new designs, Silver/Gold card</span>
+        </div>
+        <div class="flow-arrow">
+          <span class="amount" style="background:#2ed573;color:#111;">Buy 2</span>
+          <span class="arrow">→</span>
+          <span>💸 10% OFF — any 2 from Brotherhood &amp; Baseball (BS/BR)</span>
+        </div>
+        <div class="flow-arrow">
+          <span class="amount">Grey card</span>
+          <span class="arrow">→</span>
+          <span>Take 4, pay for 3 (lowest free)</span>
+        </div>
+        <div class="flow-arrow">
+          <span class="amount" style="background:#111;">Black card</span>
+          <span class="arrow">→</span>
+          <span>Take 5, pay for 4 (lowest free)</span>
+        </div>
+      </div>
+      <p style="font-size:0.85rem;margin-top:0.6rem;color:#666;">💡 Tap the tabs above for full rules and the Merdeka Edition bundle.</p>
+    </div>
+  </div>
+
+  <!-- AUG C1 DEALS -->
+  <div id="aug-c1" class="sub-panel">
+    <div class="card">
+      <h2>🎁 Buy 3 Free 1</h2>
+      <img src="assets/promo/buy3free1.webp" alt="Buy 3 Free 1 promotion" style="width:100%;border-radius:12px;margin:0.5rem 0;">
+      <ul>
+        <li>Buy 3 → get <strong>1 FREE</strong> — choose a <strong>free Jersey OR Tumbler</strong></li>
+        <li>Applicable to <strong>all NEW designs</strong> with <strong>Silver / Gold price card</strong></li>
+        <li>Up to <strong>30 designs</strong> to choose from</li>
+      </ul>
+    </div>
+
+    <div class="card green">
+      <h2>💸 Buy 2 @ 10% OFF</h2>
+      <img src="assets/promo/buy2_10off.webp" alt="Buy 2 at 10 percent off promotion" style="width:100%;border-radius:12px;margin:0.5rem 0;">
+      <ul>
+        <li>Any <strong>2 pieces</strong> → <strong>10% OFF</strong></li>
+        <li>From these categories only: <strong>Brotherhood Series (BR)</strong> &amp; <strong>Baseball Series (BS)</strong></li>
+        <li>Mix allowed: <strong>2 BS</strong> · <strong>2 BR</strong> · or <strong>1 BS + 1 BR</strong></li>
+      </ul>
+    </div>
+
+    <div class="card yellow">
+      <h2>🎤 Staff Script — C1 Upsell</h2>
+      <div class="script-box" onclick="copyText(this)">
+        <span class="label">Buy 3 Free 1 Push</span>
+        <button class="copy-btn">Copy</button>
+        <p>"Take any 3 new designs and the cheapest one is FREE — or you can pick a free tumbler instead! We have up to 30 designs, better grab 3 so you get one free. Super worth!"</p>
+      </div>
+      <div class="script-box" onclick="copyText(this)">
+        <span class="label">Buy 2 10% Off Push</span>
+        <button class="copy-btn">Copy</button>
+        <p>"These Brotherhood and Baseball pieces are Buy 2 get 10% off — just add one more and you save on both. You can mix, one baseball one brotherhood also can!"</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- AUG PRICE CARD RULES -->
+  <div id="aug-rules" class="sub-panel">
+    <div class="card">
+      <h2>📋 C1 Promotion Guide</h2>
+      <h3>1️⃣ Buy 2 pieces → 10% OFF</h3>
+      <ul>
+        <li>Applicable to <strong>C1 Baseball</strong> and <strong>Brotherhood</strong> series</li>
+        <li>Valid for <strong>both Black and Grey</strong> price cards</li>
+      </ul>
+
+      <h3 style="color:#777;">2️⃣ Grey Price Card → Buy 3, Free 1</h3>
+      <ul>
+        <li>Customer takes home <strong>4 pieces</strong> in total</li>
+        <li>The <strong>lowest-priced item is free</strong></li>
+        <li>All 4 items must be <strong>C1 Grey Price Card</strong> items</li>
+      </ul>
+
+      <h3 style="color:#111;">3️⃣ Black Price Card → Buy 4, Free 1</h3>
+      <ul>
+        <li>Customer takes home <strong>5 pieces</strong> in total</li>
+        <li>The <strong>lowest-priced item is free</strong></li>
+        <li>All 5 items must be <strong>C1 Black Price Card</strong> items</li>
+      </ul>
+    </div>
+
+    <div class="card green">
+      <h2>🧠 Easy Way to Remember</h2>
+      <div class="flow-path">
+        <div class="flow-arrow">
+          <span class="amount" style="background:#2ed573;color:#111;">Any 2 BS &amp; BR</span>
+          <span class="arrow">→</span>
+          <span><strong>10% OFF</strong> &nbsp;(2BS · 2BR · or 1BS+1BR)</span>
+        </div>
+        <div class="flow-arrow">
+          <span class="amount" style="background:#888;">Grey Card</span>
+          <span class="arrow">→</span>
+          <span><strong>Take 4, Pay for 3</strong> <em>(no more 10% off)</em></span>
+        </div>
+        <div class="flow-arrow">
+          <span class="amount" style="background:#111;">Black Card</span>
+          <span class="arrow">→</span>
+          <span><strong>Take 5, Pay for 4</strong> <em>(no more 10% off)</em></span>
+        </div>
+      </div>
+      <div class="limit-box" style="margin-top:0.75rem;">
+        <span class="limit-icon">⚠️</span>
+        <span>The Buy-3/Buy-4 free deal and the 10% off are <strong>separate</strong> — the free-item deal does <strong>not</strong> also give 10% off.</span>
+      </div>
+    </div>
+
+    <div class="card blue">
+      <h2>📍 BS + BR Locations</h2>
+      <p style="color:#555;margin-bottom:0.5rem;">The Baseball &amp; Brotherhood C1 promotion applies at:</p>
+      <div class="design-grid">
+        <span class="design-chip">AC</span>
+        <span class="design-chip">SWM</span>
+        <span class="design-chip">AJ</span>
+        <span class="design-chip">Nilai'</span>
+        <span class="design-chip">Rawang</span>
+        <span class="design-chip">Manjung</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- AUG MERDEKA EDITION -->
+  <div id="aug-merdeka" class="sub-panel">
+    <div class="card">
+      <h2>🇲🇾 Merdeka Edition — Limited Time Offer</h2>
+      <div class="sku-grid" style="grid-template-columns:repeat(auto-fit,minmax(200px,1fr));">
+        <img src="assets/promo/merdeka_offer.webp" alt="Merdeka Edition offer: MR18 RM35, MR21 RM25, bundle RM39" style="width:100%;border-radius:12px;">
+        <img src="assets/promo/merdeka_special.webp" alt="Merdeka Special up to 70% off poster" style="width:100%;border-radius:12px;">
+      </div>
+    </div>
+
+    <div class="card yellow">
+      <h2>🏷️ The Deal</h2>
+      <div class="clear-row">
+        <span class="cat-name">MR18</span>
+        <span><span class="now">RM35</span></span>
+      </div>
+      <div class="clear-row">
+        <span class="cat-name">MR21</span>
+        <span><span class="now">RM25</span></span>
+      </div>
+      <div class="highlight-box" style="margin-top:0.75rem;text-align:center;">
+        🔥 <strong>BUY MR18 + MR21 AT ONLY <span style="color:var(--yellow);font-size:1.3rem;">RM39</span></strong><br>
+        <span style="font-size:0.85rem;opacity:0.9;">(vs RM60 separately — save RM21!)</span>
+      </div>
+    </div>
+
+    <div class="card green">
+      <h2>📍 Available Only At</h2>
+      <ol>
+        <li><strong>Toppen Roadshow</strong></li>
+        <li><strong>Manjung</strong></li>
+        <li><strong>AC</strong></li>
+      </ol>
+      <div class="limit-box" style="margin-top:0.5rem;">
+        <span class="limit-icon">🎉</span>
+        <span><strong>Merdeka Special:</strong> up to <strong>70% OFF</strong> — great hook to pull customers in!</span>
+      </div>
+      <p style="font-size:0.82rem;color:#888;margin-top:0.5rem;">📌 Internal note: promo board/standee arrives next week.</p>
+    </div>
+  </div>
+
+</div><!-- /#august -->
+
+<!-- ============================================================= -->
 <!-- MAIN SECTION 1: GRAND LUCKY DRAW (all GLD content together)    -->
 <!-- ============================================================= -->
-<div id="gld" class="main-section active" role="tabpanel">
+<div id="gld" class="main-section" role="tabpanel">
 
   <nav class="subnav" role="tablist" aria-label="Grand Lucky Draw sections">
     <button class="active" aria-selected="true" onclick="showSub('gld-overview', this)">Overview</button>
@@ -600,6 +849,10 @@
 
   <!-- OVERVIEW -->
   <div id="gld-overview" class="sub-panel active">
+    <div class="ended-banner">
+      <span class="tag">ENDED</span>
+      <span>This campaign ran <strong>7 Apr – 30 Jun 2026</strong> and has finished. Kept here for reference. For the current campaign see <strong>🇲🇾 August Promo</strong>.</span>
+    </div>
     <div class="card">
       <h2>📋 Campaign at a Glance</h2>
       <ul>
@@ -1084,6 +1337,10 @@
 
   <!-- MID YEAR OVERVIEW -->
   <div id="my-overview" class="sub-panel active">
+    <div class="ended-banner">
+      <span class="tag">ENDED</span>
+      <span>This campaign has finished. Kept here for reference (incl. the design catalogue). For the current campaign see <strong>🇲🇾 August Promo</strong>.</span>
+    </div>
     <div class="card blue">
       <h2>🔥 Mid Year Sale 2026 — At a Glance</h2>
       <ul>
@@ -1438,7 +1695,7 @@
 
   (function() {
     const hash = location.hash.replace('#', '');
-    const valid = ['gld', 'midyear'];
+    const valid = ['august', 'gld', 'midyear'];
     if (hash && valid.includes(hash)) {
       const btn = document.querySelector('nav.mainnav [aria-controls="' + hash + '"]');
       if (btn) showMain(hash, btn);
