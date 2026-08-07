@@ -563,6 +563,100 @@
   .buy3-item .amt { font-weight: 900; font-size: 1.5rem; }
   .buy3-item.best { outline: 3px solid var(--red); outline-offset: -3px; }
 
+  /* ===== Custom promo visuals (built with icons, no source images) ===== */
+  .promo-visual {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    gap: 0.55rem;
+    padding: 1.1rem 0.9rem;
+    margin: 0.7rem 0 0.4rem;
+    background: linear-gradient(135deg, #fafafa, #eef1f5);
+    border: 1px solid #e5e5e5;
+    border-radius: 14px;
+  }
+  .pv-tile {
+    width: 62px;
+    height: 62px;
+    border-radius: 12px;
+    background: var(--white);
+    border: 2px solid #e0e0e0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.6rem;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.06);
+  }
+  .pv-tile small { font-size: 0.52rem; font-weight: 800; color: #999; text-transform: uppercase; margin-top: 1px; letter-spacing: 0.3px; }
+  .pv-tile.free { border-color: var(--success); background: #eafaf0; }
+  .pv-tile.free small { color: var(--success); }
+  .pv-tile.paid { border-style: dashed; }
+  .pv-op { font-size: 1.5rem; font-weight: 900; color: var(--red); }
+  .pv-badge {
+    background: var(--red);
+    color: #fff;
+    font-weight: 900;
+    font-size: 1.15rem;
+    padding: 0.6rem 0.85rem;
+    border-radius: 12px;
+    line-height: 1;
+    text-align: center;
+  }
+  .pv-badge small { display: block; font-size: 0.6rem; font-weight: 800; opacity: 0.9; margin-top: 2px; }
+  .pv-caption { text-align: center; font-size: 0.9rem; color: #555; margin: 0.2rem 0 0.2rem; }
+  .pv-strike { color: #bbb; text-decoration: line-through; font-weight: 700; }
+
+  .bundle-card {
+    background: var(--white);
+    border: 2px solid var(--yellow);
+    border-radius: 12px;
+    padding: 0.65rem 0.9rem;
+    text-align: center;
+    min-width: 92px;
+  }
+  .bundle-card .nm { font-weight: 800; color: var(--black); display: block; }
+  .bundle-card .pr { color: #888; font-weight: 700; font-size: 0.9rem; }
+  .pv-final {
+    background: var(--red);
+    color: #fff;
+    font-weight: 900;
+    font-size: 1.35rem;
+    padding: 0.55rem 1rem;
+    border-radius: 12px;
+  }
+  .cardtype-visual {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    flex-wrap: wrap;
+    padding: 0.7rem 0.85rem;
+    border-radius: 12px;
+    margin: 0.5rem 0;
+  }
+  .cardtype-visual.grey { background: #f0f0f0; border: 1px solid #ccc; }
+  .cardtype-visual.black { background: #1a1a1a; }
+  .cardtype-visual.black .ct-label { color: #fff; }
+  .ct-label { font-weight: 800; font-size: 0.85rem; min-width: 82px; }
+  .ct-shirts { display: flex; gap: 0.25rem; font-size: 1.35rem; flex-wrap: wrap; }
+  .ct-free { position: relative; }
+  .ct-free::after {
+    content: "FREE";
+    position: absolute;
+    bottom: -8px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: var(--success);
+    color: #fff;
+    font-size: 0.5rem;
+    font-weight: 800;
+    padding: 0.05rem 0.3rem;
+    border-radius: 999px;
+  }
+  .ct-result { margin-left: auto; font-weight: 900; font-size: 0.9rem; color: var(--red); }
+  .cardtype-visual.black .ct-result { color: var(--yellow); }
+
   /* ===== Mobile / small phones ===== */
   @media (max-width: 600px) {
     header { padding: 1.2rem 0.75rem; }
@@ -692,7 +786,14 @@
   <div id="aug-c1" class="sub-panel">
     <div class="card">
       <h2>🎁 Buy 3 Free 1</h2>
-      <img src="assets/promo/buy3free1.webp" alt="Buy 3 Free 1 promotion" style="width:100%;border-radius:12px;margin:0.5rem 0;">
+      <div class="promo-visual">
+        <div class="pv-tile paid">👕<small>Buy</small></div>
+        <div class="pv-tile paid">👕<small>Buy</small></div>
+        <div class="pv-tile paid">👕<small>Buy</small></div>
+        <span class="pv-op">+</span>
+        <div class="pv-tile free">🎁<small>Free</small></div>
+      </div>
+      <p class="pv-caption">Free item = <strong>👕 Jersey</strong> &nbsp;or&nbsp; <strong>🥤 Tumbler</strong></p>
       <ul>
         <li>Buy 3 → get <strong>1 FREE</strong> — choose a <strong>free Jersey OR Tumbler</strong></li>
         <li>Applicable to <strong>all NEW designs</strong> with <strong>Silver / Gold price card</strong></li>
@@ -702,7 +803,13 @@
 
     <div class="card green">
       <h2>💸 Buy 2 @ 10% OFF</h2>
-      <img src="assets/promo/buy2_10off.webp" alt="Buy 2 at 10 percent off promotion" style="width:100%;border-radius:12px;margin:0.5rem 0;">
+      <div class="promo-visual">
+        <div class="pv-tile paid">👕<small>Buy</small></div>
+        <div class="pv-tile paid">👕<small>Buy</small></div>
+        <span class="pv-op">→</span>
+        <div class="pv-badge">10%<small>OFF</small></div>
+      </div>
+      <p class="pv-caption">Categories: <strong>🥎 Baseball (BS)</strong> &nbsp;·&nbsp; <strong>🤝 Brotherhood (BR)</strong></p>
       <ul>
         <li>Any <strong>2 pieces</strong> → <strong>10% OFF</strong></li>
         <li>From these categories only: <strong>Brotherhood Series (BR)</strong> &amp; <strong>Baseball Series (BS)</strong></li>
@@ -736,6 +843,11 @@
       </ul>
 
       <h3 style="color:#777;">2️⃣ Grey Price Card → Buy 3, Free 1</h3>
+      <div class="cardtype-visual grey">
+        <span class="ct-label">⚪ Grey</span>
+        <span class="ct-shirts"><span>👕</span><span>👕</span><span>👕</span><span class="ct-free">👕</span></span>
+        <span class="ct-result">Take 4 · Pay 3</span>
+      </div>
       <ul>
         <li>Customer takes home <strong>4 pieces</strong> in total</li>
         <li>The <strong>lowest-priced item is free</strong></li>
@@ -743,6 +855,11 @@
       </ul>
 
       <h3 style="color:#111;">3️⃣ Black Price Card → Buy 4, Free 1</h3>
+      <div class="cardtype-visual black">
+        <span class="ct-label">⚫ Black</span>
+        <span class="ct-shirts"><span>👕</span><span>👕</span><span>👕</span><span>👕</span><span class="ct-free">👕</span></span>
+        <span class="ct-result">Take 5 · Pay 4</span>
+      </div>
       <ul>
         <li>Customer takes home <strong>5 pieces</strong> in total</li>
         <li>The <strong>lowest-priced item is free</strong></li>
@@ -793,10 +910,14 @@
   <div id="aug-merdeka" class="sub-panel">
     <div class="card">
       <h2>🇲🇾 Merdeka Edition — Limited Time Offer</h2>
-      <div class="sku-grid" style="grid-template-columns:repeat(auto-fit,minmax(200px,1fr));">
-        <img src="assets/promo/merdeka_offer.webp" alt="Merdeka Edition offer: MR18 RM35, MR21 RM25, bundle RM39" style="width:100%;border-radius:12px;">
-        <img src="assets/promo/merdeka_special.webp" alt="Merdeka Special up to 70% off poster" style="width:100%;border-radius:12px;">
+      <div class="promo-visual">
+        <div class="bundle-card"><span class="nm">👕 MR18</span><span class="pr">RM35</span></div>
+        <span class="pv-op">+</span>
+        <div class="bundle-card"><span class="nm">👕 MR21</span><span class="pr">RM25</span></div>
+        <span class="pv-op">=</span>
+        <div class="pv-final">RM39</div>
       </div>
+      <p class="pv-caption"><span class="pv-strike">RM60 separately</span> → bundle <strong>RM39</strong> · save <strong>RM21</strong>!</p>
     </div>
 
     <div class="card yellow">
