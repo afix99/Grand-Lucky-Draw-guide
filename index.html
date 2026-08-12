@@ -657,6 +657,56 @@
   .ct-result { margin-left: auto; font-weight: 900; font-size: 0.9rem; color: var(--red); }
   .cardtype-visual.black .ct-result { color: var(--yellow); }
 
+  /* Tag chips (Grey / Gold / Black promo tags) */
+  .tag-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem;
+    justify-content: center;
+    align-items: center;
+    margin-top: 0.6rem;
+  }
+  .tag-chip {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.3rem;
+    padding: 0.3rem 0.75rem;
+    border-radius: 999px;
+    font-weight: 800;
+    font-size: 0.8rem;
+    color: #fff;
+  }
+  .tag-chip.grey { background: #888; }
+  .tag-chip.gold { background: linear-gradient(135deg, #ffd700, #e6a817); color: #5c3d00; }
+  .tag-chip.black { background: #111; }
+  .tag-row .plus { color: #999; font-weight: 900; }
+  .tag-row .not-allowed {
+    text-decoration: line-through;
+    background: #eee;
+    color: #999;
+  }
+
+  /* Sales flow chain */
+  .chain-flow {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    gap: 0.35rem;
+    margin: 0.75rem 0;
+  }
+  .chain-step {
+    background: var(--white);
+    border: 2px solid var(--red);
+    color: var(--red);
+    font-weight: 800;
+    font-size: 0.82rem;
+    padding: 0.5rem 0.8rem;
+    border-radius: 10px;
+    text-align: center;
+  }
+  .chain-flow .arrow { color: var(--red); font-weight: 900; }
+
   /* ===== Mobile / small phones ===== */
   @media (max-width: 600px) {
     header { padding: 1.2rem 0.75rem; }
@@ -747,9 +797,10 @@
         <li><strong>Two things running:</strong> the <strong>C1 Promotion</strong> (main, most stores) and the limited <strong>Merdeka Edition</strong> (roadshow + select stores)</li>
       </ul>
       <div class="highlight-box">
-        <strong>Remember the C1 headline deals:</strong><br><br>
-        🎁 <strong style="color:var(--yellow)">Buy 3 Free 1</strong> — new designs (Silver/Gold card): free jersey OR tumbler<br>
-        💸 <strong style="color:var(--yellow)">Buy 2 @ 10% OFF</strong> — Brotherhood &amp; Baseball series<br>
+        <strong>Remember the NEW Merdeka Promo deals:</strong><br><br>
+        💸 <strong style="color:var(--yellow)">Buy 2 → 10% OFF</strong> — Baseball &amp; Brotherhood, mix Black + Grey tags<br>
+        🎁 <strong style="color:var(--yellow)">Buy 3 Free 1</strong> — Grey Tag + Gold Tag only<br>
+        🎉 <strong style="color:var(--yellow)">Buy 4 Free 1</strong> — Grey Tag + Gold Tag + Black Tag<br>
         🇲🇾 <strong style="color:var(--yellow)">Merdeka Edition</strong> — MR18 + MR21 bundle at RM39
       </div>
     </div>
@@ -758,32 +809,48 @@
       <h2>⚡ Quick Reference</h2>
       <div class="flow-path">
         <div class="flow-arrow">
-          <span class="amount" style="background:#1e90ff;">Buy 3</span>
-          <span class="arrow">→</span>
-          <span>🎁 Free 1 (jersey or tumbler) — new designs, Silver/Gold card</span>
-        </div>
-        <div class="flow-arrow">
           <span class="amount" style="background:#2ed573;color:#111;">Buy 2</span>
           <span class="arrow">→</span>
-          <span>💸 10% OFF — any 2 from Brotherhood &amp; Baseball (BS/BR)</span>
+          <span>💸 10% OFF — BS+BS / BR+BR / BS+BR, Black or Grey tag</span>
         </div>
         <div class="flow-arrow">
-          <span class="amount">Grey card</span>
+          <span class="amount" style="background:#888;">Buy 3</span>
           <span class="arrow">→</span>
-          <span>Take 4, pay for 3 (lowest free)</span>
+          <span>🎁 Free 1 — <strong>Grey Tag + Gold Tag</strong> only</span>
         </div>
         <div class="flow-arrow">
-          <span class="amount" style="background:#111;">Black card</span>
+          <span class="amount" style="background:#111;">Buy 4</span>
           <span class="arrow">→</span>
-          <span>Take 5, pay for 4 (lowest free)</span>
+          <span>🎉 Free 1 — <strong>Grey + Gold + Black</strong> tags</span>
         </div>
       </div>
-      <p style="font-size:0.85rem;margin-top:0.6rem;color:#666;">💡 Tap the tabs above for full rules and the Merdeka Edition bundle.</p>
+      <p style="font-size:0.85rem;margin-top:0.6rem;color:#666;">💡 Tap the tabs above for full rules, sales scripts and the Merdeka Edition bundle.</p>
     </div>
   </div>
 
   <!-- AUG C1 DEALS -->
   <div id="aug-c1" class="sub-panel">
+    <div class="card">
+      <h2>💸 Buy 2 @ 10% OFF</h2>
+      <div class="promo-visual">
+        <div class="pv-tile paid">👕<small>Buy</small></div>
+        <div class="pv-tile paid">👕<small>Buy</small></div>
+        <span class="pv-op">→</span>
+        <div class="pv-badge">10%<small>OFF</small></div>
+      </div>
+      <p class="pv-caption">Categories: <strong>🥎 Baseball (BS)</strong> &nbsp;·&nbsp; <strong>🤝 Brotherhood (BR)</strong></p>
+      <div class="tag-row">
+        <span class="tag-chip grey">⚪ Grey</span>
+        <span class="plus">+</span>
+        <span class="tag-chip black">⚫ Black</span>
+      </div>
+      <ul>
+        <li>Any <strong>2 pieces</strong> → <strong>10% OFF</strong></li>
+        <li>Baseball (BS) &amp; Brotherhood (BR) can <strong>mix</strong> with <strong>Black Tag &amp; Grey Tag</strong></li>
+        <li>Allowed: <strong>BS + BS</strong> · <strong>BR + BR</strong> · <strong>BS + BR</strong></li>
+      </ul>
+    </div>
+
     <div class="card">
       <h2>🎁 Buy 3 Free 1</h2>
       <div class="promo-visual">
@@ -793,108 +860,164 @@
         <span class="pv-op">+</span>
         <div class="pv-tile free">🎁<small>Free</small></div>
       </div>
-      <p class="pv-caption">Free item = <strong>👕 Jersey</strong> &nbsp;or&nbsp; <strong>🥤 Tumbler</strong></p>
-      <ul>
-        <li>Buy 3 → get <strong>1 FREE</strong> — choose a <strong>free Jersey OR Tumbler</strong></li>
-        <li>Applicable to <strong>all NEW designs</strong> with <strong>Silver / Gold price card</strong></li>
-        <li>Up to <strong>30 designs</strong> to choose from</li>
-      </ul>
-    </div>
-
-    <div class="card green">
-      <h2>💸 Buy 2 @ 10% OFF</h2>
-      <div class="promo-visual">
-        <div class="pv-tile paid">👕<small>Buy</small></div>
-        <div class="pv-tile paid">👕<small>Buy</small></div>
-        <span class="pv-op">→</span>
-        <div class="pv-badge">10%<small>OFF</small></div>
+      <div class="tag-row">
+        <span class="tag-chip grey">⚪ Grey</span>
+        <span class="plus">+</span>
+        <span class="tag-chip gold">🟡 Gold</span>
+        <span class="plus">only</span>
       </div>
-      <p class="pv-caption">Categories: <strong>🥎 Baseball (BS)</strong> &nbsp;·&nbsp; <strong>🤝 Brotherhood (BR)</strong></p>
       <ul>
-        <li>Any <strong>2 pieces</strong> → <strong>10% OFF</strong></li>
-        <li>From these categories only: <strong>Brotherhood Series (BR)</strong> &amp; <strong>Baseball Series (BS)</strong></li>
-        <li>Mix allowed: <strong>2 BS</strong> · <strong>2 BR</strong> · or <strong>1 BS + 1 BR</strong></li>
+        <li>Buy 3 → get <strong>1 FREE</strong></li>
+        <li>Only for <strong>Grey Tag + Gold Tag</strong> items</li>
       </ul>
     </div>
 
     <div class="card yellow">
-      <h2>🎤 Staff Script — C1 Upsell</h2>
+      <h2>🎉 Buy 4 Free 1</h2>
+      <div class="promo-visual">
+        <div class="pv-tile paid">👕<small>Buy</small></div>
+        <div class="pv-tile paid">👕<small>Buy</small></div>
+        <div class="pv-tile paid">👕<small>Buy</small></div>
+        <div class="pv-tile paid">👕<small>Buy</small></div>
+        <span class="pv-op">+</span>
+        <div class="pv-tile free">🎁<small>Free</small></div>
+      </div>
+      <div class="tag-row">
+        <span class="tag-chip grey">⚪ Grey</span>
+        <span class="plus">+</span>
+        <span class="tag-chip gold">🟡 Gold</span>
+        <span class="plus">+</span>
+        <span class="tag-chip black">⚫ Black</span>
+      </div>
+      <ul>
+        <li>Buy 4 → get <strong>1 FREE</strong></li>
+        <li>Only for <strong>Grey Tag + Gold Tag + Black Tag</strong> items</li>
+      </ul>
+    </div>
+
+    <div class="card green">
+      <h2>💬 5 Easy Customer Approach Lines</h2>
+      <p style="color:#555;margin-bottom:0.5rem;">Team, please use the same sales pitch. Tap any box to copy.</p>
       <div class="script-box" onclick="copyText(this)">
-        <span class="label">Buy 3 Free 1 Push</span>
+        <span class="label">1 · General Approach</span>
         <button class="copy-btn">Copy</button>
-        <p>"Take any 3 new designs and the cheapest one is FREE — or you can pick a free tumbler instead! We have up to 30 designs, better grab 3 so you get one free. Super worth!"</p>
+        <p>"Hi! We have a Merdeka promo now — BUY 2 and get 10% OFF. You can mix and match, feel free to have a look!"</p>
       </div>
       <div class="script-box" onclick="copyText(this)">
-        <span class="label">Buy 2 10% Off Push</span>
+        <span class="label">2 · Lead to Baseball Area</span>
         <button class="copy-btn">Copy</button>
-        <p>"These Brotherhood and Baseball pieces are Buy 2 get 10% off — just add one more and you save on both. You can mix, one baseball one brotherhood also can!"</p>
+        <p>"Let me show you our Baseball Edition. We have many designs and SKUs here, so you'll have more choices to choose from."</p>
+      </div>
+      <div class="script-box" onclick="copyText(this)">
+        <span class="label">3 · Customer Already Picked 1</span>
+        <button class="copy-btn">Copy</button>
+        <p>"Nice choice! Since you already picked one, would you like to have a look at another design? You can enjoy 10% OFF when you buy 2."</p>
+      </div>
+      <div class="script-box" onclick="copyText(this)">
+        <span class="label">4 · Push Grey Tag / Buy 3 Free 1</span>
+        <button class="copy-btn">Copy</button>
+        <p>"If you like this Grey Tag design, let me show you some more. You can choose 3 pieces and get 1 FREE under our promo."</p>
+      </div>
+      <div class="script-box" onclick="copyText(this)">
+        <span class="label">5 · Final Upsell</span>
+        <button class="copy-btn">Copy</button>
+        <p>"You already have 2 pieces. Would you like to add one more? Then you can enjoy our BUY 3 FREE 1 promo and get 1 more piece FREE."</p>
+      </div>
+    </div>
+
+    <div class="card">
+      <h2>🎯 Remember Team</h2>
+      <p style="color:#555;">Don't just introduce the promo and walk away.</p>
+      <div class="chain-flow">
+        <span class="chain-step">Approach</span><span class="arrow">→</span>
+        <span class="chain-step">Introduce Promo</span><span class="arrow">→</span>
+        <span class="chain-step">Show More Choices</span><span class="arrow">→</span>
+        <span class="chain-step">Add More Pieces</span><span class="arrow">→</span>
+        <span class="chain-step">Hit the Promo</span><span class="arrow">→</span>
+        <span class="chain-step" style="background:var(--red);color:#fff;">Earn More Incentive 💰</span>
+      </div>
+      <div class="highlight-box">
+        Especially when customers are looking at <strong style="color:var(--yellow)">Grey Tag</strong>, try your best to add 1 more piece and push towards <strong style="color:var(--yellow)">Buy 3 Free 1</strong>.<br><br>
+        The goal is not just to sell 1 jersey — try to turn <strong style="color:var(--yellow)">1 → 2 → 3 pieces</strong> whenever possible. Let's make every customer count! 💪🔥
       </div>
     </div>
   </div>
 
   <!-- AUG PRICE CARD RULES -->
   <div id="aug-rules" class="sub-panel">
+    <div class="ended-banner" style="background:#e8f5ff;border-color:#1e90ff;color:#333;">
+      <span class="tag" style="background:#1e90ff;">UPDATED</span>
+      <span>Rules below reflect the latest <strong>Merdeka Promo</strong> memo — tags can now mix across designs.</span>
+    </div>
+
     <div class="card">
-      <h2>📋 C1 Promotion Guide</h2>
+      <h2>📋 Merdeka Promo Guide</h2>
+
       <h3>1️⃣ Buy 2 pieces → 10% OFF</h3>
-      <ul>
-        <li>Applicable to <strong>C1 Baseball</strong> and <strong>Brotherhood</strong> series</li>
-        <li>Valid for <strong>both Black and Grey</strong> price cards</li>
-      </ul>
-
-      <h3 style="color:#777;">2️⃣ Grey Price Card → Buy 3, Free 1</h3>
-      <div class="cardtype-visual grey">
-        <span class="ct-label">⚪ Grey</span>
-        <span class="ct-shirts"><span>👕</span><span>👕</span><span>👕</span><span class="ct-free">👕</span></span>
-        <span class="ct-result">Take 4 · Pay 3</span>
+      <div class="tag-row">
+        <span class="tag-chip grey">⚪ Grey</span>
+        <span class="plus">+</span>
+        <span class="tag-chip black">⚫ Black</span>
       </div>
       <ul>
-        <li>Customer takes home <strong>4 pieces</strong> in total</li>
-        <li>The <strong>lowest-priced item is free</strong></li>
-        <li>All 4 items must be <strong>C1 Grey Price Card</strong> items</li>
+        <li>Applicable to <strong>Baseball Edition</strong> &amp; <strong>Brotherhood Edition</strong></li>
+        <li>Can <strong>mix</strong> with <strong>Black Tag &amp; Grey Tag</strong></li>
+        <li>Allowed: <strong>BS + BS</strong> · <strong>BR + BR</strong> · <strong>BS + BR</strong></li>
       </ul>
 
-      <h3 style="color:#111;">3️⃣ Black Price Card → Buy 4, Free 1</h3>
-      <div class="cardtype-visual black">
-        <span class="ct-label">⚫ Black</span>
-        <span class="ct-shirts"><span>👕</span><span>👕</span><span>👕</span><span>👕</span><span class="ct-free">👕</span></span>
-        <span class="ct-result">Take 5 · Pay 4</span>
+      <h3 style="color:#777;">2️⃣ Buy 3, Free 1</h3>
+      <div class="tag-row">
+        <span class="tag-chip grey">⚪ Grey</span>
+        <span class="plus">+</span>
+        <span class="tag-chip gold">🟡 Gold</span>
       </div>
       <ul>
-        <li>Customer takes home <strong>5 pieces</strong> in total</li>
+        <li>Only for <strong>Grey Tag + Gold Tag</strong></li>
         <li>The <strong>lowest-priced item is free</strong></li>
-        <li>All 5 items must be <strong>C1 Black Price Card</strong> items</li>
+      </ul>
+
+      <h3 style="color:#111;">3️⃣ Buy 4, Free 1</h3>
+      <div class="tag-row">
+        <span class="tag-chip grey">⚪ Grey</span>
+        <span class="plus">+</span>
+        <span class="tag-chip gold">🟡 Gold</span>
+        <span class="plus">+</span>
+        <span class="tag-chip black">⚫ Black</span>
+      </div>
+      <ul>
+        <li>Only for <strong>Grey Tag + Gold Tag + Black Tag</strong></li>
+        <li>The <strong>lowest-priced item is free</strong></li>
       </ul>
     </div>
 
     <div class="card green">
-      <h2>🧠 Easy Way to Remember</h2>
+      <h2>🔥 Easy Staff Memory</h2>
       <div class="flow-path">
         <div class="flow-arrow">
-          <span class="amount" style="background:#2ed573;color:#111;">Any 2 BS &amp; BR</span>
+          <span class="amount" style="background:#2ed573;color:#111;">2️⃣ Buy 2 = 10% OFF</span>
           <span class="arrow">→</span>
-          <span><strong>10% OFF</strong> &nbsp;(2BS · 2BR · or 1BS+1BR)</span>
+          <span>BS+BR / BS+BS / BR+BR &nbsp;<strong>+ Black + Grey</strong></span>
         </div>
         <div class="flow-arrow">
-          <span class="amount" style="background:#888;">Grey Card</span>
+          <span class="amount" style="background:#888;">3️⃣ Buy 3 Free 1</span>
           <span class="arrow">→</span>
-          <span><strong>Take 4, Pay for 3</strong> <em>(no more 10% off)</em></span>
+          <span><strong>Grey + Gold only</strong></span>
         </div>
         <div class="flow-arrow">
-          <span class="amount" style="background:#111;">Black Card</span>
+          <span class="amount" style="background:#111;">4️⃣ Buy 4 Free 1</span>
           <span class="arrow">→</span>
-          <span><strong>Take 5, Pay for 4</strong> <em>(no more 10% off)</em></span>
+          <span><strong>Grey + Gold + Black</strong></span>
         </div>
       </div>
       <div class="limit-box" style="margin-top:0.75rem;">
         <span class="limit-icon">⚠️</span>
-        <span>The Buy-3/Buy-4 free deal and the 10% off are <strong>separate</strong> — the free-item deal does <strong>not</strong> also give 10% off.</span>
+        <span>The Buy-3/Buy-4 free deals and the 10% off are <strong>separate</strong> — the free-item deal does <strong>not</strong> also give 10% off.</span>
       </div>
     </div>
 
     <div class="card blue">
       <h2>📍 BS + BR Locations</h2>
-      <p style="color:#555;margin-bottom:0.5rem;">The Baseball &amp; Brotherhood C1 promotion applies at:</p>
+      <p style="color:#555;margin-bottom:0.5rem;">The Baseball &amp; Brotherhood promotion applies at:</p>
       <div class="design-grid">
         <span class="design-chip">AC</span>
         <span class="design-chip">SWM</span>
